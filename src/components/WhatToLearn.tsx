@@ -1,6 +1,140 @@
 import React from "react";
 
-const WhatToLearn = () => {
+import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+
+import {
+  FrameworksEnum,
+  ProgLangsEnum,
+  TechnologiesEnum,
+} from "../redux/slices/skillsTypes";
+import {
+  skillsSelector,
+  setSkills,
+  pushSkill,
+  pullSkill,
+} from "../redux/slices/skillsSlice";
+
+/*
+отрисовать
+повесить событие - тогл выделения
+при каждом тогле - добавлять или удалять элемент из списка
+при тогле делать запрос на бэкенд - передавать аргументом массив, в ответ получать и отображать сумму
+*/
+
+export const ProgLangs = [
+  ProgLangsEnum.JAVA,
+  ProgLangsEnum.JAVASCRIPT,
+  ProgLangsEnum.PYTHON,
+  ProgLangsEnum.C,
+  ProgLangsEnum.CPP,
+  ProgLangsEnum.RUST,
+  ProgLangsEnum.PHP,
+  ProgLangsEnum.GO,
+  ProgLangsEnum.CSHARP,
+  ProgLangsEnum.FSHARP,
+  ProgLangsEnum.SWIFT,
+  ProgLangsEnum.DART,
+  ProgLangsEnum.KOTLIN,
+  ProgLangsEnum.SCALA,
+  ProgLangsEnum.SOLIDITY,
+  ProgLangsEnum.HASKEL,
+  ProgLangsEnum.RUBY,
+  ProgLangsEnum.LUA,
+  ProgLangsEnum.JULIA,
+  ProgLangsEnum.R,
+  ProgLangsEnum.OBJECTIVEC,
+  ProgLangsEnum.BASIC,
+  ProgLangsEnum.DELPHI,
+  ProgLangsEnum.FORTRAN,
+];
+
+export const Technologies = [
+  TechnologiesEnum.DOCKER,
+  TechnologiesEnum.CLICKHOUSE,
+  TechnologiesEnum.ELK,
+  TechnologiesEnum.GRAPHQL,
+  TechnologiesEnum.KAFKA,
+  TechnologiesEnum.KUBERNETES,
+  TechnologiesEnum.MONGODB,
+  TechnologiesEnum.MYSQL,
+  TechnologiesEnum.POSTGRESQL,
+  TechnologiesEnum.REDIS,
+  TechnologiesEnum.RABBITMQ,
+];
+
+export const Frameworks = [
+  FrameworksEnum.REACTJS,
+  FrameworksEnum.VUEJS,
+  FrameworksEnum.GIN,
+  FrameworksEnum.LARAVEL,
+  FrameworksEnum.SYMFONY,
+  FrameworksEnum.EXPRESSJS,
+  FrameworksEnum.NODEJS,
+  FrameworksEnum.TENSORFLOW,
+  FrameworksEnum.PYTORCH,
+  FrameworksEnum.NEXTJS,
+  FrameworksEnum.FLASK,
+];
+
+const WhatToLearn: React.FC = () => {
+  const dispatch = useDispatch();
+  const { skills } = useSelector(skillsSelector);
+
+  // <
+  //   (ProgLangsEnum | TechnologiesEnum | FrameworksEnum)[]
+  // >
+
+  const [skillRevenue, setSkillRevenue] = React.useState(0);
+  // const items: (
+  //   | ProgrammingLanguagesEnum
+  //   | TechnologiesEnum
+  //   | FrameworksEnum
+  // )[] = [
+  //   ProgrammingLanguagesEnum.JAVA,
+  //   TechnologiesEnum.DOCKER,
+  //   FrameworksEnum.REACTJS,
+  // ];
+
+  // console.log(items);
+
+  const toggleSkill = (
+    skill: ProgLangsEnum | TechnologiesEnum | FrameworksEnum
+  ): void => {
+    if (ifSkillsContainSkill(skill)) {
+      dispatch(pullSkill(skill));
+    } else {
+      dispatch(pushSkill(skill));
+      // console.log("push skills", skills);
+    }
+  };
+
+  const ifSkillsContainSkill = (
+    skill: ProgLangsEnum | TechnologiesEnum | FrameworksEnum
+  ): boolean => {
+    return skills.includes(skill);
+  };
+
+  React.useEffect(() => {
+    const getSkillsRevenue = async () => {
+      const { data } = await axios.get(
+        `https://5d9704ac1962357f.mokky.dev/whattolearn`
+        // {
+        //   params: {
+        //     items: JSON.stringify(skills),
+        //   },
+        // }
+      );
+
+      setSkillRevenue(data[0].learn_revenue.amount);
+    };
+
+    getSkillsRevenue();
+    // const onClickskill = () => {
+    //   getSkillsRevenue();
+    // };
+  }, [skills]);
+
   return (
     <>
       <div className="learn-section">
@@ -10,85 +144,58 @@ const WhatToLearn = () => {
             <div className="learn-row">
               <div className="learn-category">ЯЗЫКИ ПРОГРАММИРОВАНИЯ</div>
               <div className="tech-group">
-                <a href="#" className="tech-tag">
-                  GOLANG
-                </a>
-                <a href="#" className="tech-tag">
-                  C++
-                </a>
-                <a href="#" className="tech-tag">
-                  RUST
-                </a>
-                <a href="#" className="tech-tag">
-                  JAVA
-                </a>
-                <a href="#" className="tech-tag">
-                  PYTHON
-                </a>
-                <a href="#" className="tech-tag active-tech">
-                  JAVASCRIPT
-                </a>
+                {ProgLangs.map((lang, i) => (
+                  <span
+                    className={`tech-tag learning-item ${
+                      ifSkillsContainSkill(lang) ? "active-tech" : ""
+                    }`}
+                    onClick={() => toggleSkill(lang)}
+                    key={i}
+                  >
+                    {lang.toUpperCase()}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="learn-row">
               <div className="learn-category">ТЕХНОЛОГИИ</div>
               <div className="tech-group">
-                <a href="#" className="tech-tag">
-                  DOCKER
-                </a>
-                <a href="#" className="tech-tag">
-                  KUBERNETES
-                </a>
-                <a href="#" className="tech-tag">
-                  REDIS
-                </a>
-                <a href="#" className="tech-tag">
-                  KAFKA
-                </a>
-                <a href="#" className="tech-tag">
-                  RABBITMQ
-                </a>
-                <a href="#" className="tech-tag">
-                  MYSQL
-                </a>
-                <a href="#" className="tech-tag active-tech">
-                  POSTGRESQL
-                </a>
+                {Technologies.map((technology, i) => (
+                  <span
+                    className={`tech-tag learning-item ${
+                      ifSkillsContainSkill(technology) ? "active-tech" : ""
+                    }`}
+                    onClick={() => toggleSkill(technology)}
+                    key={i}
+                  >
+                    {technology.toUpperCase()}
+                  </span>
+                ))}
               </div>
             </div>
             <div className="learn-row">
               <div className="learn-category">ФРЕЙМВОРКИ</div>
               <div className="tech-group">
-                <a href="#" className="tech-tag active-tech">
-                  REACT
-                </a>
-                <a href="#" className="tech-tag">
-                  GIN
-                </a>
-                <a href="#" className="tech-tag">
-                  VUE.JS
-                </a>
-                <a href="#" className="tech-tag">
-                  DJANGO
-                </a>
-                <a href="#" className="tech-tag">
-                  SPRING
-                </a>
-                <a href="#" className="tech-tag">
-                  LARAVEL
-                </a>
-                <a href="#" className="tech-tag">
-                  FLUTTER
-                </a>
+                {Frameworks.map((framework, i) => (
+                  <span
+                    className={`tech-tag learning-item ${
+                      ifSkillsContainSkill(framework) ? "active-tech" : ""
+                    }`}
+                    onClick={() => toggleSkill(framework)}
+                    key={i}
+                  >
+                    {framework.toUpperCase()}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
           <aside className="salary-card learn-salary-card">
             <h3>СРЕДНЯЯ ОПЛАТА В МЕСЯЦ</h3>
             <div className="salary-value">
-              <span>2 254</span>
+              <span>{skillRevenue}</span>
               <div className="dropdown">
-                <button className="dropdown-btn-small">USD ▼</button>
+                <div className="currency">USD </div>
               </div>
             </div>
           </aside>

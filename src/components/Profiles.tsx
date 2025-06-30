@@ -1,99 +1,114 @@
 import React from "react";
+import axios from "axios";
+
+import Sort from "./Sort";
+import Pagination from "./Pagination";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../redux/store";
+import { filterSelector, setTotalPages } from "../redux/slices/filterSlice";
+
+type TProfileRevenue = {
+  amount: number;
+  currency: string;
+};
+
+type TProfile = {
+  id: number;
+  core_lang_vacancy_count: number;
+  prog_langs: { skill: string; skillCount: number }[];
+  technologies: { skill: string; skillCount: number }[];
+  frameworks: { skill: string; skillCount: number }[];
+  other_skills: { skill: string; skillCount: number }[];
+  profile_revenue: TProfileRevenue[];
+};
 
 const Profiles = () => {
+  const dispatch = useDispatch();
+  const [profile, setProfile] = React.useState<TProfile>();
+
+  const { currentPage, totalPages, sort } = useSelector(filterSelector);
+
+  React.useEffect(() => {
+    const getProfiles = async () => {
+      const { data } = await axios.get(
+        // `https://5d9704ac1962357f.mokky.dev/profiles?page=${currentPage}&limit=1&sortBy=${sort.type}`
+        `http://finejob-api.local/api/v1/profiles?page=${currentPage}&limit=1&sortBy=${sort.type}`
+      );
+
+      setProfile(data.data[0]);
+      dispatch(setTotalPages(data.meta.total));
+    };
+
+    getProfiles();
+  }, [currentPage, sort]);
+
   return (
     <div className="wrapper">
       <header className="main-header">
         <h1>ТЕХНОЛОГИЧЕСКИЙ СТЕК</h1>
-        <div className="filters">
-          <div className="dropdown">
-            <select name="popularity" id="popularity-select">
-              <option value="">--Популярность--</option>
-              <option value="more-popular">Сначала популярные</option>
-              <option value="less-popular">Сначала непопулярные</option>
-            </select>
-          </div>
-          <div className="dropdown">
-            <select name="income" id="income-select">
-              <option value="">--Доход--</option>
-              <option value="more-income">Сначала выше</option>
-              <option value="less-income">Сначала ниже</option>
-            </select>
-          </div>
-          <div className="checkbox-group">
-            <input type="checkbox" id="options" name="options" />
-            <label htmlFor="options">Опции</label>
-          </div>
-          <div className="dropdown">
-            <button className="dropdown-btn">Страна компании ▼</button>
-          </div>
-          <div className="dropdown">
-            <button className="dropdown-btn">Язык общения ▼</button>
-          </div>
-        </div>
+        <Sort />
       </header>
 
       <main className="content-grid">
         <div className="grid-column">
           <h2>ЯЗЫКИ ПРОГРАММИРОВАНИЯ</h2>
           <ul>
-            <li>Golang</li>
-            <li>PHP</li>
-            <li>JavaScript</li>
-            <li>TypeScript</li>
-            <li>Python</li>
+            {profile?.prog_langs.map((lang, i) => (
+              <li key={i}>
+                <span className={`${i === 0 ? "strong-span" : ""}`}>
+                  {lang.skill}
+                </span>{" "}
+                {i === 0 && `(${profile?.core_lang_vacancy_count})`}
+                {i != 0 && `(${lang.skillCount}%)`}
+                {/* {lang.skillCount} */}
+              </li>
+            ))}
           </ul>
         </div>
         <div className="grid-column">
           <h2>ТЕХНОЛОГИИ</h2>
           <ul>
-            <li>Docker</li>
-            <li>Kubernetes</li>
-            <li>Redis</li>
-            <li>Kafka</li>
-            <li>RabbitMQ</li>
-            <li>MySQL</li>
-            <li>PostgreSQL</li>
-            <li>GraphQL</li>
-            <li>MongoDB</li>
-            <li>ELK</li>
-            <li>ClickHouse</li>
+            {profile?.technologies.map((tech, i) => (
+              <li key={i}>
+                {tech.skill} ({tech.skillCount}%)
+              </li>
+            ))}
           </ul>
         </div>
         <div className="grid-column">
           <h2>ФРЕЙМВОРКИ</h2>
           <ul>
-            <li>ReactJS</li>
-            <li>Gin</li>
-            <li>Laravel</li>
-            <li>ExpressJS</li>
-            <li>NodeJS</li>
-            <li>Tensorflow</li>
-            <li>Pytorch</li>
-            <li>NextJS</li>
-            <li>Flask</li>
+            {profile?.frameworks.map((framework, i) => (
+              <li key={i}>
+                {framework.skill} ({framework.skillCount}%)
+              </li>
+            ))}
           </ul>
         </div>
-        <aside className="salary-card">
+        <div className="grid-column">
+          <h2>ДРУГИЕ НАВЫКИ</h2>
+          <ul>
+            {profile?.other_skills.map((skill, i) => (
+              <li key={i}>
+                {skill.skill} ({skill.skillCount}%)
+              </li>
+            ))}
+          </ul>
+        </div>
+        <aside id="first-card" className="salary-card">
           <h3>СРЕДНЯЯ ОПЛАТА В МЕСЯЦ</h3>
           <div className="salary-value">
-            <span>2 235</span>
+            <span>{profile?.profile_revenue[0].amount}</span>
             <div className="dropdown">
-              <button className="dropdown-btn-small">USD ▼</button>
+              <div className="currency">
+                {profile?.profile_revenue[0].currency}
+              </div>
             </div>
           </div>
         </aside>
       </main>
       <nav className="pagination">
-        <a href="#">‹</a>
-        <a href="#">1</a>
-        <a href="#" className="active">
-          2
-        </a>
-        <a href="#">3</a>
-        <a href="#">4</a>
-        <a href="#">5</a>
-        <a href="#">›</a>
+        <Pagination totalPages={totalPages} />
       </nav>
     </div>
   );
