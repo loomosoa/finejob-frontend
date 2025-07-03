@@ -85,16 +85,6 @@ const Profiles = () => {
             ))}
           </ul>
         </div>
-        <div className="grid-column">
-          <h2>ДРУГИЕ НАВЫКИ</h2>
-          <ul>
-            {profile?.other_skills.map((skill, i) => (
-              <li key={i}>
-                {skill.skill} ({skill.skillCount}%)
-              </li>
-            ))}
-          </ul>
-        </div>
         <aside id="first-card" className="salary-card">
           <h3>СРЕДНЯЯ ОПЛАТА В МЕСЯЦ</h3>
           <div className="salary-value">
@@ -104,6 +94,16 @@ const Profiles = () => {
                 {profile?.profile_revenue[0].currency}
               </div>
             </div>
+          </div>
+          <div className="other-skills">
+            <h2>ДРУГИЕ НАВЫКИ</h2>
+            <ul className="">
+              {profile?.other_skills.map((skill, i) => (
+                <li key={i}>
+                  {skill.skill} ({skill.skillCount}%)
+                </li>
+              ))}
+            </ul>
           </div>
         </aside>
       </main>

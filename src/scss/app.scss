@@ -68,7 +68,7 @@ body {
   min-height: 320px;
   margin-top: 50px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   border-bottom: 1px solid #e0e0e0;
   padding-bottom: 20px;
@@ -109,6 +109,10 @@ body {
 .grid-column ul li {
   margin-bottom: 8px;
   font-size: 14px;
+}
+
+.other-skills ul {
+  color: rgb(201 201 201);
 }
 
 #first-card {

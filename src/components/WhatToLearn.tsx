@@ -117,16 +117,14 @@ const WhatToLearn: React.FC = () => {
 
   React.useEffect(() => {
     const getSkillsRevenue = async () => {
-      const { data } = await axios.get(
-        `https://5d9704ac1962357f.mokky.dev/whattolearn`
-        // {
-        //   params: {
-        //     items: JSON.stringify(skills),
-        //   },
-        // }
+      const { data } = await axios.post(
+        `http://finejob-api.local/api/v1/skills/revenue`,
+        {
+          data: JSON.stringify(skills),
+        }
       );
 
-      setSkillRevenue(data[0].learn_revenue.amount);
+      setSkillRevenue(data.revenue.amount);
     };
 
     getSkillsRevenue();
@@ -195,7 +193,7 @@ const WhatToLearn: React.FC = () => {
             <div className="salary-value">
               <span>{skillRevenue}</span>
               <div className="dropdown">
-                <div className="currency">USD </div>
+                <div className="currency">RUB </div>
               </div>
             </div>
           </aside>
