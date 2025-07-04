@@ -193,7 +193,7 @@ const WhatToLearn: React.FC = () => {
             <div className="salary-value">
               <span>{skillRevenue}</span>
               <div className="dropdown">
-                <div className="currency">RUB </div>
+                <div className="currency">USD</div>
               </div>
             </div>
           </aside>
