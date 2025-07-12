@@ -86,6 +86,8 @@ const WhatToLearn: React.FC = () => {
   // >
 
   const [skillRevenue, setSkillRevenue] = React.useState(0);
+  const [isMounted, setIsMounted] = React.useState(false);
+
   // const items: (
   //   | ProgrammingLanguagesEnum
   //   | TechnologiesEnum
@@ -116,18 +118,30 @@ const WhatToLearn: React.FC = () => {
   };
 
   React.useEffect(() => {
-    const getSkillsRevenue = async () => {
-      const { data } = await axios.post(
-        `http://finejob-api.local/api/v1/skills/revenue`,
-        {
-          data: JSON.stringify(skills),
-        }
-      );
 
-      setSkillRevenue(data.revenue.amount);
-    };
+    if (isMounted) {
+      const getSkillsRevenue = async () => {
+            const { data } = await axios.post(
+              `http://127.0.0.1:8000/api/v1/skills/revenue`,
+              // `http://finejob-api.local/api/v1/skills/revenue`,
+              JSON.stringify({
+                skills: skills,
+              }
+            ), {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
 
-    getSkillsRevenue();
+            console.log("skills", skills);
+
+            setSkillRevenue(data.revenue.amount);
+          };
+
+          getSkillsRevenue();
+    }
+    
+    setIsMounted(true);
     // const onClickskill = () => {
     //   getSkillsRevenue();
     // };
