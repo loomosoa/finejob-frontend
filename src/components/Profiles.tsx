@@ -7,6 +7,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { filterSelector, setTotalPages } from "../redux/slices/filterSlice";
 
+import progLangSq from "../assets/imgs/prog_lang_sq.png";
+import techsSq from "../assets/imgs/techs-sq.png";
+import framewrksSq from "../assets/imgs/frameworks-sq.png";
+import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
+import rocket from "../assets/imgs/rocket.png";
+import arrowCurrency from "../assets/imgs/arrow_currency.png";
+import arrowOpenMore from "../assets/imgs/arrow_down.svg";
+
 type TProfileRevenue = {
   amount: number;
   currency: string;
@@ -43,74 +51,186 @@ const Profiles = () => {
   }, [currentPage, sort]);
 
   return (
-    <div className="wrapper">
-      <header className="main-header">
-        <h1>ТЕХНОЛОГИЧЕСКИЙ СТЕК</h1>
-        <Sort />
-      </header>
-
-      <main className="content-grid">
-        <div className="grid-column">
-          <h2>ЯЗЫКИ ПРОГРАММИРОВАНИЯ</h2>
-          <ul>
-            {profile?.prog_langs.map((lang, i) => (
-              <li key={i}>
-                <span className={`${i === 0 ? "strong-span" : ""}`}>
-                  {lang.skill}
-                </span>{" "}
-                {i === 0 && `(${profile?.core_lang_vacancy_count})`}
-                {i != 0 && `(${lang.skillCount}%)`}
-                {/* {lang.skillCount} */}
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="grid-column">
-          <h2>ТЕХНОЛОГИИ</h2>
-          <ul>
-            {profile?.technologies.map((tech, i) => (
-              <li key={i}>
-                {tech.skill} ({tech.skillCount}%)
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="grid-column">
-          <h2>ФРЕЙМВОРКИ</h2>
-          <ul>
-            {profile?.frameworks.map((framework, i) => (
-              <li key={i}>
-                {framework.skill} ({framework.skillCount}%)
-              </li>
-            ))}
-          </ul>
-        </div>
-        <aside id="first-card" className="salary-card">
-          <h3>СРЕДНЯЯ ОПЛАТА В МЕСЯЦ</h3>
-          <div className="salary-value">
-            <span>{profile?.profile_revenue[0].amount}</span>
-            <div className="dropdown">
-              <div className="currency">
-                {profile?.profile_revenue[0].currency}
-              </div>
+    <>
+      <div className="wrapper">
+        <div className="container">
+          <div className="page-header">
+            <h1 className="header-title">FJ</h1>
+            <hr />
+            <p className="header-txt-1">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div className="header-txt-cont">
+              <p className="header-txt-2">
+                Ljsse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
+              </p>
             </div>
           </div>
-          <div className="other-skills">
-            <h2>ДРУГИЕ НАВЫКИ</h2>
-            <ul className="">
-              {profile?.other_skills.map((skill, i) => (
-                <li key={i}>
-                  {skill.skill} ({skill.skillCount}%)
-                </li>
-              ))}
-            </ul>
+          <div className="dash-container">
+            <div className="dash">
+              <div className="dash-header">
+                <Sort />
+                {/* <div className="filters">
+                  <div className="sort">
+                    <div className="sort__label">
+                      <svg
+                        width="10"
+                        height="6"
+                        viewBox="0 0 10 6"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
+                          fill="#707070"
+                        />
+                      </svg>
+                      <b>Сортировка:</b>
+                      <span>сначала более популярные</span>
+                    </div>
+
+                    <div className="sort__popup">
+                      <ul>
+                        <li className="active">Сначала более популярные</li>
+                        <li className="">Сначала менее популярные</li>
+                        <li className="">Сначала доход выше</li>
+                        <li className="">Сначала доход ниже</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div> */}
+                <div className="tech-stack">Технологический стек</div>
+                <div className="skills-profiles">&Профили навыков</div>
+              </div>
+              <div className="dash-content">
+                <div className="info">
+                  <div className="column">
+                    <div className="column-header">
+                      <img className="title-img" src={progLangSq} />
+                      <span className="title">
+                        Языки <br />
+                        программирования
+                      </span>
+                    </div>
+                    <div className="column-body">
+                      <ul>
+                        {profile?.prog_langs.map((lang, i) => (
+                          <li key={i}>
+                            <span className={`${i === 0 ? "main-lang" : ""}`}>
+                              {lang.skill}
+                            </span>{" "}
+                            {i === 0 && `(${profile?.core_lang_vacancy_count})`}
+                            {i != 0 && `(${lang.skillCount}%)`}
+                            {/* {lang.skillCount} */}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="column">
+                    <div className="column-header">
+                      <img className="title-img" src={techsSq} />
+                      <span className="title">
+                        {" "}
+                        Технологии <br />
+                      </span>
+                    </div>
+                    <div className="column-body">
+                      <ul>
+                        {profile?.technologies.map((tech, i) => (
+                          <li key={i}>
+                            {tech.skill} ({tech.skillCount}%)
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="column">
+                    <div className="column-header">
+                      <img className="title-img" src={framewrksSq} />
+                      <span className="title"> Фреймворки</span>
+                    </div>
+                    <div className="column-body">
+                      <ul>
+                        {profile?.frameworks.map((framework, i) => (
+                          <li key={i}>
+                            {framework.skill} ({framework.skillCount}%)
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                  <div className="column other-skills">
+                    <div className="column-header">
+                      <img className="title-img" src={otherSkilsSq} />
+                      <span className="title"> Други навыки</span>
+                    </div>
+                    <div className="column-body">
+                      <ul>
+                        {profile?.other_skills.map((skill, i) => (
+                          <li key={i}>
+                            {skill.skill} ({skill.skillCount}%)
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div className="payment-card">
+                    <div className="header">
+                      <div className="intro-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                        sed do eiusmod tempor incididunt
+                      </div>
+                      <img className="rocket" src={rocket} />
+                    </div>
+                    <div className="card">
+                      <div className="card-wrapper">
+                        <div className="title">
+                          Средняя оплата <br />в месяц
+                        </div>
+                        <div className="frames">
+                          <div className="left-frame">
+                            {profile?.profile_revenue[0].amount}
+                          </div>
+                          <div className="right-frame">
+                            <span className="currency">
+                              {" "}
+                              {profile?.profile_revenue[0].currency}
+                            </span>
+                            <img
+                              className="arrow_currency currency"
+                              src={arrowCurrency}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="open-more">
+                  <span>Открыть ещё</span>
+                  <img className="arrow" src={arrowOpenMore} />
+                </div>
+
+                <div className="bottom-img"></div>
+              </div>
+            </div>
+            <nav className="pagination">
+              <Pagination totalPages={totalPages} />
+            </nav>
           </div>
-        </aside>
-      </main>
-      <nav className="pagination">
-        <Pagination totalPages={totalPages} />
-      </nav>
-    </div>
+        </div>
+      </div>
+    </>
   );
 };
 

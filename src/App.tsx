@@ -7,11 +7,11 @@ import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
-    <div className="container">
+    <>
       <Profiles />
       <WhatToLearn />
       <Footer />
-    </div>
+    </>
   );
 };
 
