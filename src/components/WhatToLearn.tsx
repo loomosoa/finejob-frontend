@@ -271,7 +271,7 @@ const WhatToLearn: React.FC = () => {
                     type="text"
                     placeholder="email"
                     name="email"
-                    autoComplete="off"
+                    // autoComplete="off"
                   />
                 </div>
                 <button className="subscribe-btn">Подписаться</button>

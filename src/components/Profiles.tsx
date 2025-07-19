@@ -33,8 +33,17 @@ type TProfile = {
 const Profiles = () => {
   const dispatch = useDispatch();
   const [profile, setProfile] = React.useState<TProfile>();
+  const [isOpen, setIsOpen] = React.useState(false);
+  const [height, setHeight] = React.useState(340);
+  const contentRef = React.useRef<HTMLDivElement>(null);
 
   const { currentPage, totalPages, sort } = useSelector(filterSelector);
+
+  React.useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight); // Вычисляем высоту содержимого
+    }
+  }, [isOpen]);
 
   React.useEffect(() => {
     const getProfiles = async () => {
@@ -111,7 +120,16 @@ const Profiles = () => {
                 <div className="skills-profiles">&Профили навыков</div>
               </div>
               <div className="dash-content">
-                <div className="info">
+                <div
+                  ref={contentRef}
+                  className="info collapsible"
+                  style={{
+                    height: isOpen ? `${height}px` : "340px",
+                    opacity: isOpen ? 1 : 1,
+                    overflow: "hidden",
+                    transition: "height 0.7s ease-out, opacity 1s ease-out",
+                  }}
+                >
                   <div className="column">
                     <div className="column-header">
                       <img className="title-img" src={progLangSq} />
@@ -216,10 +234,10 @@ const Profiles = () => {
                     </div>
                   </div>
                 </div>
-                <div className="open-more">
-                  <span>Открыть ещё</span>
+                {/* <div onClick={() => setIsOpen(!isOpen)} className="open-more">
+                  <span>{isOpen ? "Свернуть" : "Открыть еще"}</span>
                   <img className="arrow" src={arrowOpenMore} />
-                </div>
+                </div> */}
 
                 <div className="bottom-img"></div>
               </div>
