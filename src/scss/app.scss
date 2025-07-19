@@ -505,7 +505,8 @@ hr {
 
 .header-txt-1 {
   width: 295px;
-  margin-top: 63px;
+  margin-top: 45px;
+  margin-bottom: 35px;
   font-size: 15px;
   line-height: 19px;
   font-weight: 300;
@@ -520,7 +521,7 @@ hr {
   position: relative;
   width: 578px;
   display: flex;
-  top: -70px;
+  top: -90px;
 }
 
 .dash {
@@ -692,6 +693,7 @@ hr {
               border-bottom-left-radius: 5px;
               font-weight: 700;
               font-size: 20px;
+              width: 65px;
             }
 
             .right-frame {
@@ -858,6 +860,7 @@ hr {
   width: 100%;
   display: flex;
   justify-content: center;
+  margin-top: -120px;
 
   .second-container {
     display: flex;
@@ -896,6 +899,12 @@ hr {
       display: flex;
 
       margin-bottom: 100px;
+
+      // .tech-tag.active-tech {
+      //   background-color: #007bff;
+      //   color: #fff;
+      //   border-radius: 5px;
+      // }
 
       .titles {
         width: 24.5%;
@@ -1021,6 +1030,7 @@ hr {
                 border-bottom-left-radius: 5px;
                 font-weight: 700;
                 font-size: 20px;
+                width: 65px;
               }
 
               .right-frame {
@@ -1135,6 +1145,7 @@ hr {
             background: linear-gradient(to right, #8f00ff, #560099);
             background-clip: text;
             color: transparent;
+            cursor: pointer;
 
             &:focus {
               box-shadow: 1px 0px 4px 0 #bb00facc;

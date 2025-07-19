@@ -15,6 +15,16 @@ import {
   pullSkill,
 } from "../redux/slices/skillsSlice";
 
+import progLangSq from "../assets/imgs/prog_lang_fr.svg";
+import techsSq from "../assets/imgs/techs-fr.svg";
+import frameworksSq from "../assets/imgs/framewrks-fr.svg";
+import framesSeparator from "../assets/imgs/frames_separator.svg";
+import framesOptions from "../assets/imgs/frames_options.svg";
+import arrowCurrency from "../assets/imgs/arrow_currency.svg";
+import beInTouch from "../assets/imgs/be_in_touch.png";
+import xCom from "../assets/imgs/xcom.png";
+import telegramImg from "../assets/imgs/telegram.png";
+
 /*
 отрисовать
 повесить событие - тогл выделения
@@ -149,70 +159,130 @@ const WhatToLearn: React.FC = () => {
 
   return (
     <>
-      {/* ################ */}
-      <hr />
-      <div className="learn-section">
-        <h2 className="section-title">Что учить?</h2>
-        <div className="learn-content-wrapper">
-          <div className="learn-main-content">
-            <div className="learn-row">
-              <div className="learn-category">ЯЗЫКИ ПРОГРАММИРОВАНИЯ</div>
-              <div className="tech-group">
-                {ProgLangs.map((lang, i) => (
-                  <span
-                    className={`tech-tag learning-item ${
-                      ifSkillsContainSkill(lang) ? "active-tech" : ""
-                    }`}
-                    onClick={() => toggleSkill(lang)}
-                    key={i}
-                  >
-                    {lang.toUpperCase()}
-                  </span>
-                ))}
+      <div className="second-wrapper">
+        <div className="second-container">
+          <div className="row-1">
+            <div className="title">Что учить?</div>
+            <div className="text">
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea
+              </p>
+              <p>Каждый выбранный пункт увеличивает “чек”</p>
+            </div>
+          </div>
+          <div className="row-2">
+            <div className="titles">
+              <div className="title-container">
+                <img className="title-img" src={progLangSq} />
+                <span className="title">
+                  Языки <br />
+                  программирования
+                </span>
+              </div>
+              <div className="title-container">
+                <img className="title-img" src={techsSq} />
+                <span className="title">
+                  {" "}
+                  Технологии <br />
+                </span>
+              </div>
+              <div className="title-container">
+                <img className="title-img" src={frameworksSq} />
+                <span className="title"> Фреймворки</span>
               </div>
             </div>
-            <div className="learn-row">
-              <div className="learn-category">ТЕХНОЛОГИИ</div>
-              <div className="tech-group">
-                {Technologies.map((technology, i) => (
-                  <span
-                    className={`tech-tag learning-item ${
-                      ifSkillsContainSkill(technology) ? "active-tech" : ""
-                    }`}
-                    onClick={() => toggleSkill(technology)}
-                    key={i}
-                  >
-                    {technology.toUpperCase()}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="learn-row">
-              <div className="learn-category">ФРЕЙМВОРКИ</div>
-              <div className="tech-group">
-                {Frameworks.map((framework, i) => (
-                  <span
-                    className={`tech-tag learning-item ${
-                      ifSkillsContainSkill(framework) ? "active-tech" : ""
-                    }`}
-                    onClick={() => toggleSkill(framework)}
-                    key={i}
-                  >
-                    {framework.toUpperCase()}
-                  </span>
-                ))}
+            <div className="frame-container">
+              <div className="frame">
+                <div className="skills-frame">
+                  <div className="skills-container">
+                    {ProgLangs.map((lang, i) => (
+                      <span
+                        className={`${
+                          ifSkillsContainSkill(lang) ? "selected" : ""
+                        }`}
+                        onClick={() => toggleSkill(lang)}
+                        key={i}
+                      >
+                        {lang.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <img src={framesSeparator} />
+                  <div className="skills-container">
+                    {Technologies.map((technology, i) => (
+                      <span
+                        className={`${
+                          ifSkillsContainSkill(technology) ? "selected" : ""
+                        }`}
+                        onClick={() => toggleSkill(technology)}
+                        key={i}
+                      >
+                        {technology.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                  <img src={framesSeparator} />
+                  <div className="skills-container">
+                    {Frameworks.map((framework, i) => (
+                      <span
+                        className={`${
+                          ifSkillsContainSkill(framework) ? "selected" : ""
+                        }`}
+                        onClick={() => toggleSkill(framework)}
+                        key={i}
+                      >
+                        {framework.toUpperCase()}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div className="card-frame">
+                  <img className="frames-options" src={framesOptions} />
+                  <div className="card">
+                    <div className="card-wrapper">
+                      <div className="title">Средняя оплата в месяц</div>
+                      <div className="frames">
+                        <div className="left-frame">{skillRevenue}</div>
+                        <div className="right-frame">
+                          <span className="currency">USD</span>
+                          <img
+                            className="arrow_currency currency"
+                            src={arrowCurrency}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <aside className="salary-card learn-salary-card">
-            <h3>СРЕДНЯЯ ОПЛАТА В МЕСЯЦ</h3>
-            <div className="salary-value">
-              <span>{skillRevenue}</span>
-              <div className="dropdown">
-                <div className="currency">USD</div>
+          <div className="footer">
+            <div className="banner">ads banner</div>
+            <div className="subscription">
+              <img className="be-in-touch" src={beInTouch} />
+              {/* <!-- <span>Оставаться в курсе</span> --> */}
+              <div className="input-container">
+                <div className="back-frame">
+                  <input
+                    type="text"
+                    placeholder="email"
+                    name="email"
+                    autoComplete="off"
+                  />
+                </div>
+                <button className="subscribe-btn">Подписаться</button>
               </div>
             </div>
-          </aside>
+            <div className="social-nets">
+              <img src={xCom} />
+              <img src={telegramImg} />
+            </div>
+            <div className="bottom-txt">Robust Technologies © 2025</div>
+          </div>
         </div>
       </div>
     </>
