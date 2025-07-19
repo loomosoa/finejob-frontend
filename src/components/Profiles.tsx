@@ -37,6 +37,23 @@ const Profiles = () => {
   const [height, setHeight] = React.useState(340);
   const contentRef = React.useRef<HTMLDivElement>(null);
 
+  const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
+    React.useState(false);
+  const currencies = ["USD", "RUB", "EUR"];
+
+  const toggleCurrencyDropdown = () => {
+    setCurrencyDropdownOpen(!isCurrencyDropdownOpen);
+  };
+
+  const handleCurrencySelect = (currency: string) => {
+    if (profile) {
+      const newProfile = { ...profile };
+      newProfile.profile_revenue[0].currency = currency;
+      setProfile(newProfile);
+    }
+    setCurrencyDropdownOpen(false);
+  };
+
   const { currentPage, totalPages, sort } = useSelector(filterSelector);
 
   React.useEffect(() => {
@@ -61,6 +78,34 @@ const Profiles = () => {
 
   return (
     <>
+      <style>{`
+        .right-frame {
+          position: relative;
+          cursor: pointer;
+        }
+        .currency-dropdown {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: white;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          padding: 5px;
+          z-index: 10;
+        }
+        .currency-dropdown ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .currency-dropdown li {
+          padding: 5px 10px;
+          cursor: pointer;
+        }
+        .currency-dropdown li:hover {
+          background-color: #f0f0f0;
+        }
+      `}</style>
       <div className="wrapper">
         <div className="container">
           <div className="page-header">
@@ -87,35 +132,6 @@ const Profiles = () => {
             <div className="dash">
               <div className="dash-header">
                 <Sort />
-                {/* <div className="filters">
-                  <div className="sort">
-                    <div className="sort__label">
-                      <svg
-                        width="10"
-                        height="6"
-                        viewBox="0 0 10 6"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M10 5C10 5.16927 9.93815 5.31576 9.81445 5.43945C9.69075 5.56315 9.54427 5.625 9.375 5.625H0.625C0.455729 5.625 0.309245 5.56315 0.185547 5.43945C0.061849 5.31576 0 5.16927 0 5C0 4.83073 0.061849 4.68424 0.185547 4.56055L4.56055 0.185547C4.68424 0.061849 4.83073 0 5 0C5.16927 0 5.31576 0.061849 5.43945 0.185547L9.81445 4.56055C9.93815 4.68424 10 4.83073 10 5Z"
-                          fill="#707070"
-                        />
-                      </svg>
-                      <b>Сортировка:</b>
-                      <span>сначала более популярные</span>
-                    </div>
-
-                    <div className="sort__popup">
-                      <ul>
-                        <li className="active">Сначала более популярные</li>
-                        <li className="">Сначала менее популярные</li>
-                        <li className="">Сначала доход выше</li>
-                        <li className="">Сначала доход ниже</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div> */}
                 <div className="tech-stack">Технологический стек</div>
                 <div className="skills-profiles">&Профили навыков</div>
               </div>
@@ -219,7 +235,7 @@ const Profiles = () => {
                           <div className="left-frame">
                             {profile?.profile_revenue[0].amount}
                           </div>
-                          <div className="right-frame">
+                          <div className="right-frame" onClick={toggleCurrencyDropdown}>
                             <span className="currency">
                               {" "}
                               {profile?.profile_revenue[0].currency}
@@ -228,6 +244,22 @@ const Profiles = () => {
                               className="arrow_currency currency"
                               src={arrowCurrency}
                             />
+                            {isCurrencyDropdownOpen && (
+                              <div className="currency-dropdown">
+                                <ul>
+                                  {currencies.map((currency) => (
+                                    <li
+                                      key={currency}
+                                      onClick={() =>
+                                        handleCurrencySelect(currency)
+                                      }
+                                    >
+                                      {currency}
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>

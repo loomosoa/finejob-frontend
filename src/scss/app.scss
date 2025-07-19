@@ -1,3 +1,5 @@
+@import "_normalize.scss";
+
 body {
   margin: 0 auto;
   padding: 0;
@@ -72,6 +74,7 @@ body {
         font-weight: 500;
         cursor: pointer;
         border: none;
+        @include noselect();
 
         &:hover {
           background: white;
@@ -109,8 +112,8 @@ hr {
 
 .header-txt-1 {
   width: 295px;
-  margin-top: 45px;
-  margin-bottom: 35px;
+  margin-top: 75px;
+  margin-bottom: 75px;
   font-size: 15px;
   line-height: 19px;
   font-weight: 300;
@@ -125,7 +128,7 @@ hr {
   position: relative;
   width: 578px;
   display: flex;
-  top: -90px;
+  top: -125px;
 }
 
 .dash {
@@ -315,7 +318,7 @@ hr {
 
       .other-skills {
         li {
-          color: #bcbcbc;
+          color: #959595;
         }
       }
     }
@@ -465,6 +468,8 @@ hr {
 }
 
 .second-wrapper {
+  z-index: 3;
+  position: relative;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -561,7 +566,8 @@ hr {
             display: flex;
             flex-direction: column;
             padding: 20px 0;
-            align-items: center;
+            // align-items: center;
+            margin-left: 30%;
 
             .selected {
               background: #0072ff;
@@ -571,10 +577,10 @@ hr {
           }
 
           span {
-            min-width: 95px;
+            width: 100px;
             display: inline-block;
             padding: 8px 70px 8px 15px;
-            margin: 5px 0;
+            margin: 1px 0;
             text-decoration: none;
             color: #000;
             font-size: 15px;
