@@ -13,6 +13,7 @@ import {
   setSkills,
   pushSkill,
   pullSkill,
+  clearAll,
 } from "../redux/slices/skillsSlice";
 
 import progLangSq from "../assets/imgs/prog_lang_fr.svg";
@@ -148,6 +149,17 @@ const WhatToLearn: React.FC = () => {
     setCurrencyDropdownOpen(false);
   };
 
+  const clearAllSkillItems = () => {
+    dispatch(clearAll());
+  };
+
+  React.useEffect(() => {
+    /*
+    TODO: запрос к API курсов, их инициализация в список
+    */
+  }, []);
+
+  //TODO: fix
   const USDtoRUB = 80;
   const USDtoEUR = 0.86;
 
@@ -276,7 +288,11 @@ const WhatToLearn: React.FC = () => {
                   </div>
                 </div>
                 <div className="card-frame">
-                  <img className="frames-options" src={framesOptions} />
+                  <img
+                    onClick={() => clearAllSkillItems()}
+                    className="frames-options"
+                    src={framesOptions}
+                  />
                   <div className="card">
                     <div className="card-wrapper">
                       <div className="title">Средняя оплата в месяц</div>

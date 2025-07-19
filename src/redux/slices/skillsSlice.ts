@@ -34,11 +34,15 @@ const skillsSlice = createSlice({
     ) {
       state.skills = state.skills.filter((item) => item !== action.payload);
     },
+    clearAll(state) {
+      state.skills = [];
+    },
   },
 });
 
 export const skillsSelector = (state: RootState) => state.skills;
 
-export const { setSkills, pushSkill, pullSkill } = skillsSlice.actions;
+export const { setSkills, pushSkill, pullSkill, clearAll } =
+  skillsSlice.actions;
 
 export default skillsSlice.reducer;
