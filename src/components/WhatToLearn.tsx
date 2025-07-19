@@ -118,29 +118,29 @@ const WhatToLearn: React.FC = () => {
   };
 
   React.useEffect(() => {
-
     if (isMounted) {
       const getSkillsRevenue = async () => {
-            const { data } = await axios.post(
-              `http://127.0.0.1:8000/api/v1/skills/revenue`,
-              // `http://finejob-api.local/api/v1/skills/revenue`,
-              JSON.stringify({
-                skills: skills,
-              }
-            ), {
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            });
+        const { data } = await axios.post(
+          `http://127.0.0.1:8000/api/v1/skills/revenue`,
+          // `http://finejob-api.local/api/v1/skills/revenue`,
+          JSON.stringify({
+            skills: skills,
+          }),
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-            console.log("skills", skills);
+        console.log("skills", skills);
 
-            setSkillRevenue(data.revenue.amount);
-          };
+        setSkillRevenue(data.revenue.amount);
+      };
 
-          getSkillsRevenue();
+      getSkillsRevenue();
     }
-    
+
     setIsMounted(true);
     // const onClickskill = () => {
     //   getSkillsRevenue();
@@ -149,6 +149,8 @@ const WhatToLearn: React.FC = () => {
 
   return (
     <>
+      {/* ################ */}
+      <hr />
       <div className="learn-section">
         <h2 className="section-title">Что учить?</h2>
         <div className="learn-content-wrapper">
