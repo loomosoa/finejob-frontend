@@ -39,6 +39,9 @@ const Profiles = () => {
 
   const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
     React.useState(false);
+
+  const revenueCurrency = React.useRef<string>("USD");
+
   const currencies = ["USD", "RUB", "EUR"];
 
   const toggleCurrencyDropdown = () => {
@@ -46,21 +49,22 @@ const Profiles = () => {
   };
 
   const handleCurrencySelect = (currency: string) => {
-    if (profile) {
-      const newProfile = { ...profile };
-      newProfile.profile_revenue[0].currency = currency;
-      setProfile(newProfile);
-    }
+    // if (profile) {
+    //   const newProfile = { ...profile };
+    //   newProfile.profile_revenue[0].currency = currency;
+    //   setProfile(newProfile);
+    // }
+    revenueCurrency.current = currency;
     setCurrencyDropdownOpen(false);
   };
 
   const { currentPage, totalPages, sort } = useSelector(filterSelector);
 
-  React.useEffect(() => {
-    if (contentRef.current) {
-      setHeight(contentRef.current.scrollHeight); // Вычисляем высоту содержимого
-    }
-  }, [isOpen]);
+  // React.useEffect(() => {
+  //   if (contentRef.current) {
+  //     setHeight(contentRef.current.scrollHeight); // Вычисляем высоту содержимого
+  //   }
+  // }, [isOpen]);
 
   React.useEffect(() => {
     const getProfiles = async () => {
@@ -78,34 +82,6 @@ const Profiles = () => {
 
   return (
     <>
-      <style>{`
-        .right-frame {
-          position: relative;
-          cursor: pointer;
-        }
-        .currency-dropdown {
-          position: absolute;
-          top: 100%;
-          left: 0;
-          background-color: white;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          padding: 5px;
-          z-index: 10;
-        }
-        .currency-dropdown ul {
-          list-style: none;
-          margin: 0;
-          padding: 0;
-        }
-        .currency-dropdown li {
-          padding: 5px 10px;
-          cursor: pointer;
-        }
-        .currency-dropdown li:hover {
-          background-color: #f0f0f0;
-        }
-      `}</style>
       <div className="wrapper">
         <div className="container">
           <div className="page-header">
@@ -137,14 +113,15 @@ const Profiles = () => {
               </div>
               <div className="dash-content">
                 <div
-                  ref={contentRef}
-                  className="info collapsible"
-                  style={{
-                    height: isOpen ? `${height}px` : "340px",
-                    opacity: isOpen ? 1 : 1,
-                    overflow: "hidden",
-                    transition: "height 0.7s ease-out, opacity 1s ease-out",
-                  }}
+                  // ref={contentRef}
+                  // className="info collapsible"
+                  className="info"
+                  // style={{
+                  //   height: isOpen ? `${height}px` : "340px",
+                  //   opacity: isOpen ? 1 : 1,
+                  //   overflow: "hidden",
+                  //   transition: "height 0.7s ease-out, opacity 1s ease-out",
+                  // }}
                 >
                   <div className="column">
                     <div className="column-header">
@@ -233,36 +210,40 @@ const Profiles = () => {
                         </div>
                         <div className="frames">
                           <div className="left-frame">
-                            {profile?.profile_revenue[0].amount}
+                            {
+                              profile?.profile_revenue[revenueCurrency.current]
+                                .amount
+                            }
                           </div>
-                          <div className="right-frame" onClick={toggleCurrencyDropdown}>
+                          <div
+                            className="right-frame"
+                            onClick={toggleCurrencyDropdown}
+                          >
                             <span className="currency">
                               {" "}
-                              {profile?.profile_revenue[0].currency}
+                              {revenueCurrency.current}
                             </span>
                             <img
                               className="arrow_currency currency"
                               src={arrowCurrency}
                             />
-                            {isCurrencyDropdownOpen && (
-                              <div className="currency-dropdown">
-                                <ul>
-                                  {currencies.map((currency) => (
-                                    <li
-                                      key={currency}
-                                      onClick={() =>
-                                        handleCurrencySelect(currency)
-                                      }
-                                    >
-                                      {currency}
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
                           </div>
                         </div>
                       </div>
+                      {isCurrencyDropdownOpen && (
+                        <div className="currency-dropdown">
+                          <ul>
+                            {currencies.map((currency) => (
+                              <li
+                                key={currency}
+                                onClick={() => handleCurrencySelect(currency)}
+                              >
+                                {currency}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>

@@ -273,6 +273,7 @@ hr {
         }
 
         .card {
+          position: relative;
           width: 284px;
           height: 180px;
           border-radius: 10px;
@@ -283,35 +284,65 @@ hr {
           justify-content: center;
           align-items: center;
 
-          .title {
-            align-self: flex-start;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+          .currency-dropdown {
+            position: absolute;
+            top: 69px;
+            left: 245px;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 5px;
+            z-index: 10;
+          }
+          .currency-dropdown ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+          }
+          .currency-dropdown li {
+            padding: 5px 10px;
+            cursor: pointer;
+          }
+          .currency-dropdown li:hover {
+            background-color: #f0f0f0;
+          }
+        }
+
+        .title {
+          align-self: flex-start;
+          text-transform: uppercase;
+          margin-bottom: 20px;
+        }
+
+        .frames {
+          flex-direction: row;
+          display: flex;
+
+          .left-frame {
+            padding: 10px 10px;
+            border: 1px solid #242424;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            font-weight: 700;
+            font-size: 20px;
+            width: 125px;
+            justify-content: center;
+            display: flex;
           }
 
-          .frames {
-            flex-direction: row;
-            display: flex;
+          .right-frame {
+            padding: 10px 20px;
+            border: 1px solid #242424;
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+            font-size: 11px;
+            font-weight: 800;
+            cursor: pointer;
+          }
 
-            .left-frame {
-              padding: 10px 40px;
-              border: 1px solid #242424;
-              border-top-left-radius: 5px;
-              border-bottom-left-radius: 5px;
-              font-weight: 700;
-              font-size: 20px;
-              width: 65px;
-            }
-
-            .right-frame {
-              padding: 10px 20px;
-              border: 1px solid #242424;
-              border-top-right-radius: 5px;
-              border-bottom-right-radius: 5px;
-              font-size: 11px;
-              font-weight: 800;
-              cursor: pointer;
-            }
+          .right-frame {
+            position: relative;
+            cursor: pointer;
           }
         }
       }
