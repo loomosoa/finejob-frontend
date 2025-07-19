@@ -127,6 +127,40 @@ const WhatToLearn: React.FC = () => {
     return skills.includes(skill);
   };
 
+  const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
+    React.useState(false);
+
+  const revenueCurrency = React.useRef<string>("USD");
+
+  const currencies = ["USD", "RUB", "EUR"];
+
+  const toggleCurrencyDropdown = () => {
+    setCurrencyDropdownOpen(!isCurrencyDropdownOpen);
+  };
+
+  const handleCurrencySelect = (currency: string) => {
+    // if (profile) {
+    //   const newProfile = { ...profile };
+    //   newProfile.profile_revenue[0].currency = currency;
+    //   setProfile(newProfile);
+    // }
+    revenueCurrency.current = currency;
+    setCurrencyDropdownOpen(false);
+  };
+
+  const USDtoRUB = 80;
+  const USDtoEUR = 0.86;
+
+  interface Dictionary<T> {
+    [key: string]: T;
+  }
+
+  const revenueCurrenciesList: Dictionary<number> = {
+    USD: 1,
+    RUB: USDtoRUB,
+    EUR: USDtoEUR,
+  };
+
   React.useEffect(() => {
     if (isMounted) {
       const getSkillsRevenue = async () => {
@@ -156,6 +190,8 @@ const WhatToLearn: React.FC = () => {
     //   getSkillsRevenue();
     // };
   }, [skills]);
+
+  const formatter = new Intl.NumberFormat("en-US");
 
   return (
     <>
@@ -245,16 +281,49 @@ const WhatToLearn: React.FC = () => {
                     <div className="card-wrapper">
                       <div className="title">Средняя оплата в месяц</div>
                       <div className="frames">
-                        <div className="left-frame">{skillRevenue}</div>
-                        <div className="right-frame">
-                          <span className="currency">USD</span>
+                        <div className="left-frame">
+                          {formatter.format(
+                            skillRevenue *
+                              revenueCurrenciesList[revenueCurrency.current]
+                          )}
+                        </div>
+                        <div
+                          className="right-frame"
+                          onClick={toggleCurrencyDropdown}
+                        >
+                          <span className="currency">
+                            {" "}
+                            {revenueCurrency.current}
+                          </span>
                           <img
                             className="arrow_currency currency"
                             src={arrowCurrency}
                           />
                         </div>
+                        {/* <div className="left-frame">{skillRevenue}</div> */}
+                        {/* <div className="right-frame">
+                          <span className="currency">USD</span>
+                          <img
+                            className="arrow_currency currency"
+                            src={arrowCurrency}
+                          />
+                        </div> */}
                       </div>
                     </div>
+                    {isCurrencyDropdownOpen && (
+                      <div className="currency-dropdown">
+                        <ul>
+                          {currencies.map((currency) => (
+                            <li
+                              key={currency}
+                              onClick={() => handleCurrencySelect(currency)}
+                            >
+                              {currency}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

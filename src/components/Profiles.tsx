@@ -33,9 +33,9 @@ type TProfile = {
 const Profiles = () => {
   const dispatch = useDispatch();
   const [profile, setProfile] = React.useState<TProfile>();
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [height, setHeight] = React.useState(340);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  // const [isOpen, setIsOpen] = React.useState(false);
+  // const [height, setHeight] = React.useState(340);
+  // const contentRef = React.useRef<HTMLDivElement>(null);
 
   const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
     React.useState(false);
