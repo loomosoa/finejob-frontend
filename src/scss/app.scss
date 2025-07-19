@@ -455,12 +455,12 @@ hr {
 
   .sort__popup ul li.active {
     font-weight: bold;
-    color: gray;
+    color: #7a7a7a;
   }
 
   .sort__popup ul li.active,
   .sort__popup ul li:hover {
-    background: #efefef;
+    background: #ebebeb;
   }
 
   .sort__popup ul li {
@@ -504,7 +504,7 @@ hr {
   width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: -120px;
+  margin-top: -20px;
 
   .second-container {
     display: flex;
