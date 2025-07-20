@@ -12,7 +12,7 @@ import techsSq from "../assets/imgs/techs-sq.png";
 import framewrksSq from "../assets/imgs/frameworks-sq.png";
 import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
 import rocket from "../assets/imgs/rocket.png";
-import arrowCurrency from "../assets/imgs/arrow_currency.png";
+import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import arrowOpenMore from "../assets/imgs/arrow_down.svg";
 
 type TProfileRevenue = {
@@ -40,7 +40,7 @@ const Profiles = () => {
   const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
     React.useState(false);
 
-  const revenueCurrency = React.useRef<string>("USD");
+  const revenueCurrency = React.useRef<string>("RUB");
 
   const currencies = ["USD", "RUB", "EUR"];
 
