@@ -62,7 +62,8 @@ body {
       a {
         display: flex;
         margin: 5px 4px;
-        background: #331079;
+        // background: #331079;
+        background: #535d0d;
         border-radius: 40px;
         width: 44px;
         height: 37px;
@@ -407,7 +408,7 @@ hr {
     background: #1b1b1b;
     border-radius: 5px;
     text-transform: uppercase;
-    color: #878787;
+    color: #5d5d5d;
     font-weight: 300;
     font-size: 19px;
   }
@@ -460,12 +461,12 @@ hr {
 
   .sort__popup ul li.active {
     font-weight: bold;
-    color: #7a7a7a;
+    color: #939393;
   }
 
   .sort__popup ul li.active,
   .sort__popup ul li:hover {
-    background: #ebebeb;
+    background: #f9f9f9;
   }
 
   .sort__popup ul li {
