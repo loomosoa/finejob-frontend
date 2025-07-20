@@ -141,10 +141,7 @@ const WhatToLearn: React.FC = () => {
 
   const handleCurrencySelect = (currency: string) => {
     // if (profile) {
-    //   const newProfile = { ...profile };
-    //   newProfile.profile_revenue[0].currency = currency;
-    //   setProfile(newProfile);
-    // }
+
     revenueCurrency.current = currency;
     setCurrencyDropdownOpen(false);
   };
@@ -209,7 +206,7 @@ const WhatToLearn: React.FC = () => {
     <>
       <div className="second-wrapper">
         <div className="second-container">
-          <div className="row-1">
+          {/* <div className="row-1">
             <div className="title">Что учить?</div>
             <div className="text">
               <p>
@@ -316,14 +313,6 @@ const WhatToLearn: React.FC = () => {
                             src={arrowCurrency}
                           />
                         </div>
-                        {/* <div className="left-frame">{skillRevenue}</div> */}
-                        {/* <div className="right-frame">
-                          <span className="currency">USD</span>
-                          <img
-                            className="arrow_currency currency"
-                            src={arrowCurrency}
-                          />
-                        </div> */}
                       </div>
                     </div>
                     {isCurrencyDropdownOpen && (
@@ -344,7 +333,7 @@ const WhatToLearn: React.FC = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="footer">
             <div className="banner">ads banner</div>
             <div className="subscription">

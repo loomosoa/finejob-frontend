@@ -224,7 +224,7 @@ const Profiles = () => {
                               {revenueCurrency.current}
                             </span>
                             <img
-                              className="arrow_currency currency"
+                              className="arrow-currency currency"
                               src={arrowCurrency}
                             />
                           </div>
