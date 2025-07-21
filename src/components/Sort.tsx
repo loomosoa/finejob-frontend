@@ -17,6 +17,23 @@ const Sort: React.FC = () => {
 
   const [isVisible, setIsVisible] = React.useState(false);
 
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = sortRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setIsVisible(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
   const onClickChangeSort = (obj: TSort) => {
     dispatch(setSort(obj));
     setIsVisible(false);

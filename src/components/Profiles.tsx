@@ -41,6 +41,7 @@ const Profiles = () => {
     React.useState(false);
 
   const revenueCurrency = React.useRef<string>("RUB");
+  const currencyRef = React.useRef<HTMLDivElement>(null);
 
   const currencies = ["USD", "RUB", "EUR"];
 
@@ -49,11 +50,6 @@ const Profiles = () => {
   };
 
   const handleCurrencySelect = (currency: string) => {
-    // if (profile) {
-    //   const newProfile = { ...profile };
-    //   newProfile.profile_revenue[0].currency = currency;
-    //   setProfile(newProfile);
-    // }
     revenueCurrency.current = currency;
     setCurrencyDropdownOpen(false);
   };
@@ -79,6 +75,23 @@ const Profiles = () => {
 
     getProfiles();
   }, [currentPage, sort]);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = currencyRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setCurrencyDropdownOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -208,7 +221,7 @@ const Profiles = () => {
                         <div className="title">
                           Средняя оплата <br />в месяц
                         </div>
-                        <div className="frames">
+                        <div ref={currencyRef} className="frames">
                           <div className="left-frame">
                             {
                               profile?.profile_revenue[revenueCurrency.current]
@@ -228,22 +241,24 @@ const Profiles = () => {
                               src={arrowCurrency}
                             />
                           </div>
+                          {isCurrencyDropdownOpen && (
+                            <div className="currency-dropdown">
+                              <ul>
+                                {currencies.map((currency) => (
+                                  <li
+                                    key={currency}
+                                    onClick={() =>
+                                      handleCurrencySelect(currency)
+                                    }
+                                  >
+                                    {currency}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                         </div>
                       </div>
-                      {isCurrencyDropdownOpen && (
-                        <div className="currency-dropdown">
-                          <ul>
-                            {currencies.map((currency) => (
-                              <li
-                                key={currency}
-                                onClick={() => handleCurrencySelect(currency)}
-                              >
-                                {currency}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
                     </div>
                   </div>
                 </div>
