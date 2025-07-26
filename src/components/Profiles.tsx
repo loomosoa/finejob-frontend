@@ -195,7 +195,7 @@ const Profiles = () => {
                   <div className="column other-skills">
                     <div className="column-header">
                       <img className="title-img" src={otherSkilsSq} />
-                      <span className="title"> Други навыки</span>
+                      <span className="title"> Другие навыки</span>
                     </div>
                     <div className="column-body">
                       <ul>
