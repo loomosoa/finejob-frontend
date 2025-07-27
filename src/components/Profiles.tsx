@@ -124,8 +124,8 @@ const Profiles: React.FC = () => {
             <div className="dash">
               <div className="dash-header">
                 <Sort />
-                <div className="tech-stack">Технологический стек</div>
-                <div className="skills-profiles">&Профили навыков</div>
+                <div className="tech-stack">{t("tech_stack")}</div>
+                <div className="skills-profiles">&{t("skills_profiles")}</div>
               </div>
               <div className="dash-content">
                 <div
@@ -143,8 +143,7 @@ const Profiles: React.FC = () => {
                     <div className="column-header">
                       <img className="title-img" src={progLangSq} />
                       <span className="title">
-                        Языки <br />
-                        программирования
+                        {t("prog_l")} <br /> {t("p_langs")}
                       </span>
                     </div>
                     <div className="column-body">
@@ -167,7 +166,7 @@ const Profiles: React.FC = () => {
                       <img className="title-img" src={techsSq} />
                       <span className="title">
                         {" "}
-                        Технологии <br />
+                        {t("technologies")} <br />
                       </span>
                     </div>
                     <div className="column-body">
@@ -183,7 +182,7 @@ const Profiles: React.FC = () => {
                   <div className="column">
                     <div className="column-header">
                       <img className="title-img" src={framewrksSq} />
-                      <span className="title"> Фреймворки</span>
+                      <span className="title">{t("frameworks")}</span>
                     </div>
                     <div className="column-body">
                       <ul>
@@ -198,7 +197,7 @@ const Profiles: React.FC = () => {
                   <div className="column other-skills">
                     <div className="column-header">
                       <img className="title-img" src={otherSkilsSq} />
-                      <span className="title"> Другие навыки</span>
+                      <span className="title">{t("other_skills")}</span>
                     </div>
                     <div className="column-body">
                       <ul>
@@ -219,7 +218,8 @@ const Profiles: React.FC = () => {
                     <div className="card">
                       <div className="card-wrapper">
                         <div className="title">
-                          Средняя оплата <br />в месяц
+                          {t("average_payment_1")} <br />{" "}
+                          {t("average_payment_2")}
                         </div>
                         <div ref={currencyRef} className="frames">
                           <div className="left-frame">

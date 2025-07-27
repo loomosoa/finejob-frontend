@@ -8,5 +8,14 @@
   "first_popular": "First the more popular ones",
   "first_less_popular": "First the less popular ones",
   "first_income_higher": "First income is higher",
-  "first_income_lower": "First income is lower"
+  "first_income_lower": "First income is lower",
+  "tech_stack": "Tech Stack",
+  "skills_profiles": "Skils profiles",
+  "prog_l": "Programming",
+  "p_langs": "languages",
+  "technologies": "technologies",
+  "frameworks": "frameworks",
+  "other_skills": "Other skills",
+  "average_payment_1": "Average monthly",
+  "average_payment_2": "payment"
 }

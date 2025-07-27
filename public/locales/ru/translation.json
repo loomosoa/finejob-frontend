@@ -8,5 +8,14 @@
   "first_popular": "Сначала более популярные",
   "first_less_popular": "Сначала менее популярные",
   "first_income_higher": "Сначала доход выше",
-  "first_income_lower": "Сначала доход ниже"
+  "first_income_lower": "Сначала доход ниже",
+  "tech_stack": "Технологический стек",
+  "skills_profiles": "Профили навыков",
+  "prog_l": "Языки",
+  "p_langs": "программирования",
+  "technologies": "технологии",
+  "frameworks": "фреймворки",
+  "other_skills": "другие навыки",
+  "average_payment_1": "Средняя оплата",
+  "average_payment_2": "в месяц"
 }
