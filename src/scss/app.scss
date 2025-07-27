@@ -216,6 +216,13 @@ hr {
     display: flex;
     flex-direction: column;
 
+    #dash_colors_bottom {
+      width: 284px;
+      height: 50px;
+      display: flex;
+      align-self: center;
+    }
+
     .info {
       display: grid;
       width: 100%;
@@ -228,6 +235,7 @@ hr {
       @media (max-width: 390px) {
         grid-template-columns: 1fr;
         height: 100%;
+        width: 284px;
       }
 
       .column-wrapper {

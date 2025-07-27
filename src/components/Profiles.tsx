@@ -13,6 +13,7 @@ import framewrksSq from "../assets/imgs/frameworks-sq.png";
 import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
 import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
+import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
 import arrowOpenMore from "../assets/imgs/arrow_down.svg";
 
 type TProfileRevenue = {
@@ -267,7 +268,8 @@ const Profiles = () => {
                   <img className="arrow" src={arrowOpenMore} />
                 </div> */}
 
-                <div className="bottom-img"></div>
+                <img id="dash_colors_bottom" src={dashColorsImg} />
+                {/* <div className="bottom-img"></div> */}
               </div>
             </div>
             <nav className="pagination">
