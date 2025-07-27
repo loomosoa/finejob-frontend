@@ -16,6 +16,8 @@ import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
 import arrowOpenMore from "../assets/imgs/arrow_down.svg";
 
+import { useTranslation } from "react-i18next";
+
 type TProfileRevenue = {
   amount: number;
   currency: string;
@@ -31,7 +33,13 @@ type TProfile = {
   profile_revenue: TProfileRevenue[];
 };
 
-const Profiles = () => {
+const Profiles: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+  };
+
   const dispatch = useDispatch();
   const [profile, setProfile] = React.useState<TProfile>();
   // const [isOpen, setIsOpen] = React.useState(false);
@@ -96,26 +104,20 @@ const Profiles = () => {
 
   return (
     <>
+      <div>
+        <h1>{t("welcome")}</h1>
+        <p>{t("greeting", { name: "User" })}</p>
+        <button onClick={() => changeLanguage("en")}>English</button>
+        <button onClick={() => changeLanguage("ru")}>Русский</button>
+      </div>
       <div className="wrapper">
         <div className="container">
           <div className="page-header">
             <h1 className="header-title">FJ</h1>
             <hr />
-            <p className="header-txt-1">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <p className="header-txt-1">{t("txt-1")}</p>
             <div className="header-txt-cont">
-              <p className="header-txt-2">
-                Ljsse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum.
-              </p>
+              <p className="header-txt-2">{t("txt-2")}</p>
             </div>
           </div>
           <div className="dash-container">
@@ -211,10 +213,7 @@ const Profiles = () => {
 
                   <div className="payment-card">
                     <div className="header">
-                      <div className="intro-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt
-                      </div>
+                      <div className="intro-text">{t("txt-3")}</div>
                       <img className="rocket" src={rocket} />
                     </div>
                     <div className="card">

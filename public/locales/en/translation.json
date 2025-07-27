@@ -1,0 +1,12 @@
+{
+  "welcome": "Welcome to our app!",
+  "greeting": "Hello, {{name}}!",
+  "txt-1": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Utnim ad minim m, is nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum ore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+  "txt-2": "Ljsse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+  "txt-3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
+  "sort": "Sort",
+  "first_popular": "First the more popular ones",
+  "first_less_popular": "First the less popular ones",
+  "first_income_higher": "First income is higher",
+  "first_income_lower": "First income is lower"
+}

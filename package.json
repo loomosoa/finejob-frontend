@@ -13,13 +13,16 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "axios": "^1.10.0",
+    "i18next": "^23.11.5",
+    "i18next-browser-languagedetector": "^7.2.1",
+    "i18next-http-backend": "^2.5.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-i18next": "^12.3.1",
     "react-paginate": "^8.3.0",
     "react-redux": "^9.2.0",
     "react-scripts": "5.0.1",
     "sass": "^1.89.2",
-    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -45,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
   }
 }

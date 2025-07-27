@@ -15,19 +15,19 @@ export type TSort = {
 
 export const SortsList = [
   {
-    name: "Сначала более популярные",
+    name: "first_popular",
     type: SortEnum.POPULARITY_DESC,
   },
   {
-    name: "Сначала менее популярные",
+    name: "first_less_popular",
     type: SortEnum.POPULARITY_ASC,
   },
   {
-    name: "Сначала доход выше",
+    name: "first_income_higher",
     type: SortEnum.REVENUE_DESC,
   },
   {
-    name: "Сначала доход ниже",
+    name: "first_income_lower",
     type: SortEnum.REVENUE_ASC,
   },
 ];
@@ -40,7 +40,7 @@ export interface IFilterSliceState {
 
 const initialState: IFilterSliceState = {
   sort: {
-    name: "Сначала более популярные",
+    name: "first_popular",
     type: SortEnum.POPULARITY_DESC,
   },
   currentPage: 1,

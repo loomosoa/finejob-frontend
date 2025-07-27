@@ -6,9 +6,14 @@ import {
   setSort,
   TSort,
 } from "../redux/slices/filterSlice";
+
 import { useSelector, useDispatch } from "react-redux";
 
+import { useTranslation } from "react-i18next";
+
 const Sort: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
 
   const sortRef = React.useRef<HTMLDivElement>(null);
@@ -55,9 +60,9 @@ const Sort: React.FC = () => {
               fill="#707070"
             />
           </svg>
-          <b>Сортировка:</b>
+          <b>{t("sort")}:</b>
           <span className="sort-span" onClick={() => setIsVisible(!isVisible)}>
-            {sort.name}
+            {t(sort.name)}
           </span>
         </div>
         {isVisible && (
@@ -69,7 +74,7 @@ const Sort: React.FC = () => {
                   onClick={() => onClickChangeSort(obj)}
                   className={sort.type === obj.type ? "active" : ""}
                 >
-                  {obj.name}
+                  {t(obj.name)}
                 </li>
               ))}
             </ul>
