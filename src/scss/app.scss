@@ -62,30 +62,30 @@ body {
       position: relative;
 
       #change_lang_img {
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
       }
 
       .lang_current {
         cursor: pointer;
-        margin-right: 35px;
+        margin-right: 45px;
       }
 
       .site_langs {
         display: flex;
         flex-direction: column;
-        background: #27273a;
+        background: #070708;
         position: absolute;
         top: 25px;
         right: 36px;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
-        box-shadow: 5px 2px 16px 2px #35359d;
+        box-shadow: 5px 2px 16px 2px #000000;
 
         .active {
-          background: #e5e5e5;
-          color: black;
+          background: #000000;
+          color: #ababab;
           font-weight: 500;
         }
       }
@@ -191,7 +191,7 @@ body {
 }
 
 .header-title {
-  margin-left: 44px;
+  margin-left: 45px;
   color: #dfdfdf;
 
   font-size: 33px;

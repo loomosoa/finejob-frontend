@@ -14,7 +14,7 @@ import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
 import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
-import changeLangImg from "../assets/imgs/change_lang2.png";
+import changeLangImg from "../assets/imgs/lang_change_3.svg";
 
 import { useTranslation } from "react-i18next";
 
@@ -63,6 +63,7 @@ const Profiles: React.FC = () => {
 
   const revenueCurrency = React.useRef<string>(defaultCurrency);
   const currencyRef = React.useRef<HTMLDivElement>(null);
+  const changeLangRef = React.useRef<HTMLDivElement>(null);
 
   const currencies = ["USD", "RUB", "EUR"];
 
@@ -116,6 +117,23 @@ const Profiles: React.FC = () => {
     };
   }, []);
 
+  React.useEffect(() => {
+    const handleClickOutsideLang = (e: MouseEvent) => {
+      const current = changeLangRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setLangListOpen(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutsideLang);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutsideLang);
+    };
+  }, []);
+
   return (
     <>
       <div className="wrapper">
@@ -123,7 +141,7 @@ const Profiles: React.FC = () => {
           <div className="page-header">
             <div className="top-cont">
               <h1 className="header-title">FJ</h1>
-              <div id="lang_change">
+              <div id="lang_change" ref={changeLangRef}>
                 <div className="lang_current" onClick={() => toggleLangs()}>
                   {/* {i18n.language} */}
                   <img id="change_lang_img" src={changeLangImg} />
