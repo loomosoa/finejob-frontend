@@ -8,7 +8,7 @@ const App: React.FC = () => {
   return (
     <>
       <Profiles />
-      {/* <WhatToLearn /> */}
+      <WhatToLearn />
     </>
   );
 };
