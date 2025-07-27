@@ -14,7 +14,7 @@ import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
 import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
-import arrowOpenMore from "../assets/imgs/arrow_down.svg";
+import changeLangImg from "../assets/imgs/change_lang2.png";
 
 import { useTranslation } from "react-i18next";
 
@@ -38,10 +38,19 @@ const Profiles: React.FC = () => {
 
   const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
+    revenueCurrency.current = lng === "ru" ? "RUB" : "USD";
+    setLangListOpen(false);
+  };
+
+  const toggleLangs = () => {
+    setLangListOpen(!isLangListOpen);
   };
 
   const dispatch = useDispatch();
   const [profile, setProfile] = React.useState<TProfile>();
+
+  const [isLangListOpen, setLangListOpen] = React.useState<boolean>(false);
+
   // const [isOpen, setIsOpen] = React.useState(false);
   // const [height, setHeight] = React.useState(340);
   // const contentRef = React.useRef<HTMLDivElement>(null);
@@ -49,13 +58,15 @@ const Profiles: React.FC = () => {
   const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
     React.useState(false);
 
-  const defaultCurrency = i18n.language === "RU" ? "RUB" : "USD";
+  const defaultCurrency = i18n.language === "ru" ? "RUB" : "USD";
   console.log(i18n.language);
 
   const revenueCurrency = React.useRef<string>(defaultCurrency);
   const currencyRef = React.useRef<HTMLDivElement>(null);
 
   const currencies = ["USD", "RUB", "EUR"];
+
+  const languages = ["en", "ru"];
 
   const toggleCurrencyDropdown = () => {
     setCurrencyDropdownOpen(!isCurrencyDropdownOpen);
@@ -107,16 +118,35 @@ const Profiles: React.FC = () => {
 
   return (
     <>
-      <div>
-        <h1>{t("welcome")}</h1>
-        <p>{t("greeting", { name: "User" })}</p>
-        <button onClick={() => changeLanguage("en")}>English</button>
-        <button onClick={() => changeLanguage("ru")}>Русский</button>
-      </div>
       <div className="wrapper">
         <div className="container">
           <div className="page-header">
-            <h1 className="header-title">FJ</h1>
+            <div className="top-cont">
+              <h1 className="header-title">FJ</h1>
+              <div id="lang_change">
+                <div className="lang_current" onClick={() => toggleLangs()}>
+                  {/* {i18n.language} */}
+                  <img id="change_lang_img" src={changeLangImg} />
+                </div>
+                {isLangListOpen && (
+                  <div className="site_langs">
+                    <ul>
+                      {languages.map((lang, i) => (
+                        <li
+                          key={i}
+                          onClick={() => changeLanguage(lang)}
+                          className={i18n.language === lang ? "active" : ""}
+                        >
+                          {t(lang)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {/* <button onClick={() => changeLanguage("en")}>English</button>
+                <button onClick={() => changeLanguage("ru")}>Русский</button> */}
+              </div>
+            </div>
             <hr />
             <p className="header-txt-1">{t("txt-1")}</p>
             <div className="header-txt-cont">

@@ -344,7 +344,7 @@ const WhatToLearn: React.FC = () => {
             <div className="subscription">
               <img
                 className="be-in-touch"
-                src={i18n.language === "RU" ? beInTouchRU : beInTouchEN}
+                src={i18n.language === "ru" ? beInTouchRU : beInTouchEN}
               />
               {/* <!-- <span>Оставаться в курсе</span> --> */}
               <div className="input-container">
