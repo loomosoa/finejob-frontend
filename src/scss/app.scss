@@ -120,7 +120,7 @@ body {
 }
 
 .page-header {
-  max-width: 1290px;
+  // max-width: 1290px;
 }
 
 .header-title {
@@ -139,6 +139,7 @@ hr {
   width: 295px;
   margin-top: 75px;
   margin-bottom: 75px;
+  margin-left: 125px;
   font-size: 15px;
   line-height: 19px;
   font-weight: 300;
@@ -200,9 +201,10 @@ hr {
     display: flex;
     margin-bottom: 25px;
     margin-top: 25px;
-    flex-direction: column;
+    flex-direction: row;
 
     @media (max-width: 430px) {
+      flex-direction: column;
       align-items: center;
       justify-content: center;
     }
@@ -629,7 +631,7 @@ hr {
     display: flex;
     flex-direction: column;
     position: relative;
-    max-width: 1440px;
+    width: 1440px;
     margin-top: -155px;
     margin-bottom: 65px;
     // min-height: 1000px;
