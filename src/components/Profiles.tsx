@@ -36,7 +36,7 @@ type TProfile = {
 const Profiles: React.FC = () => {
   const { t, i18n } = useTranslation();
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = (lng: string) => {
     i18n.changeLanguage(lng);
   };
 
@@ -49,7 +49,10 @@ const Profiles: React.FC = () => {
   const [isCurrencyDropdownOpen, setCurrencyDropdownOpen] =
     React.useState(false);
 
-  const revenueCurrency = React.useRef<string>("RUB");
+  const defaultCurrency = i18n.language === "RU" ? "RUB" : "USD";
+  console.log(i18n.language);
+
+  const revenueCurrency = React.useRef<string>(defaultCurrency);
   const currencyRef = React.useRef<HTMLDivElement>(null);
 
   const currencies = ["USD", "RUB", "EUR"];

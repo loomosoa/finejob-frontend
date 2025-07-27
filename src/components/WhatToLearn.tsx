@@ -22,9 +22,12 @@ import frameworksSq from "../assets/imgs/framewrks-fr.svg";
 import framesSeparator from "../assets/imgs/frames_separator.svg";
 import framesOptions from "../assets/imgs/frames_options.svg";
 import arrowCurrency from "../assets/imgs/arrow_currency.svg";
-import beInTouch from "../assets/imgs/be_in_touch.png";
+import beInTouchRU from "../assets/imgs/be_in_touch_ru.png";
+import beInTouchEN from "../assets/imgs/be_in_touch_en.png";
 import xCom from "../assets/imgs/xcom.png";
 import telegramImg from "../assets/imgs/telegram.png";
+
+import { useTranslation } from "react-i18next";
 
 /*
 отрисовать
@@ -89,6 +92,8 @@ export const Frameworks = [
 ];
 
 const WhatToLearn: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const { skills } = useSelector(skillsSelector);
 
@@ -337,7 +342,10 @@ const WhatToLearn: React.FC = () => {
           <div className="footer">
             <div className="banner">ads banner</div>
             <div className="subscription">
-              <img className="be-in-touch" src={beInTouch} />
+              <img
+                className="be-in-touch"
+                src={i18n.language === "RU" ? beInTouchRU : beInTouchEN}
+              />
               {/* <!-- <span>Оставаться в курсе</span> --> */}
               <div className="input-container">
                 <div className="back-frame">
@@ -348,7 +356,7 @@ const WhatToLearn: React.FC = () => {
                     // autoComplete="off"
                   />
                 </div>
-                <button className="subscribe-btn">Подписаться</button>
+                <button className="subscribe-btn">{t("subscribe")}</button>
               </div>
             </div>
             <div className="social-nets">
