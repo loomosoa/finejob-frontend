@@ -14,7 +14,7 @@ import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
 import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
-import changeLangImg from "../assets/imgs/lang_change_3.svg";
+import changeLangImg from "../assets/imgs/change_lang_4.svg";
 
 import { useTranslation } from "react-i18next";
 
