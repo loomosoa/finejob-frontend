@@ -7,7 +7,7 @@ import WhatToLearn from "./components/WhatToLearn";
 const App: React.FC = () => {
   return (
     <>
-      <Suspense fallback="Loading...">
+      <Suspense fallback={<div className="fallback">Loading...</div>}>
         <Profiles />
         <WhatToLearn />
       </Suspense>
