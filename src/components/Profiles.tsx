@@ -203,7 +203,7 @@ const Profiles: React.FC = () => {
                           <li key={i}>
                             <span className={`${i === 0 ? "main-lang" : ""}`}>
                               {lang.skill}
-                            </span>{" "}
+                            </span>
                             {i === 0 && `(${profile?.core_lang_vacancy_count})`}
                             {i != 0 && `(${lang.skillCount}%)`}
                             {/* {lang.skillCount} */}
@@ -216,7 +216,6 @@ const Profiles: React.FC = () => {
                     <div className="column-header">
                       <img className="title-img" src={techsSq} />
                       <span className="title">
-                        {" "}
                         {t("technologies")} <br />
                       </span>
                     </div>
@@ -269,7 +268,7 @@ const Profiles: React.FC = () => {
                     <div className="card">
                       <div className="card-wrapper">
                         <div className="title">
-                          {t("average_payment_1")} <br />{" "}
+                          {t("average_payment_1")} <br />
                           {t("average_payment_2")}
                         </div>
                         <div ref={currencyRef} className="frames">
@@ -284,7 +283,6 @@ const Profiles: React.FC = () => {
                             onClick={toggleCurrencyDropdown}
                           >
                             <span className="currency">
-                              {" "}
                               {revenueCurrency.current}
                             </span>
                             <img
