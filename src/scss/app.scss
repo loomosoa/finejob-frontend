@@ -16,7 +16,8 @@ body {
 
 .wrapper {
   /* Указываем фоновое изображение */
-  background-image: url("../assets/imgs/bg_img_header.png"); /* Замените на путь к вашему изображению */
+  // background-image: url("../assets/imgs/bg_img_header.png"); /* Замените на путь к вашему изображению */
+  background-image: url("../assets/imgs/mp8.jpg");
   background-position: center; /* Выравнивание по центру */
   background-repeat: no-repeat; /* Изображение не повторяется */
   background-size: cover; /* Масштабируем изображение, чтобы покрыть весь контейнер */
@@ -202,13 +203,18 @@ hr {
 }
 
 .header-txt-1 {
+  opacity: 0.8;
+  color: #00e5ff;
   width: 295px;
   margin-top: 75px;
   margin-bottom: 75px;
   margin-left: 125px;
   font-size: 15px;
   line-height: 19px;
-  font-weight: 300;
+  font-weight: 700;
+  background: #000000;
+  padding: 15px 20px;
+  border-radius: 5px;
 
   @media (max-width: 1315px) {
     margin-bottom: 10px;
@@ -226,12 +232,25 @@ hr {
 }
 
 .header-txt-2 {
+  // position: relative;
+  // width: 578px;
+  // display: flex;
+  // top: -125px;
+  // margin-right: 70px;
+  // margin-bottom: 45px;
+
   position: relative;
   width: 578px;
   display: flex;
-  top: -125px;
+  top: -100px;
   margin-right: 70px;
-  margin-bottom: 45px;
+  margin-bottom: 70px;
+  background: #000000;
+  padding: 15px 20px;
+  border-radius: 5px;
+  opacity: 0.8;
+  font-weight: 700;
+  color: #007bff;
 
   @media (max-width: 1315px) {
     top: unset;
@@ -249,6 +268,7 @@ hr {
 }
 
 .dash {
+  opacity: 1;
   margin-top: -51px;
   padding: 15px 70px;
   // margin-top: 22px;
@@ -256,6 +276,7 @@ hr {
   max-width: 1567px;
   min-height: 679px;
   background: #282828;
+  // background: #050620;
   border-radius: 5px;
   position: relative;
   // left: -65px;
@@ -629,13 +650,13 @@ hr {
   }
 
   .tech-stack {
-    width: 263px;
+    width: 270px;
     padding: 20px 35px;
     background: #1b1b1b;
     border-radius: 5px;
     text-transform: uppercase;
     color: #5d5d5d;
-    font-weight: 300;
+    font-weight: 500;
     font-size: 19px;
     display: flex;
     justify-content: center;
@@ -655,7 +676,7 @@ hr {
   }
 
   .filters {
-    width: 42.5%;
+    width: 42%;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -811,7 +832,7 @@ hr {
     flex-direction: column;
     position: relative;
     width: 1440px;
-    margin-top: -155px;
+    margin-top: -50px;
     margin-bottom: 30px;
     // min-height: 1000px;
     background: #1b1b1b;
