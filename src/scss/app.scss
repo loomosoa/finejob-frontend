@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 
 body {
@@ -90,7 +90,7 @@ body {
         justify-content: center;
         align-items: center;
         border-radius: 5px;
-        box-shadow: 5px 2px 16px 2px #000000;
+        box-shadow: 5px 2px 16px 2px #000000cc;
 
         .active {
           background: #d7d7d7;
@@ -788,6 +788,8 @@ hr {
   .sort__popup ul li {
     padding: 12px 20px;
     cursor: pointer;
+    font-weight: 500;
+    color: #9f9f9f;
   }
 
   .sort__label b {
