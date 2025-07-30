@@ -204,8 +204,9 @@ const Profiles: React.FC = () => {
                             <span className={`${i === 0 ? "main-lang" : ""}`}>
                               {lang.skill}
                             </span>
-                            {i === 0 && `(${profile?.core_lang_vacancy_count})`}
-                            {i != 0 && `(${lang.skillCount}%)`}
+                            {i === 0 &&
+                              ` (${profile?.core_lang_vacancy_count})`}
+                            {i != 0 && ` (${lang.skillCount}%)`}
                             {/* {lang.skillCount} */}
                           </li>
                         ))}
