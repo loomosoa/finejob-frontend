@@ -20,5 +20,6 @@
   "average_payment_2": "payment",
   "subscribe": "subscribe",
   "en": "English",
-  "ru": "Русский"
+  "ru": "Русский",
+  "main_prog_lang_tooltip": "In parentheses next to the main programming language for a given profile, the number of vacancies is indicated, while in the other parentheses, the percentage represents the presence of a particular skill relative to the number of vacancies for the main programming language, taken as 100%. The higher the percentage indicated in parentheses, the greater the importance of that skill (programming language, technology, framework, or other skills) in the skill profile, and the higher the likelihood that possessing this skill will lead to receiving the maximum salary for that main programming language."
 }

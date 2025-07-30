@@ -417,6 +417,36 @@ hr {
         flex-direction: column;
         align-self: start;
 
+        #main_prog_lang_tooltip {
+          position: absolute;
+          display: none;
+          top: 93px;
+          left: 190px;
+          width: 200px;
+          height: 200px;
+          background: #000;
+          color: #fff;
+          opacity: 0.97;
+          font-weight: 500;
+          z-index: 10;
+          border-radius: 5px;
+        }
+
+        .info_icon {
+          position: relative;
+          width: 18px;
+          height: 18px;
+          margin-left: 5px;
+          top: 3px;
+          cursor: pointer;
+
+          &:hover {
+            #main_prog_lang_tooltip {
+              display: flex;
+            }
+          }
+        }
+
         @media (max-width: 1600px) {
           border-right: none;
           margin-top: 30px;
@@ -777,12 +807,12 @@ hr {
 
   .sort__popup ul li.active {
     font-weight: bold;
-    color: #939393;
+    color: #c3c3c3;
   }
 
   .sort__popup ul li.active,
   .sort__popup ul li:hover {
-    background: #f9f9f9;
+    background: #444444;
   }
 
   .sort__popup ul li {

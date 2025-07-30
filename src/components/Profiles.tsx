@@ -15,8 +15,11 @@ import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
 import changeLangImg from "../assets/imgs/change_lang_4.svg";
+import infoIcon from "../assets/imgs/info2.svg";
 
 import { useTranslation } from "react-i18next";
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 type TProfileRevenue = {
   amount: number;
@@ -198,14 +201,30 @@ const Profiles: React.FC = () => {
                       </span>
                     </div>
                     <div className="column-body">
+                      <div id="main_prog_lang_tooltip"></div>
                       <ul>
                         {profile?.prog_langs.map((lang, i) => (
                           <li key={i}>
                             <span className={`${i === 0 ? "main-lang" : ""}`}>
                               {lang.skill}
                             </span>
-                            {i === 0 &&
-                              ` (${profile?.core_lang_vacancy_count})`}
+                            {i === 0 && (
+                              <>
+                                {` (${profile?.core_lang_vacancy_count})`}
+                                <Tippy content={t("main_prog_lang_tooltip")}>
+                                  <img
+                                    className="info_icon"
+                                    src={infoIcon}
+                                    alt="info"
+                                    // style={{
+                                    //   marginLeft: "5px",
+                                    //   height: "1em",
+                                    //   verticalAlign: "middle",
+                                    // }}
+                                  />
+                                </Tippy>
+                              </>
+                            )}
                             {i != 0 && ` (${lang.skillCount}%)`}
                             {/* {lang.skillCount} */}
                           </li>
