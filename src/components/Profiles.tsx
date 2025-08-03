@@ -62,7 +62,7 @@ const Profiles: React.FC = () => {
     React.useState(false);
 
   const defaultCurrency = i18n.language === "ru" ? "RUB" : "USD";
-  console.log(i18n.language);
+  // console.log(i18n.language);
 
   const revenueCurrency = React.useRef<string>(defaultCurrency);
   const currencyRef = React.useRef<HTMLDivElement>(null);
