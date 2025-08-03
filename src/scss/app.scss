@@ -167,7 +167,7 @@ body {
         // background: #e9ac00;
         border-radius: 40px;
         width: 44px;
-        height: 37px;
+        height: 40px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -578,7 +578,7 @@ hr {
             position: absolute;
             top: 69px;
             left: 245px;
-            background-color: white;
+            background-color: #fff7e5;
             border: 1px solid #ccc;
             border-radius: 4px;
             padding: 5px;
@@ -598,7 +598,8 @@ hr {
             cursor: pointer;
           }
           .currency-dropdown li:hover {
-            background-color: #f0f0f0;
+            background-color: #d7d0c2;
+            border-radius: 5px;
           }
         }
 
@@ -784,7 +785,8 @@ hr {
 
   .sort {
     position: relative;
-    color: #dddddd;
+    color: #a79579;
+    // color: #dddddd;
 
     @media (max-width: 720px) {
       margin: 0 10px;
@@ -799,12 +801,21 @@ hr {
     position: absolute;
     right: 0;
     margin-top: 15px;
-    background: #ffffff;
-    /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); */
+    background: #fff7e5;
+    box-shadow: 0px 5px 15px rgb(197 197 197 / 50%);
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 0;
     z-index: 1;
+    // position: absolute;
+    // right: 0;
+    // margin-top: 15px;
+    // background: #ffffff;
+    // /* box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5); */
+    // border-radius: 10px;
+    // overflow: hidden;
+    // padding: 10px 0;
+    // z-index: 1;
   }
 
   .sort__popup ul li.active {
@@ -1038,7 +1049,7 @@ hr {
               position: absolute;
               top: 62px;
               left: 256px;
-              color: #fff;
+              color: #fff7e5;
               background-color: #343434;
               border: 1px solid #ccc;
               border-radius: 4px;
