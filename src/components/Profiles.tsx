@@ -16,7 +16,7 @@ import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
 import changeLangImg from "../assets/imgs/change_lang_4.svg";
 import infoIcon from "../assets/imgs/info2.svg";
-import vacResFields from "../assets/imgs/vac_res_fields.png";
+import vacResFields2 from "../assets/imgs/vac_res_fields.png";
 
 import { useTranslation } from "react-i18next";
 import Tippy from "@tippyjs/react";
@@ -347,7 +347,7 @@ const Profiles: React.FC = () => {
           </div>
         </div>
       </div>
-      <img src={vacResFields} id="vacResFields" />
+      <img src={vacResFields2} id="vacResFields" />
     </>
   );
 };
