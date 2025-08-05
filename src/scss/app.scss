@@ -1299,18 +1299,102 @@ hr {
   width: 1565px;
   min-height: 2500px;
   background: #d6c09d;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 80px 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #000;
 
   &-inner {
     display: flex;
     width: 1270px;
     min-height: 2400px;
     background: #fff7e5;
-    border-radius: 10px;
+    border-radius: 20px;
     margin: 70px 0;
+    // justify-content: center;
+    flex-direction: column;
+    padding-top: 85px;
+
+    .dash-field {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      margin: 30px 0;
+      height: 30px;
+      justify-content: center;
+      align-items: center;
+
+      .title-wrapper {
+        position: absolute;
+        width: 21%;
+        left: 0;
+        align-items: center;
+        display: flex;
+      }
+
+      #selectVacRes {
+        cursor: pointer;
+      }
+
+      .title {
+        position: absolute;
+        display: flex;
+        font-size: 26px;
+        // left: -230px;
+        right: 0;
+      }
+
+      .field {
+        display: flex;
+        height: 40px;
+        width: 483px;
+        border: 1px solid #000;
+        background: white;
+        border-radius: 10px;
+
+        justify-content: center;
+        align-items: center;
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      input.field {
+        padding: 0 15px;
+        width: 453px;
+        color: #1b1b1b;
+        font-family: "Montserrat", sans-serif;
+      }
+
+      .vac-res-arrow {
+        margin-left: 5px;
+      }
+
+      .under-label {
+        margin: 10px 0 0 30px;
+        // position: absolute;
+        font-weight: 500;
+        font-size: 16px;
+      }
+
+      .field-wrapper {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+      }
+
+      textarea.field {
+        // margin-top: 80px;
+        padding: 20px;
+        width: 445px;
+        height: 110px;
+        color: #1b1b1b;
+        font-family: "Montserrat", sans-serif;
+      }
+    }
+    #vas-res-description {
+      margin-top: 110px;
+    }
   }
 }
