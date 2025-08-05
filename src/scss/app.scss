@@ -858,6 +858,7 @@ hr {
     overflow: hidden;
     list-style-type: none;
     padding: 20px 0;
+    min-width: 170px;
   }
 
   .sort__popup ul li {
@@ -1308,7 +1309,7 @@ hr {
 
   &-inner {
     display: flex;
-    width: 1270px;
+    width: 1250px;
     min-height: 2400px;
     background: #fff7e5;
     border-radius: 20px;
@@ -1391,10 +1392,16 @@ hr {
         height: 110px;
         color: #1b1b1b;
         font-family: "Montserrat", sans-serif;
+
+        resize: none;
       }
     }
     #vas-res-description {
       margin-top: 110px;
+    }
+
+    #vac-res-skills {
+      margin-top: 130px;
     }
   }
 }

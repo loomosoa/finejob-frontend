@@ -42,6 +42,11 @@ const JobSeek: React.FC = () => {
                   <div className="under-label">280 символов</div>
                 </div>
               </div>
+              <div id="vac-res-skills" className="dash-field">
+                <div className="title-wrapper">
+                  <div className="title">Навыки</div>
+                </div>
+              </div>
             </div>
           </div>
           JobSeek
