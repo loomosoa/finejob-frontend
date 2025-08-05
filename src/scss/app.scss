@@ -11,7 +11,7 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background: #0d0d0d;
+  background: #1b1b1b;
   color: #fff;
 
   font-family: "Montserrat", sans-serif;
@@ -873,6 +873,7 @@ hr {
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  background: #121212;
 
   @media (max-width: 1600px) {
     margin-top: 20px;
@@ -887,8 +888,8 @@ hr {
     flex-direction: column;
     position: relative;
     width: 1440px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 90px;
+    margin-bottom: 130px;
     // min-height: 1000px;
     // background: #1b1b1b;
     // background: #080808;
