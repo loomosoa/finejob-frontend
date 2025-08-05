@@ -11,7 +11,7 @@
 body {
   margin: 0 auto;
   padding: 0;
-  background: #0d0d0d;
+  background: #1b1b1b;
   color: #fff;
 
   font-family: "Montserrat", sans-serif;
@@ -873,6 +873,7 @@ hr {
   display: flex;
   justify-content: center;
   margin-top: 60px;
+  background: #000000;
 
   @media (max-width: 1600px) {
     margin-top: 20px;
@@ -887,8 +888,8 @@ hr {
     flex-direction: column;
     position: relative;
     width: 1440px;
-    margin-top: 50px;
-    margin-bottom: 30px;
+    margin-top: 100px;
+    margin-bottom: 95px;
     // min-height: 1000px;
     // background: #1b1b1b;
     // background: #080808;
@@ -1258,5 +1259,58 @@ hr {
         color: #434343;
       }
     }
+  }
+}
+
+.jobseek-main {
+  position: relative;
+}
+
+.jobseek-background {
+  background-image: url("../assets/imgs/mp9_vert.png");
+  // background-position: center; /* Выравнивание по центру */
+  background-repeat: no-repeat; /* Изображение не повторяется */
+  background-size: cover; /* Масштабируем изображение, чтобы покрыть весь контейнер */
+  width: 100%;
+  min-height: 2145px; /* Укажите нужную высоту контейнера */
+  position: absolute; /* Для позиционирования дочерних элементов */
+  display: flex; /* Для центрирования содержимого */
+  // justify-content: center;
+  align-items: center;
+  //   text-align: center;
+  color: white; /* Цвет текста для контраста */
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.jobseek-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.black-break {
+  position: relative;
+  height: 30px;
+  width: 100%;
+  background: #000;
+}
+
+.dash-frame {
+  width: 1565px;
+  min-height: 2500px;
+  background: #d6c09d;
+  border-radius: 10px;
+  margin: 80px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &-inner {
+    display: flex;
+    width: 1270px;
+    min-height: 2400px;
+    background: #fff7e5;
+    border-radius: 10px;
+    margin: 70px 0;
   }
 }
