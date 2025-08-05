@@ -1396,12 +1396,65 @@ hr {
         resize: none;
       }
     }
+
     #vas-res-description {
       margin-top: 110px;
     }
 
     #vac-res-skills {
       margin-top: 130px;
+    }
+
+    .skills-container {
+      width: 67%;
+      // background: green;
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(1, 1fr);
+        gap: 4px;
+        column-gap: 20px;
+      }
+
+      .item {
+        margin: 10px 0 0 0;
+        display: flex;
+        flex-direction: row;
+
+        align-items: center;
+      }
+
+      .checkbox {
+        margin-right: 8px;
+        border: 1px solid #1b1b1b;
+        width: 10px;
+        height: 10px;
+        border-radius: 20px;
+        background: #fff;
+      }
+
+      .element {
+        border: 1px solid #1b1b1b;
+        padding: 10px 25px;
+        border-radius: 10px;
+        background: #fff;
+        font-weight: 500;
+        font-size: 18px;
+      }
+
+      .grade {
+        border: 1px solid #1b1b1b;
+        padding: 10px 10px;
+        border-radius: 10px;
+        background: #fff;
+        margin-left: 5px;
+        font-weight: 500;
+        cursor: pointer;
+      }
     }
   }
 }

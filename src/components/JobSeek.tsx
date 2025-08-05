@@ -47,6 +47,54 @@ const JobSeek: React.FC = () => {
                   <div className="title">Навыки</div>
                 </div>
               </div>
+              <div className="skills-container">
+                <div className="title">
+                  <span className="skills-type">Languages</span>
+                  <span className="search">Поиск</span>
+                </div>
+                <div className="skills-grid">
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">PHP</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">JavaScript</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">Rust</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">Python</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">TypeScript</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">SQL</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">Java</div>
+                    <div className="grade">Any</div>
+                  </div>
+                  <div className="item">
+                    <div className="checkbox"></div>
+                    <div className="element">C#</div>
+                    <div className="grade">Any</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           JobSeek
