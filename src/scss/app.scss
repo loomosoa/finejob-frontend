@@ -29,7 +29,7 @@ body {
   background-position: center; /* Выравнивание по центру */
   background-repeat: no-repeat; /* Изображение не повторяется */
   background-size: cover; /* Масштабируем изображение, чтобы покрыть весь контейнер */
-  min-height: 1589px; /* Укажите нужную высоту контейнера */
+  min-height: 1520px; /* Укажите нужную высоту контейнера */
   position: relative; /* Для позиционирования дочерних элементов */
   display: flex; /* Для центрирования содержимого */
   justify-content: center;
@@ -90,7 +90,7 @@ body {
         justify-content: center;
         align-items: center;
         border-radius: 5px;
-        box-shadow: 5px 2px 16px 2px #000000cc;
+        box-shadow: 5px 2px 14px 0px rgb(114 114 114 / 80%);
 
         .active {
           background: #d7d7d7;
