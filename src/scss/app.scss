@@ -1411,6 +1411,7 @@ hr {
       display: flex;
       flex-direction: column;
       align-self: center;
+      margin: 70px 0 45px;
 
       .skills-grid {
         display: grid;
@@ -1430,11 +1431,11 @@ hr {
 
       .checkbox {
         margin-right: 8px;
-        border: 1px solid #1b1b1b;
-        width: 10px;
-        height: 10px;
-        border-radius: 20px;
-        background: #fff;
+        // border: 1px solid #1b1b1b;
+        // width: 10px;
+        // height: 10px;
+        // border-radius: 20px;
+        // background: #fff;
       }
 
       .element {
