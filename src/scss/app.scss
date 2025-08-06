@@ -1413,6 +1413,26 @@ hr {
       align-self: center;
       margin: 70px 0 45px;
 
+      .title {
+        margin: 18px 0;
+        display: flex;
+      }
+
+      .skills-type {
+        font-size: 20px;
+        font-weight: 700;
+        color: #383838;
+        margin-right: 20px;
+      }
+
+      .search {
+        width: 200px;
+        display: flex;
+        border-bottom: 1px solid #383838;
+        justify-content: center;
+        color: gray;
+      }
+
       .skills-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -1422,7 +1442,7 @@ hr {
       }
 
       .item {
-        margin: 10px 0 0 0;
+        margin: 16px 0 0 0;
         display: flex;
         flex-direction: row;
 
