@@ -1415,7 +1415,7 @@ hr {
       .skills-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: repeat(1, 1fr);
+        // grid-template-rows: repeat(1, 1fr);
         gap: 4px;
         column-gap: 20px;
       }
@@ -1444,6 +1444,7 @@ hr {
         background: #fff;
         font-weight: 500;
         font-size: 18px;
+        cursor: pointer;
       }
 
       .grade {

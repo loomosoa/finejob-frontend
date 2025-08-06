@@ -1,9 +1,29 @@
 import React from "react";
 
-import vacResFields2 from "../assets/imgs/vac_res_fields.png";
+// import vacResFields2 from "../assets/imgs/vac_res_fields.png";
 import vacResArrow from "../assets/imgs/vac_res_arrow.svg";
+import axios from "axios";
+
+type TSkills = {};
 
 const JobSeek: React.FC = () => {
+  const [skills, setSkills] = React.useState([]);
+
+  React.useEffect(() => {
+    const getSkills = async () => {
+      const { data } = await axios.get(
+        `http://finejob-api.local/api/v1/skills`
+      );
+
+      setSkills(data.data);
+
+      // console.log(data.data[0].languages);
+    };
+
+    getSkills();
+    console.log(skills);
+  }, []);
+
   return (
     <>
       {/* <img src={vacResFields2} id="vacResFields" /> */}
@@ -53,6 +73,21 @@ const JobSeek: React.FC = () => {
                   <span className="search">Поиск</span>
                 </div>
                 <div className="skills-grid">
+                  {/* {languages.map((lang, i) => (
+                        <li
+                          key={i}
+                          onClick={() => changeLanguage(lang)}
+                          className={i18n.language === lang ? "active" : ""}
+                        >
+                          {t(lang)}
+                        </li>
+                      ))} */}
+                  {/* {skills?[0].map((lang, i) => ( 
+                    <div>{lang}</div>
+                  ))} */}
+                  {/* {skills?.languages.map((lang, i) => (
+                    <li key={i}>{lang}</li>
+                  ))} */}
                   <div className="item">
                     <div className="checkbox"></div>
                     <div className="element">PHP</div>
