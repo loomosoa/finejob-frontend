@@ -1284,6 +1284,77 @@ hr {
   flex-direction: column;
 }
 
+.vac-res-payment-container {
+  display: flex;
+  width: 1000px;
+  align-self: center;
+  height: 250px;
+  background: #e9be79;
+  margin: 30px 0 200px;
+  border-radius: 20px;
+  align-items: center;
+
+  .payment-title {
+    font-size: 24px;
+    font-weight: 600;
+    color: #fff3e0;
+    width: 170px;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .title-from-to {
+    color: #c29857;
+    margin-right: 10px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .title-to {
+    margin-left: 10px;
+  }
+
+  .input-from-to {
+    height: 37px;
+    width: 100px;
+    border-radius: 10px;
+    background: #fff;
+    border: none;
+
+    &:focus {
+      border: none;
+    }
+  }
+
+  .payment-type-arrow {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+
+  .first-ps {
+    margin-left: 10px;
+  }
+
+  .payment-selection {
+    height: 37px;
+    width: 127px;
+    background: #fff;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+
+    cursor: pointer;
+  }
+
+  .payment-selection-arrow {
+    display: flex;
+    margin-left: 7px;
+  }
+}
+
 .jobseek-wrapper {
   display: flex;
   justify-content: center;

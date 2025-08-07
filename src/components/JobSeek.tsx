@@ -3,7 +3,9 @@ import React from "react";
 // import vacResFields2 from "../assets/imgs/vac_res_fields.png";
 import vacResArrow from "../assets/imgs/vac_res_arrow.svg";
 import selectImg from "../assets/imgs/select_img.svg";
-import arrowOpenMore from "../assets/imgs/arrow_down.svg";
+import paymentTypeArrow from "../assets/imgs/payment_type_arrow.svg";
+import paymentSelectionArrow from "../assets/imgs/payment_selection_arrow.svg";
+
 import axios from "axios";
 
 const JobSeek: React.FC = () => {
@@ -243,6 +245,35 @@ const JobSeek: React.FC = () => {
               </div>
               <div onClick={() => setTSCOpen(!isTSCOpen)} className="open-more">
                 <span>{isTSCOpen ? "Close" : "Open more"}</span>
+              </div>
+              <div className="vac-res-payment-container">
+                <span className="payment-title">Оплата</span>
+                <span className="title-from-to">От</span>
+                <input name="payment-from" className="input-from-to" />
+                <span className="title-from-to title-to">До</span>
+                <input name="payment-to" className="input-from-to" />
+                <img src={paymentTypeArrow} className="payment-type-arrow" />
+                <div className="first-ps payment-selection">
+                  в месяц
+                  <img
+                    src={paymentSelectionArrow}
+                    className="payment-selection-arrow"
+                  />
+                </div>
+                <div className="payment-selection">
+                  на руки
+                  <img
+                    src={paymentSelectionArrow}
+                    className="payment-selection-arrow"
+                  />
+                </div>
+                <div className="payment-selection">
+                  валюта
+                  <img
+                    src={paymentSelectionArrow}
+                    className="payment-selection-arrow"
+                  />
+                </div>
               </div>
             </div>
           </div>
