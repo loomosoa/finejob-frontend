@@ -14,16 +14,38 @@ const JobSeek: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
 
-  // fsc - firstSkillsContainer
+  // FSC: FirstSkillsContainer
   const [isFSCOpen, setFSCOpen] = React.useState<boolean>(false);
-  const [FSCHeight, setFSCHeight] = React.useState<number>(340);
+  const [FSCHeight, setFSCHeight] = React.useState<number>(380);
   const FSCContentRef = React.useRef<HTMLDivElement>(null);
+
+  //SSC: SecondSkillsContainer
+  const [isSSCOpen, setSSCOpen] = React.useState<boolean>(false);
+  const [SSCHeight, setSSCHeight] = React.useState<number>(380);
+  const SSCContentRef = React.useRef<HTMLDivElement>(null);
+
+  //TSC: ThirdSkillsContainer
+  const [isTSCOpen, setTSCOpen] = React.useState<boolean>(false);
+  const [TSCHeight, setTSCHeight] = React.useState<number>(380);
+  const TSCContentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
     if (FSCContentRef.current) {
       setFSCHeight(FSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
     }
   }, [isFSCOpen]);
+
+  React.useEffect(() => {
+    if (SSCContentRef.current) {
+      setSSCHeight(SSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
+    }
+  }, [isSSCOpen]);
+
+  React.useEffect(() => {
+    if (TSCContentRef.current) {
+      setTSCHeight(TSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
+    }
+  }, [isTSCOpen]);
 
   React.useEffect(() => {
     const getSkills = async () => {
@@ -127,7 +149,7 @@ const JobSeek: React.FC = () => {
                 ref={FSCContentRef}
                 className="skills-container collapsible"
                 style={{
-                  height: isFSCOpen ? `${FSCHeight}px` : "370px",
+                  height: isFSCOpen ? `${FSCHeight}px` : "380px",
                   opacity: isFSCOpen ? 1 : 1,
                   width: "75%",
                   overflow: "hidden",
@@ -156,7 +178,17 @@ const JobSeek: React.FC = () => {
               <div onClick={() => setFSCOpen(!isFSCOpen)} className="open-more">
                 <span>{isFSCOpen ? "Close" : "Open more"}</span>
               </div>
-              <div className="skills-container">
+              <div
+                ref={SSCContentRef}
+                className="skills-container collapsible"
+                style={{
+                  height: isSSCOpen ? `${SSCHeight}px` : "380px",
+                  opacity: isSSCOpen ? 1 : 1,
+                  width: "75%",
+                  overflow: "hidden",
+                  transition: "height 0.5s ease-out, opacity 1s ease-out",
+                }}
+              >
                 <div className="title">
                   <span className="skills-type">Technologies</span>
                   <span className="search">Поиск</span>
@@ -176,7 +208,20 @@ const JobSeek: React.FC = () => {
                     ))}
                 </div>
               </div>
-              <div className="skills-container">
+              <div onClick={() => setSSCOpen(!isSSCOpen)} className="open-more">
+                <span>{isSSCOpen ? "Close" : "Open more"}</span>
+              </div>
+              <div
+                ref={TSCContentRef}
+                className="skills-container collapsible"
+                style={{
+                  height: isTSCOpen ? `${TSCHeight}px` : "380px",
+                  opacity: isTSCOpen ? 1 : 1,
+                  width: "75%",
+                  overflow: "hidden",
+                  transition: "height 0.5s ease-out, opacity 1s ease-out",
+                }}
+              >
                 <div className="title">
                   <span className="skills-type">Frameworks</span>
                   <span className="search">Поиск</span>
@@ -195,6 +240,9 @@ const JobSeek: React.FC = () => {
                       </div>
                     ))}
                 </div>
+              </div>
+              <div onClick={() => setTSCOpen(!isTSCOpen)} className="open-more">
+                <span>{isTSCOpen ? "Close" : "Open more"}</span>
               </div>
             </div>
           </div>
