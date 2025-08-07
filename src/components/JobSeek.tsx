@@ -14,15 +14,16 @@ const JobSeek: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
 
-  const [isOpen, setIsOpen] = React.useState<boolean>(false);
-  const [height, setHeight] = React.useState<number>(340);
-  const contentRef = React.useRef<HTMLDivElement>(null);
+  // fsc - firstSkillsContainer
+  const [isFSCOpen, setFSCOpen] = React.useState<boolean>(false);
+  const [FSCHeight, setFSCHeight] = React.useState<number>(340);
+  const FSCContentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    if (contentRef.current) {
-      setHeight(contentRef.current.scrollHeight); // Вычисляем высоту содержимого
+    if (FSCContentRef.current) {
+      setFSCHeight(FSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
     }
-  }, [isOpen]);
+  }, [isFSCOpen]);
 
   React.useEffect(() => {
     const getSkills = async () => {
@@ -123,11 +124,11 @@ const JobSeek: React.FC = () => {
               </div>
               <div className="info"></div>
               <div
-                ref={contentRef}
+                ref={FSCContentRef}
                 className="skills-container collapsible"
                 style={{
-                  height: isOpen ? `${height}px` : "370px",
-                  opacity: isOpen ? 1 : 1,
+                  height: isFSCOpen ? `${FSCHeight}px` : "370px",
+                  opacity: isFSCOpen ? 1 : 1,
                   width: "75%",
                   overflow: "hidden",
                   transition: "height 0.3s ease-out, opacity 1s ease-out",
@@ -152,9 +153,8 @@ const JobSeek: React.FC = () => {
                     ))}
                 </div>
               </div>
-              <div onClick={() => setIsOpen(!isOpen)} className="open-more">
-                <span>{isOpen ? "Свернуть" : "Открыть еще"}</span>
-                <img className="arrow" src={arrowOpenMore} />
+              <div onClick={() => setFSCOpen(!isFSCOpen)} className="open-more">
+                <span>{isFSCOpen ? "Close" : "Open more"}</span>
               </div>
               <div className="skills-container">
                 <div className="title">
