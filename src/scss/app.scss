@@ -649,35 +649,6 @@ hr {
       }
     }
 
-    // .collapsible {
-    //   transition: height 0.3s ease-out, opacity 0.3s ease-out;
-    // }
-
-    .open-more {
-      display: flex;
-      flex-direction: column;
-      align-self: center;
-      margin-bottom: 50px;
-      text-transform: lowercase;
-      color: #777777;
-      font-size: 15px;
-      font-weight: 400;
-
-      cursor: pointer;
-
-      span {
-        border-bottom: 3px dotted #777777;
-      }
-    }
-
-    .arrow {
-      margin-top: 5px;
-      width: 15px;
-      height: 15px;
-      display: flex;
-      align-self: center;
-    }
-
     .bottom-img {
       position: absolute;
       bottom: 0;
@@ -1261,6 +1232,35 @@ hr {
       }
     }
   }
+}
+
+.collapsible {
+  transition: height 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.open-more {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-bottom: 50px;
+  text-transform: lowercase;
+  color: #777777;
+  font-size: 15px;
+  font-weight: 400;
+
+  cursor: pointer;
+
+  span {
+    border-bottom: 3px dotted #777777;
+  }
+}
+
+.arrow {
+  margin-top: 5px;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  align-self: center;
 }
 
 .jobseek-main {

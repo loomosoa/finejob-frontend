@@ -3,6 +3,7 @@ import React from "react";
 // import vacResFields2 from "../assets/imgs/vac_res_fields.png";
 import vacResArrow from "../assets/imgs/vac_res_arrow.svg";
 import selectImg from "../assets/imgs/select_img.svg";
+import arrowOpenMore from "../assets/imgs/arrow_down.svg";
 import axios from "axios";
 
 const JobSeek: React.FC = () => {
@@ -12,6 +13,16 @@ const JobSeek: React.FC = () => {
 
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
+
+  const [isOpen, setIsOpen] = React.useState<boolean>(false);
+  const [height, setHeight] = React.useState<number>(340);
+  const contentRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (contentRef.current) {
+      setHeight(contentRef.current.scrollHeight); // Вычисляем высоту содержимого
+    }
+  }, [isOpen]);
 
   React.useEffect(() => {
     const getSkills = async () => {
@@ -110,7 +121,18 @@ const JobSeek: React.FC = () => {
                   <div className="title">Навыки</div>
                 </div>
               </div>
-              <div className="skills-container">
+              <div className="info"></div>
+              <div
+                ref={contentRef}
+                className="skills-container collapsible"
+                style={{
+                  height: isOpen ? `${height}px` : "370px",
+                  opacity: isOpen ? 1 : 1,
+                  width: "75%",
+                  overflow: "hidden",
+                  transition: "height 0.3s ease-out, opacity 1s ease-out",
+                }}
+              >
                 <div className="title">
                   <span className="skills-type">Languages</span>
                   <span className="search">Поиск...</span>
@@ -129,6 +151,10 @@ const JobSeek: React.FC = () => {
                       </div>
                     ))}
                 </div>
+              </div>
+              <div onClick={() => setIsOpen(!isOpen)} className="open-more">
+                <span>{isOpen ? "Свернуть" : "Открыть еще"}</span>
+                <img className="arrow" src={arrowOpenMore} />
               </div>
               <div className="skills-container">
                 <div className="title">
