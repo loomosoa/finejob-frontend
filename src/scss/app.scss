@@ -1290,7 +1290,7 @@ hr {
   align-self: center;
   height: 250px;
   background: #e9be79;
-  margin: 30px 0 200px;
+  margin: 30px 0 140px;
   border-radius: 20px;
   align-items: center;
 
@@ -1316,14 +1316,18 @@ hr {
   }
 
   .input-from-to {
+    padding: 0 15px;
     height: 37px;
-    width: 100px;
+    width: 80px;
+    font-size: 18px;
     border-radius: 10px;
     background: #fff;
     border: none;
+    color: #8b8b8b;
 
     &:focus {
       border: none;
+      outline: none;
     }
   }
 
@@ -1352,6 +1356,58 @@ hr {
   .payment-selection-arrow {
     display: flex;
     margin-left: 7px;
+  }
+}
+
+.payment-submit-container {
+  display: flex;
+  align-self: center;
+  margin: 0 0 140px 0;
+
+  .submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 250px;
+    height: 60px;
+    background: #00ff99;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 20px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .email {
+    width: 500px;
+    border: none;
+    background: #d9ff00;
+    color: #adcc01;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    font-size: 20px;
+
+    &:focus {
+      outline: none;
+      // padding: 0 20px;
+    }
+
+    &::placeholder {
+      padding-left: 20px;
+      color: #adcc01;
+      font-size: 19px;
+      font-weight: 700;
+      text-align: center;
+      font-family: "Montserrat", sans-serif;
+    }
   }
 }
 
@@ -1477,12 +1533,12 @@ hr {
     }
 
     .skills-container {
-      width: 67%;
+      width: 85%;
       // background: green;
       display: flex;
       flex-direction: column;
       align-self: center;
-      margin: 70px 0 45px;
+      margin: 40px 0 45px;
 
       .title {
         margin: 18px 0;
@@ -1530,6 +1586,8 @@ hr {
       }
 
       .element {
+        max-width: 120px;
+        overflow-wrap: break-word;
         border: 1px solid #1b1b1b;
         padding: 10px 25px;
         border-radius: 10px;

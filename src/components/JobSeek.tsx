@@ -18,7 +18,7 @@ const JobSeek: React.FC = () => {
 
   // FSC: FirstSkillsContainer
   const [isFSCOpen, setFSCOpen] = React.useState<boolean>(false);
-  const [FSCHeight, setFSCHeight] = React.useState<number>(380);
+  const [FSCHeight, setFSCHeight] = React.useState<number>(365);
   const FSCContentRef = React.useRef<HTMLDivElement>(null);
 
   //SSC: SecondSkillsContainer
@@ -28,7 +28,7 @@ const JobSeek: React.FC = () => {
 
   //TSC: ThirdSkillsContainer
   const [isTSCOpen, setTSCOpen] = React.useState<boolean>(false);
-  const [TSCHeight, setTSCHeight] = React.useState<number>(380);
+  const [TSCHeight, setTSCHeight] = React.useState<number>(360);
   const TSCContentRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
@@ -151,15 +151,14 @@ const JobSeek: React.FC = () => {
                 ref={FSCContentRef}
                 className="skills-container collapsible"
                 style={{
-                  height: isFSCOpen ? `${FSCHeight}px` : "380px",
+                  height: isFSCOpen ? `${FSCHeight}px` : "365px",
                   opacity: isFSCOpen ? 1 : 1,
-                  width: "75%",
                   overflow: "hidden",
                   transition: "height 0.3s ease-out, opacity 1s ease-out",
                 }}
               >
                 <div className="title">
-                  <span className="skills-type">Languages</span>
+                  <span className="skills-type">Языки</span>
                   <span className="search">Поиск...</span>
                 </div>
                 <div className="skills-grid">
@@ -186,13 +185,12 @@ const JobSeek: React.FC = () => {
                 style={{
                   height: isSSCOpen ? `${SSCHeight}px` : "380px",
                   opacity: isSSCOpen ? 1 : 1,
-                  width: "75%",
                   overflow: "hidden",
                   transition: "height 0.5s ease-out, opacity 1s ease-out",
                 }}
               >
                 <div className="title">
-                  <span className="skills-type">Technologies</span>
+                  <span className="skills-type">Технологии</span>
                   <span className="search">Поиск</span>
                 </div>
                 <div className="skills-grid">
@@ -217,15 +215,14 @@ const JobSeek: React.FC = () => {
                 ref={TSCContentRef}
                 className="skills-container collapsible"
                 style={{
-                  height: isTSCOpen ? `${TSCHeight}px` : "380px",
+                  height: isTSCOpen ? `${TSCHeight}px` : "360px",
                   opacity: isTSCOpen ? 1 : 1,
-                  width: "75%",
                   overflow: "hidden",
                   transition: "height 0.5s ease-out, opacity 1s ease-out",
                 }}
               >
                 <div className="title">
-                  <span className="skills-type">Frameworks</span>
+                  <span className="skills-type">Фреймворки</span>
                   <span className="search">Поиск</span>
                 </div>
                 <div className="skills-grid">
@@ -275,9 +272,16 @@ const JobSeek: React.FC = () => {
                   />
                 </div>
               </div>
+              <div className="payment-submit-container">
+                <div className="submit-btn">submit</div>
+                <input
+                  className="email"
+                  name="ps-email"
+                  placeholder="Добавить e-mail для откликов"
+                />
+              </div>
             </div>
           </div>
-          JobSeek
         </div>
       </div>
     </>
