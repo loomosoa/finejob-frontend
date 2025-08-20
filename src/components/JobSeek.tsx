@@ -18,26 +18,32 @@ const JobSeek: React.FC = () => {
   const [error, setError] = React.useState<string | null>(null);
 
   // FSC: FirstSkillsContainer
-  const [isFSCOpen, setFSCOpen] = React.useState<boolean>(false);
-  const [FSCHeight, setFSCHeight] = React.useState<number>(365);
-  const FSCContentRef = React.useRef<HTMLDivElement>(null);
+  // const [isFSCOpen, setFSCOpen] = React.useState<boolean>(false);
+  // const [FSCHeight, setFSCHeight] = React.useState<number>(365);
+  // const FSCContentRef = React.useRef<HTMLDivElement>(null);
 
   //SSC: SecondSkillsContainer
-  const [isSSCOpen, setSSCOpen] = React.useState<boolean>(false);
-  const [SSCHeight, setSSCHeight] = React.useState<number>(380);
-  const SSCContentRef = React.useRef<HTMLDivElement>(null);
+  // const [isSSCOpen, setSSCOpen] = React.useState<boolean>(false);
+  // const [SSCHeight, setSSCHeight] = React.useState<number>(380);
+  // const SSCContentRef = React.useRef<HTMLDivElement>(null);
 
   //TSC: ThirdSkillsContainer
-  const [isTSCOpen, setTSCOpen] = React.useState<boolean>(false);
-  const [TSCHeight, setTSCHeight] = React.useState<number>(360);
-  const TSCContentRef = React.useRef<HTMLDivElement>(null);
+  // const [isTSCOpen, setTSCOpen] = React.useState<boolean>(false);
+  // const [TSCHeight, setTSCHeight] = React.useState<number>(360);
+  // const TSCContentRef = React.useRef<HTMLDivElement>(null);
 
   // Selected languages (for toggling the skill-checked image)
-  const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(new Set());
+  const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(
+    new Set()
+  );
   // Selected technologies
-  const [selectedTechs, setSelectedTechs] = React.useState<Set<string>>(new Set());
+  const [selectedTechs, setSelectedTechs] = React.useState<Set<string>>(
+    new Set()
+  );
   // Selected frameworks
-  const [selectedFrameworks, setSelectedFrameworks] = React.useState<Set<string>>(new Set());
+  const [selectedFrameworks, setSelectedFrameworks] = React.useState<
+    Set<string>
+  >(new Set());
 
   const toggleLang = (lang: string) => {
     setSelectedLangs((prev) => {
@@ -75,23 +81,23 @@ const JobSeek: React.FC = () => {
     });
   };
 
-  React.useEffect(() => {
-    if (FSCContentRef.current) {
-      setFSCHeight(FSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
-    }
-  }, [isFSCOpen]);
+  // React.useEffect(() => {
+  //   if (FSCContentRef.current) {
+  //     setFSCHeight(FSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
+  //   }
+  // }, [isFSCOpen]);
 
-  React.useEffect(() => {
-    if (SSCContentRef.current) {
-      setSSCHeight(SSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
-    }
-  }, [isSSCOpen]);
+  // React.useEffect(() => {
+  //   if (SSCContentRef.current) {
+  //     setSSCHeight(SSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
+  //   }
+  // }, [isSSCOpen]);
 
-  React.useEffect(() => {
-    if (TSCContentRef.current) {
-      setTSCHeight(TSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
-    }
-  }, [isTSCOpen]);
+  // React.useEffect(() => {
+  //   if (TSCContentRef.current) {
+  //     setTSCHeight(TSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
+  //   }
+  // }, [isTSCOpen]);
 
   React.useEffect(() => {
     const getSkills = async () => {
@@ -192,14 +198,14 @@ const JobSeek: React.FC = () => {
               </div>
               <div className="info"></div>
               <div
-                ref={FSCContentRef}
+                // ref={FSCContentRef}
                 className="skills-container collapsible"
-                style={{
-                  height: isFSCOpen ? `${FSCHeight}px` : "365px",
-                  opacity: isFSCOpen ? 1 : 1,
-                  overflow: "hidden",
-                  transition: "height 0.3s ease-out, opacity 1s ease-out",
-                }}
+                // style={{
+                //   height: isFSCOpen ? `${FSCHeight}px` : "365px",
+                //   opacity: isFSCOpen ? 1 : 1,
+                //   overflow: "hidden",
+                //   transition: "height 0.3s ease-out, opacity 1s ease-out",
+                // }}
               >
                 <div className="title">
                   <span className="skills-type">Языки</span>
@@ -217,7 +223,10 @@ const JobSeek: React.FC = () => {
                         >
                           <div className="checkbox">
                             {selectedLangs.has(lang) && (
-                              <img src={skillCheckedImg} className="skill-checked" />
+                              <img
+                                src={skillCheckedImg}
+                                className="skill-checked"
+                              />
                             )}
                             <img src={selectImg} className="skill-select" />
                           </div>
@@ -228,18 +237,18 @@ const JobSeek: React.FC = () => {
                     ))}
                 </div>
               </div>
-              <div onClick={() => setFSCOpen(!isFSCOpen)} className="open-more">
+              {/* <div onClick={() => setFSCOpen(!isFSCOpen)} className="open-more">
                 <span>{isFSCOpen ? "Close" : "Open more"}</span>
-              </div>
+              </div> */}
               <div
-                ref={SSCContentRef}
+                // ref={SSCContentRef}
                 className="skills-container collapsible"
-                style={{
-                  height: isSSCOpen ? `${SSCHeight}px` : "380px",
-                  opacity: isSSCOpen ? 1 : 1,
-                  overflow: "hidden",
-                  transition: "height 0.5s ease-out, opacity 1s ease-out",
-                }}
+                // style={{
+                //   height: isSSCOpen ? `${SSCHeight}px` : "380px",
+                //   opacity: isSSCOpen ? 1 : 1,
+                //   overflow: "hidden",
+                //   transition: "height 0.5s ease-out, opacity 1s ease-out",
+                // }}
               >
                 <div className="title">
                   <span className="skills-type">Технологии</span>
@@ -257,7 +266,10 @@ const JobSeek: React.FC = () => {
                         >
                           <div className="checkbox">
                             {selectedTechs.has(tech) && (
-                              <img src={skillCheckedImg} className="skill-checked" />
+                              <img
+                                src={skillCheckedImg}
+                                className="skill-checked"
+                              />
                             )}
                             <img src={selectImg} className="skill-select" />
                           </div>
@@ -268,18 +280,18 @@ const JobSeek: React.FC = () => {
                     ))}
                 </div>
               </div>
-              <div onClick={() => setSSCOpen(!isSSCOpen)} className="open-more">
+              {/* <div onClick={() => setSSCOpen(!isSSCOpen)} className="open-more">
                 <span>{isSSCOpen ? "Close" : "Open more"}</span>
-              </div>
+              </div> */}
               <div
-                ref={TSCContentRef}
+                // ref={TSCContentRef}
                 className="skills-container collapsible"
-                style={{
-                  height: isTSCOpen ? `${TSCHeight}px` : "360px",
-                  opacity: isTSCOpen ? 1 : 1,
-                  overflow: "hidden",
-                  transition: "height 0.5s ease-out, opacity 1s ease-out",
-                }}
+                // style={{
+                //   height: isTSCOpen ? `${TSCHeight}px` : "360px",
+                //   opacity: isTSCOpen ? 1 : 1,
+                //   overflow: "hidden",
+                //   transition: "height 0.5s ease-out, opacity 1s ease-out",
+                // }}
               >
                 <div className="title">
                   <span className="skills-type">Фреймворки</span>
@@ -297,7 +309,10 @@ const JobSeek: React.FC = () => {
                         >
                           <div className="checkbox">
                             {selectedFrameworks.has(framework) && (
-                              <img src={skillCheckedImg} className="skill-checked" />
+                              <img
+                                src={skillCheckedImg}
+                                className="skill-checked"
+                              />
                             )}
                             <img src={selectImg} className="skill-select" />
                           </div>
@@ -308,9 +323,9 @@ const JobSeek: React.FC = () => {
                     ))}
                 </div>
               </div>
-              <div onClick={() => setTSCOpen(!isTSCOpen)} className="open-more">
+              {/* <div onClick={() => setTSCOpen(!isTSCOpen)} className="open-more">
                 <span>{isTSCOpen ? "Close" : "Open more"}</span>
-              </div>
+              </div> */}
               <div className="vac-res-payment-container">
                 <span className="payment-title">Оплата</span>
                 <span className="title-from-to">От</span>
