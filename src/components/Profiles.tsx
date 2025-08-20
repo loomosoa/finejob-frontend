@@ -7,10 +7,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../redux/store";
 import { filterSelector, setTotalPages } from "../redux/slices/filterSlice";
 
-import progLangSq from "../assets/imgs/prog_lang_sq.png";
-import techsSq from "../assets/imgs/techs-sq.png";
-import framewrksSq from "../assets/imgs/frameworks-sq.png";
-import otherSkilsSq from "../assets/imgs/otherskills-sq.png";
+import progLangSq from "../assets/imgs/prog_lang_sq.svg";
+import techsSq from "../assets/imgs/techs-sq.svg";
+import framewrksSq from "../assets/imgs/frameworks-sq.svg";
+import otherSkilsSq from "../assets/imgs/otherskills-sq.svg";
 import rocket from "../assets/imgs/rocket.png";
 import arrowCurrency from "../assets/imgs/pc_arrow_currency.svg";
 import dashColorsImg from "../assets/imgs/dash-content-bottom-img.png";
