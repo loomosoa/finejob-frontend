@@ -5,6 +5,7 @@ import vacResArrow from "../assets/imgs/vac_res_arrow.svg";
 import selectImg from "../assets/imgs/select_img.svg";
 import paymentTypeArrow from "../assets/imgs/payment_type_arrow.svg";
 import paymentSelectionArrow from "../assets/imgs/payment_selection_arrow.svg";
+import skillCheckedImg from "../assets/imgs/skill_checked.png";
 
 import axios from "axios";
 
@@ -168,7 +169,11 @@ const JobSeek: React.FC = () => {
                     langs.map((lang: string) => (
                       <div className="item" key={lang}>
                         <div className="checkbox">
-                          <img src={selectImg} />
+                          <img
+                            src={skillCheckedImg}
+                            className="skill-checked"
+                          />
+                          <img src={selectImg} className="skill-select" />
                         </div>
                         <div className="element">{lang}</div>
                         <div className="grade">Any</div>

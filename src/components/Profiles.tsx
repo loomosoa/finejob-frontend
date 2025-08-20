@@ -226,7 +226,9 @@ const Profiles: React.FC = () => {
                                 </Tippy>
                               </>
                             )}
-                            {i != 0 && ` (${lang.skillCount}%)`}
+                            <span className="item-percentage">
+                              {i != 0 && ` (${lang.skillCount}%)`}
+                            </span>
                             {/* {lang.skillCount} */}
                           </li>
                         ))}
@@ -244,7 +246,11 @@ const Profiles: React.FC = () => {
                       <ul>
                         {profile?.technologies.map((tech, i) => (
                           <li key={i}>
-                            {tech.skill} ({tech.skillCount}%)
+                            {tech.skill}{" "}
+                            <span className="item-percentage">
+                              {" "}
+                              ({tech.skillCount}%)
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -259,7 +265,10 @@ const Profiles: React.FC = () => {
                       <ul>
                         {profile?.frameworks.map((framework, i) => (
                           <li key={i}>
-                            {framework.skill} ({framework.skillCount}%)
+                            {framework.skill}{" "}
+                            <span className="item-percentage">
+                              ({framework.skillCount}%){" "}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -274,7 +283,11 @@ const Profiles: React.FC = () => {
                       <ul>
                         {profile?.other_skills.map((skill, i) => (
                           <li key={i}>
-                            {skill.skill} ({skill.skillCount}%)
+                            {skill.skill}{" "}
+                            <span className="item-percentage">
+                              {" "}
+                              ({skill.skillCount}%)
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -294,10 +307,13 @@ const Profiles: React.FC = () => {
                         </div>
                         <div ref={currencyRef} className="frames">
                           <div className="left-frame">
-                            {
-                              profile?.profile_revenue[revenueCurrency.current]
-                                .amount
-                            }
+                            <span className="payment-amount">
+                              {
+                                profile?.profile_revenue[
+                                  revenueCurrency.current
+                                ].amount
+                              }
+                            </span>
                           </div>
                           <div
                             className="right-frame"
