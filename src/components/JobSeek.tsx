@@ -32,6 +32,49 @@ const JobSeek: React.FC = () => {
   const [TSCHeight, setTSCHeight] = React.useState<number>(360);
   const TSCContentRef = React.useRef<HTMLDivElement>(null);
 
+  // Selected languages (for toggling the skill-checked image)
+  const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(new Set());
+  // Selected technologies
+  const [selectedTechs, setSelectedTechs] = React.useState<Set<string>>(new Set());
+  // Selected frameworks
+  const [selectedFrameworks, setSelectedFrameworks] = React.useState<Set<string>>(new Set());
+
+  const toggleLang = (lang: string) => {
+    setSelectedLangs((prev) => {
+      const next = new Set(prev);
+      if (next.has(lang)) {
+        next.delete(lang);
+      } else {
+        next.add(lang);
+      }
+      return next;
+    });
+  };
+
+  const toggleTech = (tech: string) => {
+    setSelectedTechs((prev) => {
+      const next = new Set(prev);
+      if (next.has(tech)) {
+        next.delete(tech);
+      } else {
+        next.add(tech);
+      }
+      return next;
+    });
+  };
+
+  const toggleFramework = (fw: string) => {
+    setSelectedFrameworks((prev) => {
+      const next = new Set(prev);
+      if (next.has(fw)) {
+        next.delete(fw);
+      } else {
+        next.add(fw);
+      }
+      return next;
+    });
+  };
+
   React.useEffect(() => {
     if (FSCContentRef.current) {
       setFSCHeight(FSCContentRef.current.scrollHeight); // Вычисляем высоту содержимого
@@ -168,14 +211,18 @@ const JobSeek: React.FC = () => {
                   {langs &&
                     langs.map((lang: string) => (
                       <div className="item" key={lang}>
-                        <div className="checkbox">
-                          <img
-                            src={skillCheckedImg}
-                            className="skill-checked"
-                          />
-                          <img src={selectImg} className="skill-select" />
+                        <div
+                          className="item-clickable"
+                          onClick={() => toggleLang(lang)}
+                        >
+                          <div className="checkbox">
+                            {selectedLangs.has(lang) && (
+                              <img src={skillCheckedImg} className="skill-checked" />
+                            )}
+                            <img src={selectImg} className="skill-select" />
+                          </div>
+                          <div className="element">{lang}</div>
                         </div>
-                        <div className="element">{lang}</div>
                         <div className="grade">Any</div>
                       </div>
                     ))}
@@ -204,10 +251,18 @@ const JobSeek: React.FC = () => {
                   {techs &&
                     techs.map((tech: string) => (
                       <div className="item" key={tech}>
-                        <div className="checkbox">
-                          <img src={selectImg} />
+                        <div
+                          className="item-clickable"
+                          onClick={() => toggleTech(tech)}
+                        >
+                          <div className="checkbox">
+                            {selectedTechs.has(tech) && (
+                              <img src={skillCheckedImg} className="skill-checked" />
+                            )}
+                            <img src={selectImg} className="skill-select" />
+                          </div>
+                          <div className="element">{tech}</div>
                         </div>
-                        <div className="element">{tech}</div>
                         <div className="grade">Any</div>
                       </div>
                     ))}
@@ -236,10 +291,18 @@ const JobSeek: React.FC = () => {
                   {frameworks &&
                     frameworks.map((framework: string) => (
                       <div className="item" key={framework}>
-                        <div className="checkbox">
-                          <img src={selectImg} />
+                        <div
+                          className="item-clickable"
+                          onClick={() => toggleFramework(framework)}
+                        >
+                          <div className="checkbox">
+                            {selectedFrameworks.has(framework) && (
+                              <img src={skillCheckedImg} className="skill-checked" />
+                            )}
+                            <img src={selectImg} className="skill-select" />
+                          </div>
+                          <div className="element">{framework}</div>
                         </div>
-                        <div className="element">{framework}</div>
                         <div className="grade">Any</div>
                       </div>
                     ))}

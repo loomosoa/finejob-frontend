@@ -1456,6 +1456,11 @@ hr {
     flex-direction: column;
     padding-top: 85px;
 
+    .item-clickable {
+      display: flex;
+      align-items: center;
+    }
+
     .dash-field {
       position: relative;
       display: flex;
