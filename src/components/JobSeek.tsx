@@ -129,173 +129,177 @@ const JobSeek: React.FC = () => {
       <div className="jobseek-wrapper">
         <div className="container">
           <div className="dash-frame">
-            <div className="dash-frame-inner">
-              <div className="dash-field">
-                <div className="title-wrapper">
-                  <div className="title">Создать</div>
+            <form action="">
+              <div className="dash-frame-inner">
+                <div className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">Создать</div>
+                  </div>
+                  <div id="selectVacRes" className="field">
+                    Вакансию | Резюме{" "}
+                    <img className="vac-res-arrow" src={vacResArrow} />
+                  </div>
                 </div>
-                <div id="selectVacRes" className="field">
-                  Вакансию | Резюме{" "}
-                  <img className="vac-res-arrow" src={vacResArrow} />
+                <div className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">Заголовок</div>
+                  </div>
+                  <div className="field-wrapper">
+                    <input className="field" name="title" />
+                    <div className="under-label">140 символов</div>
+                  </div>
                 </div>
-              </div>
-              <div className="dash-field">
-                <div className="title-wrapper">
-                  <div className="title">Заголовок</div>
+                <div id="vas-res-description" className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">Описание</div>
+                  </div>
+                  <div className="field-wrapper">
+                    <textarea className="field" name="description" />
+                    <div className="under-label">280 символов</div>
+                  </div>
                 </div>
-                <div className="field-wrapper">
-                  <input className="field" name="title" />
-                  <div className="under-label">140 символов</div>
+                <div id="vac-res-skills" className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">Навыки</div>
+                  </div>
                 </div>
-              </div>
-              <div id="vas-res-description" className="dash-field">
-                <div className="title-wrapper">
-                  <div className="title">Описание</div>
-                </div>
-                <div className="field-wrapper">
-                  <textarea className="field" name="title" />
-                  <div className="under-label">280 символов</div>
-                </div>
-              </div>
-              <div id="vac-res-skills" className="dash-field">
-                <div className="title-wrapper">
-                  <div className="title">Навыки</div>
-                </div>
-              </div>
-              <div className="info"></div>
-              <div className="skills-container collapsible">
-                <div className="title">
-                  <span className="skills-type">Языки</span>
-                  <span className="search">Поиск...</span>
-                </div>
-                <div className="skills-grid">
-                  {loading && <p>Загрузка...</p>}
-                  {error && <p>{error}</p>}
-                  {langs &&
-                    langs.map((lang: string) => (
-                      <div className="item" key={lang}>
-                        <div
-                          className="item-clickable"
-                          onClick={() => toggleLang(lang)}
-                        >
-                          <div className="checkbox">
-                            {selectedLangs.has(lang) && (
-                              <img
-                                src={skillCheckedImg}
-                                className="skill-checked"
-                              />
-                            )}
-                            <img src={selectImg} className="skill-select" />
+                <div className="info"></div>
+                <div className="skills-container collapsible">
+                  <div className="title">
+                    <span className="skills-type">Языки</span>
+                    <span className="search">Поиск...</span>
+                  </div>
+                  <div className="skills-grid">
+                    {loading && <p>Загрузка...</p>}
+                    {error && <p>{error}</p>}
+                    {langs &&
+                      langs.map((lang: string) => (
+                        <div className="item" key={lang}>
+                          <div
+                            className="item-clickable"
+                            onClick={() => toggleLang(lang)}
+                          >
+                            <div className="checkbox">
+                              {selectedLangs.has(lang) && (
+                                <img
+                                  src={skillCheckedImg}
+                                  className="skill-checked"
+                                />
+                              )}
+                              <img src={selectImg} className="skill-select" />
+                            </div>
+                            <div className="element">{lang}</div>
                           </div>
-                          <div className="element">{lang}</div>
+                          <div className="grade">Any</div>
                         </div>
-                        <div className="grade">Any</div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="skills-container collapsible">
-                <div className="title">
-                  <span className="skills-type">Технологии</span>
-                  <span className="search">Поиск</span>
-                </div>
-                <div className="skills-grid">
-                  {loading && <p>Загрузка...</p>}
-                  {error && <p>{error}</p>}
-                  {techs &&
-                    techs.map((tech: string) => (
-                      <div className="item" key={tech}>
-                        <div
-                          className="item-clickable"
-                          onClick={() => toggleTech(tech)}
-                        >
-                          <div className="checkbox">
-                            {selectedTechs.has(tech) && (
-                              <img
-                                src={skillCheckedImg}
-                                className="skill-checked"
-                              />
-                            )}
-                            <img src={selectImg} className="skill-select" />
+                <div className="skills-container collapsible">
+                  <div className="title">
+                    <span className="skills-type">Технологии</span>
+                    <span className="search">Поиск</span>
+                  </div>
+                  <div className="skills-grid">
+                    {loading && <p>Загрузка...</p>}
+                    {error && <p>{error}</p>}
+                    {techs &&
+                      techs.map((tech: string) => (
+                        <div className="item" key={tech}>
+                          <div
+                            className="item-clickable"
+                            onClick={() => toggleTech(tech)}
+                          >
+                            <div className="checkbox">
+                              {selectedTechs.has(tech) && (
+                                <img
+                                  src={skillCheckedImg}
+                                  className="skill-checked"
+                                />
+                              )}
+                              <img src={selectImg} className="skill-select" />
+                            </div>
+                            <div className="element">{tech}</div>
                           </div>
-                          <div className="element">{tech}</div>
+                          <div className="grade">Any</div>
                         </div>
-                        <div className="grade">Any</div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
 
-              <div className="skills-container collapsible">
-                <div className="title">
-                  <span className="skills-type">Фреймворки</span>
-                  <span className="search">Поиск</span>
-                </div>
-                <div className="skills-grid">
-                  {loading && <p>Загрузка...</p>}
-                  {error && <p>{error}</p>}
-                  {frameworks &&
-                    frameworks.map((framework: string) => (
-                      <div className="item" key={framework}>
-                        <div
-                          className="item-clickable"
-                          onClick={() => toggleFramework(framework)}
-                        >
-                          <div className="checkbox">
-                            {selectedFrameworks.has(framework) && (
-                              <img
-                                src={skillCheckedImg}
-                                className="skill-checked"
-                              />
-                            )}
-                            <img src={selectImg} className="skill-select" />
+                <div className="skills-container collapsible">
+                  <div className="title">
+                    <span className="skills-type">Фреймворки</span>
+                    <span className="search">Поиск</span>
+                  </div>
+                  <div className="skills-grid">
+                    {loading && <p>Загрузка...</p>}
+                    {error && <p>{error}</p>}
+                    {frameworks &&
+                      frameworks.map((framework: string) => (
+                        <div className="item" key={framework}>
+                          <div
+                            className="item-clickable"
+                            onClick={() => toggleFramework(framework)}
+                          >
+                            <div className="checkbox">
+                              {selectedFrameworks.has(framework) && (
+                                <img
+                                  src={skillCheckedImg}
+                                  className="skill-checked"
+                                />
+                              )}
+                              <img src={selectImg} className="skill-select" />
+                            </div>
+                            <div className="element">{framework}</div>
                           </div>
-                          <div className="element">{framework}</div>
+                          <div className="grade">Any</div>
                         </div>
-                        <div className="grade">Any</div>
-                      </div>
-                    ))}
+                      ))}
+                  </div>
                 </div>
-              </div>
-              <div className="vac-res-payment-container">
-                <span className="payment-title">Оплата</span>
-                <span className="title-from-to">От</span>
-                <input name="payment-from" className="input-from-to" />
-                <span className="title-from-to title-to">До</span>
-                <input name="payment-to" className="input-from-to" />
-                <img src={paymentTypeArrow} className="payment-type-arrow" />
-                <div className="first-ps payment-selection">
-                  в месяц
-                  <img
-                    src={paymentSelectionArrow}
-                    className="payment-selection-arrow"
+                <div className="vac-res-payment-container">
+                  <span className="payment-title">Оплата</span>
+                  <span className="title-from-to">От</span>
+                  <input name="payment-from" className="input-from-to" />
+                  <span className="title-from-to title-to">До</span>
+                  <input name="payment-to" className="input-from-to" />
+                  <img src={paymentTypeArrow} className="payment-type-arrow" />
+                  <div className="first-ps payment-selection">
+                    в месяц
+                    <img
+                      src={paymentSelectionArrow}
+                      className="payment-selection-arrow"
+                    />
+                  </div>
+                  <div className="payment-selection">
+                    на руки
+                    <img
+                      src={paymentSelectionArrow}
+                      className="payment-selection-arrow"
+                    />
+                  </div>
+                  <div className="payment-selection">
+                    валюта
+                    <img
+                      src={paymentSelectionArrow}
+                      className="payment-selection-arrow"
+                    />
+                  </div>
+                </div>
+                <div className="payment-submit-container">
+                  <button type="submit" className="submit-btn">
+                    submit
+                  </button>
+                  <input
+                    className="email"
+                    name="email"
+                    placeholder="Добавить e-mail для откликов"
                   />
                 </div>
-                <div className="payment-selection">
-                  на руки
-                  <img
-                    src={paymentSelectionArrow}
-                    className="payment-selection-arrow"
-                  />
-                </div>
-                <div className="payment-selection">
-                  валюта
-                  <img
-                    src={paymentSelectionArrow}
-                    className="payment-selection-arrow"
-                  />
-                </div>
               </div>
-              <div className="payment-submit-container">
-                <div className="submit-btn">submit</div>
-                <input
-                  className="email"
-                  name="ps-email"
-                  placeholder="Добавить e-mail для откликов"
-                />
-              </div>
-            </div>
+            </form>
           </div>
         </div>
       </div>
