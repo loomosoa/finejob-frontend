@@ -9,7 +9,28 @@ import skillCheckedImg from "../assets/imgs/skill_checked.png";
 
 import axios from "axios";
 
+import { useTranslation } from "react-i18next";
+
 const JobSeek: React.FC = () => {
+  const { t, i18n } = useTranslation();
+
+  const vacResItems = ["vacancy", "resume"];
+  const vacResRef = React.useRef<string>("vacancy|resume");
+
+  const [isVacResDropdownOpen, setVacResDropdown] =
+    React.useState<boolean>(false);
+
+  const toggleVacResDropdown = () => {
+    setVacResDropdown(!isVacResDropdownOpen);
+    // console.log(isVacResDropdownOpen);
+  };
+
+  const handleVacResSelect = (item: string) => {
+    vacResRef.current = item;
+    setVacResDropdown(false);
+    console.log(vacResRef.current);
+  };
+
   const [langs, setLangs] = React.useState<any[]>([]);
   const [techs, setTechs] = React.useState<any[]>([]);
   const [frameworks, setFrameworks] = React.useState<any[]>([]);
@@ -135,10 +156,23 @@ const JobSeek: React.FC = () => {
                   <div className="title-wrapper">
                     <div className="title">Создать</div>
                   </div>
-                  <div id="selectVacRes" className="field">
-                    Вакансию | Резюме{" "}
+                  <div
+                    id="selectVacRes"
+                    onClick={() => toggleVacResDropdown()}
+                    className="field"
+                  >
+                    {t(vacResRef.current)}
                     <img className="vac-res-arrow" src={vacResArrow} />
                   </div>
+                  {isVacResDropdownOpen && (
+                    <div className="vacResDropdown field">
+                      {vacResItems.map((item) => (
+                        <li key={item} onClick={() => handleVacResSelect(item)}>
+                          {t(item)}
+                        </li>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="dash-field">
                   <div className="title-wrapper">

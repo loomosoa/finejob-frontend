@@ -680,7 +680,8 @@ hr {
     background: #1b1b1b;
     border-radius: 5px;
     text-transform: uppercase;
-    color: #00fdff;
+    color: #fff;
+    // color: #00fdff;
     font-weight: 600;
     font-size: 19px;
     display: flex;
@@ -1480,6 +1481,7 @@ hr {
 
       #selectVacRes {
         cursor: pointer;
+        @include noselect();
       }
 
       .title {
@@ -1509,6 +1511,21 @@ hr {
         width: 453px;
         color: #1b1b1b;
         font-family: "Montserrat", sans-serif;
+      }
+
+      .vacResDropdown {
+        position: absolute;
+        width: 483px;
+        background: #fff;
+        list-style-type: none;
+        flex-direction: column;
+        top: 37px;
+        height: 120px;
+        z-index: 15;
+
+        li {
+          padding-bottom: 10px;
+        }
       }
 
       .vac-res-arrow {
