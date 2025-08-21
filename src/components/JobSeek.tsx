@@ -22,13 +22,11 @@ const JobSeek: React.FC = () => {
 
   const toggleVacResDropdown = () => {
     setVacResDropdown(!isVacResDropdownOpen);
-    // console.log(isVacResDropdownOpen);
   };
 
   const handleVacResSelect = (item: string) => {
     vacResRef.current = item;
     setVacResDropdown(false);
-    console.log(vacResRef.current);
   };
 
   const [langs, setLangs] = React.useState<any[]>([]);
