@@ -58,6 +58,8 @@ const JobSeek: React.FC = () => {
     setPaymentPeriodsDropdown(false);
   };
 
+  const paymentPeriodsRef = React.useRef<HTMLDivElement>(null);
+
   //Payment Type
   const paymentTypes = ["gross", "net"];
 
@@ -73,6 +75,8 @@ const JobSeek: React.FC = () => {
     setPaymentTypesDropdown(false);
   };
 
+  const paymentTypesRef = React.useRef<HTMLDivElement>(null);
+
   //Payment Currency
   const paymentCurrencies = ["USD", "RUB", "EUR"];
 
@@ -87,6 +91,8 @@ const JobSeek: React.FC = () => {
     dispatch(setPaymentCurrency(currency));
     setPaymentCurrenciesDropdown(false);
   };
+
+  const paymentCurrenciesRef = React.useRef<HTMLDivElement>(null);
 
   const [langs, setLangs] = React.useState<any[]>([]);
   const [techs, setTechs] = React.useState<any[]>([]);
@@ -196,6 +202,57 @@ const JobSeek: React.FC = () => {
     };
 
     getSkills();
+  }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = paymentPeriodsRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setPaymentPeriodsDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = paymentTypesRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setPaymentTypesDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = paymentCurrenciesRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setPaymentCurrenciesDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
   }, []);
 
   return (
@@ -358,6 +415,7 @@ const JobSeek: React.FC = () => {
                   <input name="payment-to" className="input-from-to" />
                   {/* <img src={paymentTypeArrow} className="payment-type-arrow" /> */}
                   <div
+                    ref={paymentPeriodsRef}
                     onClick={() => togglePaymentPeriodsDropdown()}
                     className="first-ps payment-selection"
                   >
@@ -381,6 +439,7 @@ const JobSeek: React.FC = () => {
                   </div>
 
                   <div
+                    ref={paymentTypesRef}
                     onClick={() => togglePaymentTypesDropdown()}
                     className="payment-selection"
                   >
@@ -403,6 +462,7 @@ const JobSeek: React.FC = () => {
                     )}
                   </div>
                   <div
+                    ref={paymentCurrenciesRef}
                     onClick={() => togglePaymentCurrenciesDropdown()}
                     className="payment-selection"
                   >
