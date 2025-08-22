@@ -4,11 +4,13 @@ import { useDispatch } from "react-redux";
 
 import filter from "./slices/filterSlice";
 import skills from "./slices/skillsSlice";
+import vacRes from "./slices/vacResSlice";
 
 export const store = configureStore({
   reducer: {
     filter,
     skills,
+    vacRes,
   },
 });
 

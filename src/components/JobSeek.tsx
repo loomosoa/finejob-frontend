@@ -7,11 +7,18 @@ import paymentTypeArrow from "../assets/imgs/payment_type_arrow.svg";
 import paymentSelectionArrow from "../assets/imgs/payment_selection_arrow.svg";
 import skillCheckedImg from "../assets/imgs/skill_checked.png";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { vacResSelector, setPaymentPeriod } from "../redux/slices/vacResSlice";
+
 import axios from "axios";
 
 import { useTranslation } from "react-i18next";
 
 const JobSeek: React.FC = () => {
+  const { paymentPeriod } = useSelector(vacResSelector);
+  const dispatch = useDispatch();
+
   const { t, i18n } = useTranslation();
 
   const vacResItems = ["vacancy", "resume"];
@@ -27,6 +34,20 @@ const JobSeek: React.FC = () => {
   const handleVacResSelect = (item: string) => {
     vacResRef.current = item;
     setVacResDropdown(false);
+  };
+
+  const paymentPeriods = ["month", "year", "hour"];
+
+  const [isPaymentPeriodsDropdownOpen, setPaymentPeriodsDropdown] =
+    React.useState<boolean>(false);
+
+  const togglePaymentPeriodsDropdown = () => {
+    setPaymentPeriodsDropdown(!isPaymentPeriodsDropdownOpen);
+  };
+
+  const selectPaymentPeriodDropdown = (period: string) => {
+    dispatch(setPaymentPeriod(period));
+    setPaymentPeriodsDropdown(false);
   };
 
   const [langs, setLangs] = React.useState<any[]>([]);
@@ -297,14 +318,30 @@ const JobSeek: React.FC = () => {
                   <input name="payment-from" className="input-from-to" />
                   <span className="title-from-to title-to">До</span>
                   <input name="payment-to" className="input-from-to" />
-                  <img src={paymentTypeArrow} className="payment-type-arrow" />
-                  <div className="first-ps payment-selection">
-                    в месяц
+                  {/* <img src={paymentTypeArrow} className="payment-type-arrow" /> */}
+                  <div
+                    onClick={() => togglePaymentPeriodsDropdown()}
+                    className="first-ps payment-selection"
+                  >
+                    {paymentPeriod}
                     <img
                       src={paymentSelectionArrow}
                       className="payment-selection-arrow"
                     />
                   </div>
+                  {isPaymentPeriodsDropdownOpen && (
+                    <div className="paymentPeriodsDropdown">
+                      {paymentPeriods.map((period) => (
+                        <li
+                          key={period}
+                          onClick={() => selectPaymentPeriodDropdown(period)}
+                        >
+                          {period}
+                        </li>
+                      ))}
+                    </div>
+                  )}
+
                   <div className="payment-selection">
                     на руки
                     <img
