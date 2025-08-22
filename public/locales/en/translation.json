@@ -27,5 +27,7 @@
   "vacancy|resume": "Vacancy|Resume",
   "month": "monthly",
   "year": "annual",
-  "hour": "hourly"
+  "hour": "hourly",
+  "gross": "gross",
+  "net": "net"
 }

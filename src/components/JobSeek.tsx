@@ -9,14 +9,17 @@ import skillCheckedImg from "../assets/imgs/skill_checked.png";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { vacResSelector, setPaymentPeriod } from "../redux/slices/vacResSlice";
+import {
+  vacResSelector,
+  setPaymentPeriod,
+  setPaymentType,
+} from "../redux/slices/vacResSlice";
 
 import axios from "axios";
 
 import { useTranslation } from "react-i18next";
 
 const JobSeek: React.FC = () => {
-  const { paymentPeriod } = useSelector(vacResSelector);
   const dispatch = useDispatch();
 
   const { t, i18n } = useTranslation();
@@ -36,6 +39,9 @@ const JobSeek: React.FC = () => {
     setVacResDropdown(false);
   };
 
+  const { paymentPeriod, paymentType } = useSelector(vacResSelector);
+
+  //Payment Periods
   const paymentPeriods = ["month", "year", "hour"];
 
   const [isPaymentPeriodsDropdownOpen, setPaymentPeriodsDropdown] =
@@ -48,6 +54,21 @@ const JobSeek: React.FC = () => {
   const selectPaymentPeriodDropdown = (period: string) => {
     dispatch(setPaymentPeriod(period));
     setPaymentPeriodsDropdown(false);
+  };
+
+  //Payment Type
+  const paymentTypes = ["gross", "net"];
+
+  const [isPaymentTypesDropdownOpen, setPaymentTypesDropdown] =
+    React.useState<boolean>(false);
+
+  const togglePaymentTypesDropdown = () => {
+    setPaymentTypesDropdown(!isPaymentTypesDropdownOpen);
+  };
+
+  const selectPaymentTypeDropdown = (type: string) => {
+    dispatch(setPaymentType(type));
+    setPaymentTypesDropdown(false);
   };
 
   const [langs, setLangs] = React.useState<any[]>([]);
@@ -329,7 +350,7 @@ const JobSeek: React.FC = () => {
                       className="payment-selection-arrow"
                     />
                     {isPaymentPeriodsDropdownOpen && (
-                      <div className="paymentPeriodsDropdown payment-selection">
+                      <div className="payment-area-dropdown payment-selection">
                         {paymentPeriods.map((period) => (
                           <li
                             key={period}
@@ -342,12 +363,27 @@ const JobSeek: React.FC = () => {
                     )}
                   </div>
 
-                  <div className="payment-selection">
-                    на руки
+                  <div
+                    onClick={() => togglePaymentTypesDropdown()}
+                    className="payment-selection"
+                  >
+                    {t(paymentType)}
                     <img
                       src={paymentSelectionArrow}
                       className="payment-selection-arrow"
                     />
+                    {isPaymentTypesDropdownOpen && (
+                      <div className="payment-area-dropdown payment-selection">
+                        {paymentTypes.map((type) => (
+                          <li
+                            key={type}
+                            onClick={() => selectPaymentTypeDropdown(type)}
+                          >
+                            {t(type)}
+                          </li>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <div className="payment-selection">
                     валюта
