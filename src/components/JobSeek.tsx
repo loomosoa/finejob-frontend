@@ -221,6 +221,37 @@ const JobSeek: React.FC = () => {
     };
   }, []);
 
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+
+    const payload = {
+      vacResRef: vacResRef.current,
+      title: (fd.get("title") as string) || "",
+      description: (fd.get("description") as string) || "",
+      selectedLangs: Array.from(selectedLangs),
+      selectedTech: Array.from(selectedTechs),
+      selectedFrameworks: Array.from(selectedFrameworks),
+      ["payment-from"]: (fd.get("payment-from") as string) || "",
+      ["payment-to"]: (fd.get("payment-to") as string) || "",
+      paymentPeriod,
+      paymentType,
+      paymentCurrency,
+      email: (fd.get("email") as string) || "",
+    };
+
+    try {
+      await axios.post("http://api.local/vac-res-data", payload, {
+        headers: { "Content-Type": "application/json" },
+      });
+      console.log("Form submitted successfully", payload);
+    } catch (err) {
+      console.error("Error submitting form:", err);
+    }
+  };
+
   React.useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const current = paymentTypesRef.current;
@@ -264,7 +295,7 @@ const JobSeek: React.FC = () => {
       <div className="jobseek-wrapper">
         <div className="container">
           <div className="dash-frame">
-            <form action="">
+            <form id="vacResForm" action="" onSubmit={handleSubmit}>
               <div className="dash-frame-inner">
                 <div className="dash-field">
                   <div className="title-wrapper">
