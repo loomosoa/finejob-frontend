@@ -243,9 +243,13 @@ const JobSeek: React.FC = () => {
     };
 
     try {
-      await axios.post("http://api.local/vac-res-data", payload, {
-        headers: { "Content-Type": "application/json" },
-      });
+      await axios.post(
+        "http://finejob-api.local/api/v1/vac-res-data",
+        payload,
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      );
       console.log("Form submitted successfully", payload);
     } catch (err) {
       console.error("Error submitting form:", err);
