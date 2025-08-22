@@ -1354,6 +1354,7 @@ hr {
   }
 
   .payment-selection {
+    position: relative;
     height: 37px;
     width: 127px;
     background: #fff;
@@ -1463,6 +1464,20 @@ hr {
       align-items: center;
     }
 
+    .paymentPeriodsDropdown {
+      position: absolute;
+      background: #fff;
+      flex-direction: column;
+      height: 119px;
+      width: 127px;
+      left: 0;
+
+      li {
+        list-style: none;
+        padding: 5px 0;
+      }
+    }
+
     .dash-field {
       position: relative;
       display: flex;
@@ -1481,6 +1496,7 @@ hr {
       }
 
       #selectVacRes {
+        position: relative;
         cursor: pointer;
         @include noselect();
       }
@@ -1525,7 +1541,9 @@ hr {
         z-index: 15;
 
         li {
-          padding-bottom: 10px;
+          cursor: pointer;
+          margin-bottom: 10px;
+          // border-bottom: 1px solid gray;
         }
       }
 

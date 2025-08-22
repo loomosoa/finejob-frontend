@@ -323,24 +323,24 @@ const JobSeek: React.FC = () => {
                     onClick={() => togglePaymentPeriodsDropdown()}
                     className="first-ps payment-selection"
                   >
-                    {paymentPeriod}
+                    {t(paymentPeriod)}
                     <img
                       src={paymentSelectionArrow}
                       className="payment-selection-arrow"
                     />
+                    {isPaymentPeriodsDropdownOpen && (
+                      <div className="paymentPeriodsDropdown payment-selection">
+                        {paymentPeriods.map((period) => (
+                          <li
+                            key={period}
+                            onClick={() => selectPaymentPeriodDropdown(period)}
+                          >
+                            {t(period)}
+                          </li>
+                        ))}
+                      </div>
+                    )}
                   </div>
-                  {isPaymentPeriodsDropdownOpen && (
-                    <div className="paymentPeriodsDropdown">
-                      {paymentPeriods.map((period) => (
-                        <li
-                          key={period}
-                          onClick={() => selectPaymentPeriodDropdown(period)}
-                        >
-                          {period}
-                        </li>
-                      ))}
-                    </div>
-                  )}
 
                   <div className="payment-selection">
                     на руки
