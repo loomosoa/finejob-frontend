@@ -13,6 +13,7 @@ import {
   vacResSelector,
   setPaymentPeriod,
   setPaymentType,
+  setPaymentCurrency,
 } from "../redux/slices/vacResSlice";
 
 import axios from "axios";
@@ -39,7 +40,8 @@ const JobSeek: React.FC = () => {
     setVacResDropdown(false);
   };
 
-  const { paymentPeriod, paymentType } = useSelector(vacResSelector);
+  const { paymentPeriod, paymentType, paymentCurrency } =
+    useSelector(vacResSelector);
 
   //Payment Periods
   const paymentPeriods = ["month", "year", "hour"];
@@ -69,6 +71,21 @@ const JobSeek: React.FC = () => {
   const selectPaymentTypeDropdown = (type: string) => {
     dispatch(setPaymentType(type));
     setPaymentTypesDropdown(false);
+  };
+
+  //Payment Currency
+  const paymentCurrencies = ["USD", "RUB", "EUR"];
+
+  const [isPaymentCurrenciesDropdownOpen, setPaymentCurrenciesDropdown] =
+    React.useState<boolean>(false);
+
+  const togglePaymentCurrenciesDropdown = () => {
+    setPaymentCurrenciesDropdown(!isPaymentCurrenciesDropdownOpen);
+  };
+
+  const selectPaymentCurrencyDropdown = (currency: string) => {
+    dispatch(setPaymentCurrency(currency));
+    setPaymentCurrenciesDropdown(false);
   };
 
   const [langs, setLangs] = React.useState<any[]>([]);
@@ -385,12 +402,29 @@ const JobSeek: React.FC = () => {
                       </div>
                     )}
                   </div>
-                  <div className="payment-selection">
-                    валюта
+                  <div
+                    onClick={() => togglePaymentCurrenciesDropdown()}
+                    className="payment-selection"
+                  >
+                    {t(paymentCurrency)}
                     <img
                       src={paymentSelectionArrow}
                       className="payment-selection-arrow"
                     />
+                    {isPaymentCurrenciesDropdownOpen && (
+                      <div className="payment-area-dropdown payment-selection">
+                        {paymentCurrencies.map((currency) => (
+                          <li
+                            key={currency}
+                            onClick={() =>
+                              selectPaymentCurrencyDropdown(currency)
+                            }
+                          >
+                            {t(currency)}
+                          </li>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="payment-submit-container">
