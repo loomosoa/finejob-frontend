@@ -231,6 +231,9 @@ const JobSeek: React.FC = () => {
       vacResRef: vacResRef.current,
       title: (fd.get("title") as string) || "",
       description: (fd.get("description") as string) || "",
+      junior: (fd.get("junior") as string) || "",
+      middle: (fd.get("middle") as string) || "",
+      senior: (fd.get("senior") as string) || "",
       selectedLangs: Array.from(selectedLangs),
       selectedTech: Array.from(selectedTechs),
       selectedFrameworks: Array.from(selectedFrameworks),
@@ -346,6 +349,53 @@ const JobSeek: React.FC = () => {
                     <div className="title">Навыки</div>
                   </div>
                 </div>
+                <div className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">Грейд</div>
+                  </div>
+                  <div className="field-wrapper checkbox">
+                    <div className="checkbox-wrapper">
+                      <div className="checkbox-item">
+                        <label className="container">
+                          <span className="checkbox-first-letter">J</span>unior
+                          <input
+                            type="checkbox"
+                            // id="junior"
+                            name="junior"
+                            value="junior"
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
+                      <span>|</span>
+                      <div className="checkbox-item">
+                        <label className="container">
+                          <span className="checkbox-first-letter">M</span>iddle
+                          <input
+                            type="checkbox"
+                            // id="junior"
+                            name="middle"
+                            value="middle"
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
+                      <span>|</span>
+                      <div className="checkbox-item">
+                        <label className="container">
+                          <span className="checkbox-first-letter">S</span>enior
+                          <input
+                            type="checkbox"
+                            // id="junior"
+                            name="senior"
+                            value="senior"
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div className="info"></div>
                 <div className="skills-container collapsible">
                   <div className="title">
@@ -373,7 +423,6 @@ const JobSeek: React.FC = () => {
                             </div>
                             <div className="element">{lang}</div>
                           </div>
-                          <div className="grade">Any</div>
                         </div>
                       ))}
                   </div>
@@ -405,7 +454,6 @@ const JobSeek: React.FC = () => {
                             </div>
                             <div className="element">{tech}</div>
                           </div>
-                          <div className="grade">Any</div>
                         </div>
                       ))}
                   </div>
@@ -437,7 +485,6 @@ const JobSeek: React.FC = () => {
                             </div>
                             <div className="element">{framework}</div>
                           </div>
-                          <div className="grade">Any</div>
                         </div>
                       ))}
                   </div>
