@@ -351,7 +351,7 @@ const JobSeek: React.FC = () => {
                 </div>
                 <div className="dash-field">
                   <div className="title-wrapper">
-                    <div className="title">Грейд</div>
+                    <div className="grade-title title">Грейд</div>
                   </div>
                   <div className="field-wrapper checkbox">
                     <div className="checkbox-wrapper">
