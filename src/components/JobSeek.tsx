@@ -100,6 +100,7 @@ const JobSeek: React.FC = () => {
 
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
+  const [errors, setErrors] = React.useState<string[]>([]);
 
   // Selected languages (for toggling the skill-checked image)
   const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(
@@ -204,6 +205,13 @@ const JobSeek: React.FC = () => {
     getSkills();
   }, []);
 
+  // Allow only digits in numeric inputs (positive integers)
+  const handleNumericInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+    // remove non-digits
+    input.value = input.value.replace(/[^0-9]/g, "");
+  };
+
   React.useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       const current = paymentPeriodsRef.current;
@@ -227,10 +235,88 @@ const JobSeek: React.FC = () => {
     const form = e.currentTarget;
     const fd = new FormData(form);
 
+    const validationErrors: string[] = [];
+
+    // Validate 'Создать' (vacancy or resume) selection
+    if (vacResRef.current !== "vacancy" && vacResRef.current !== "resume") {
+      validationErrors.push("Выберите значение в поле 'Создать' (vacancy или resume).");
+    }
+
+    const title = ((fd.get("title") as string) || "").trim();
+    const description = ((fd.get("description") as string) || "").trim();
+    const junior = fd.get("junior");
+    const middle = fd.get("middle");
+    const senior = fd.get("senior");
+    const paymentFrom = ((fd.get("payment-from") as string) || "").trim();
+    const paymentTo = ((fd.get("payment-to") as string) || "").trim();
+    const email = ((fd.get("email") as string) || "").trim();
+
+    // Title/Description emptiness
+    if (!title) {
+      validationErrors.push("Заполните поле 'Заголовок'.");
+    }
+    if (!description) {
+      validationErrors.push("Заполните поле 'Описание'.");
+    }
+
+    // Title and Description length
+    if (title.length > 140) {
+      validationErrors.push("Заголовок должен быть не длиннее 140 символов.");
+    }
+    if (description.length > 280) {
+      validationErrors.push("Описание должно быть не длиннее 280 символов.");
+    }
+
+    // Grade: at least one
+    if (!junior && !middle && !senior) {
+      validationErrors.push("Выберите как минимум один грейд.");
+    }
+
+    // Skills: at least one in each group
+    if (selectedLangs.size === 0) {
+      validationErrors.push("Выберите как минимум один язык.");
+    }
+    if (selectedTechs.size === 0) {
+      validationErrors.push("Выберите как минимум одну технологию.");
+    }
+    if (selectedFrameworks.size === 0) {
+      validationErrors.push("Выберите как минимум один фреймворк.");
+    }
+
+    // Payment From/To: only positive integers if provided
+    const posIntRe = /^[1-9]\d*$/;
+    if (paymentFrom && !posIntRe.test(paymentFrom)) {
+      validationErrors.push(
+        "Поле 'Оплата От' должно содержать только положительные целые числа."
+      );
+    }
+    if (paymentTo && !posIntRe.test(paymentTo)) {
+      validationErrors.push(
+        "Поле 'Оплата До' должно содержать только положительные целые числа."
+      );
+    }
+
+    // Email: required and must be valid
+    if (!email) {
+      validationErrors.push("Укажите e-mail.");
+    } else {
+      const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRe.test(email)) {
+        validationErrors.push("Укажите корректный e-mail.");
+      }
+    }
+
+    if (validationErrors.length > 0) {
+      setErrors(validationErrors);
+      return;
+    } else {
+      setErrors([]);
+    }
+
     const payload = {
       vacResRef: vacResRef.current,
-      title: (fd.get("title") as string) || "",
-      description: (fd.get("description") as string) || "",
+      title: title,
+      description: description,
       grade: {
         junior: (fd.get("junior") as string) || "",
         middle: (fd.get("middle") as string) || "",
@@ -241,12 +327,12 @@ const JobSeek: React.FC = () => {
       selectedLangs: Array.from(selectedLangs),
       selectedTech: Array.from(selectedTechs),
       selectedFrameworks: Array.from(selectedFrameworks),
-      paymentFrom: (fd.get("payment-from") as string) || "",
-      paymentTo: (fd.get("payment-to") as string) || "",
+      paymentFrom: paymentFrom,
+      paymentTo: paymentTo,
       paymentPeriod,
       paymentType,
       paymentCurrency,
-      email: (fd.get("email") as string) || "",
+      email: email,
     };
 
     try {
@@ -306,7 +392,7 @@ const JobSeek: React.FC = () => {
       <div className="jobseek-wrapper">
         <div className="container">
           <div className="dash-frame">
-            <form id="vacResForm" action="" onSubmit={handleSubmit}>
+            <form id="vacResForm" action="" noValidate onSubmit={handleSubmit}>
               <div className="dash-frame-inner">
                 <div className="dash-field">
                   <div className="title-wrapper">
@@ -335,7 +421,7 @@ const JobSeek: React.FC = () => {
                     <div className="title">Заголовок</div>
                   </div>
                   <div className="field-wrapper">
-                    <input className="field" name="title" />
+                    <input className="field" name="title" maxLength={140} />
                     <div className="under-label">140 символов</div>
                   </div>
                 </div>
@@ -344,7 +430,11 @@ const JobSeek: React.FC = () => {
                     <div className="title">Описание</div>
                   </div>
                   <div className="field-wrapper">
-                    <textarea className="field" name="description" />
+                    <textarea
+                      className="field"
+                      name="description"
+                      maxLength={280}
+                    />
                     <div className="under-label">280 символов</div>
                   </div>
                 </div>
@@ -496,9 +586,21 @@ const JobSeek: React.FC = () => {
                 <div className="vac-res-payment-container">
                   <span className="payment-title">Оплата</span>
                   <span className="title-from-to">От</span>
-                  <input name="payment-from" className="input-from-to" />
+                  <input
+                    name="payment-from"
+                    className="input-from-to"
+                    inputMode="numeric"
+                    pattern="^[1-9]\\d*$"
+                    onInput={handleNumericInput}
+                  />
                   <span className="title-from-to title-to">До</span>
-                  <input name="payment-to" className="input-from-to" />
+                  <input
+                    name="payment-to"
+                    className="input-from-to"
+                    inputMode="numeric"
+                    pattern="^[1-9]\\d*$"
+                    onInput={handleNumericInput}
+                  />
                   {/* <img src={paymentTypeArrow} className="payment-type-arrow" /> */}
                   <div
                     ref={paymentPeriodsRef}
@@ -580,9 +682,20 @@ const JobSeek: React.FC = () => {
                   <input
                     className="email"
                     name="email"
+                    type="email"
+                    required
                     placeholder="Добавить e-mail для откликов"
                   />
                 </div>
+                {errors.length > 0 && (
+                  <div className="form-errors">
+                    <ul>
+                      {errors.map((er, idx) => (
+                        <li key={idx}>{er}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </form>
           </div>
