@@ -1406,7 +1406,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 40px;
     font-size: 20px;
 
     &:focus {
@@ -1473,8 +1473,15 @@ hr {
       left: 0;
 
       li {
+        width: 100%;
         list-style: none;
-        padding: 5px 0;
+        padding: 10px 0;
+        text-align: center;
+        border-radius: 10px;
+
+        &:hover {
+          background: #e3dccb;
+        }
       }
     }
 
@@ -1541,9 +1548,16 @@ hr {
         z-index: 15;
 
         li {
+          width: 100%;
           cursor: pointer;
-          margin-bottom: 10px;
+          // margin: 5px 0;
+          padding: 10px 0;
+          text-align: center;
           // border-bottom: 1px solid gray;
+
+          &:hover {
+            background: #e3dccb;
+          }
         }
       }
 
