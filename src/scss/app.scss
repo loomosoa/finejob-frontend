@@ -1425,6 +1425,30 @@ hr {
   }
 }
 
+.form-message {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: -70px;
+  margin-bottom: 70px;
+  font-size: 18px;
+
+  ul {
+    list-style: none;
+    padding: 0 10px;
+  }
+
+  li {
+    margin: 10px 0;
+    font-weight: 500;
+  }
+
+  .message-icon {
+    width: 20px;
+  }
+}
+
 .jobseek-wrapper {
   display: flex;
   justify-content: center;

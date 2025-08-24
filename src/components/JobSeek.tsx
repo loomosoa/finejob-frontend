@@ -6,6 +6,8 @@ import selectImg from "../assets/imgs/select_img.svg";
 import paymentTypeArrow from "../assets/imgs/payment_type_arrow.svg";
 import paymentSelectionArrow from "../assets/imgs/payment_selection_arrow.svg";
 import skillCheckedImg from "../assets/imgs/skill_checked.png";
+import greenCheckmark from "../assets/imgs/green-checkmark.svg";
+import redX from "../assets/imgs/red-x.svg";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -241,7 +243,7 @@ const JobSeek: React.FC = () => {
     // Validate 'Создать' (vacancy or resume) selection
     if (vacResRef.current !== "vacancy" && vacResRef.current !== "resume") {
       validationErrors.push(
-        "Выберите значение в поле 'Создать' (vacancy или resume)."
+        "Выберите значение в поле 'Создать' (Вакансию или Резюме)."
       );
     }
 
@@ -701,7 +703,8 @@ const JobSeek: React.FC = () => {
                   />
                 </div>
                 {errors.length > 0 && (
-                  <div className="form-errors">
+                  <div className="form-errors form-message">
+                    <img src={redX} className="message-icon" />
                     <ul>
                       {errors.map((er, idx) => (
                         <li key={idx}>{er}</li>
@@ -710,7 +713,8 @@ const JobSeek: React.FC = () => {
                   </div>
                 )}
                 {requestMessages.length > 0 && (
-                  <div className="form-msg">
+                  <div className="form-msg form-message">
+                    <img src={greenCheckmark} className="message-icon" />
                     <ul>
                       {requestMessages.map((msg, idx) => (
                         <li key={idx}>{msg}</li>
