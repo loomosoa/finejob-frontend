@@ -239,7 +239,9 @@ const JobSeek: React.FC = () => {
 
     // Validate 'Создать' (vacancy or resume) selection
     if (vacResRef.current !== "vacancy" && vacResRef.current !== "resume") {
-      validationErrors.push("Выберите значение в поле 'Создать' (vacancy или resume).");
+      validationErrors.push(
+        "Выберите значение в поле 'Создать' (vacancy или resume)."
+      );
     }
 
     const title = ((fd.get("title") as string) || "").trim();
@@ -314,7 +316,7 @@ const JobSeek: React.FC = () => {
     }
 
     const payload = {
-      vacResRef: vacResRef.current,
+      vacancyOrResume: vacResRef.current,
       title: title,
       description: description,
       grade: {
@@ -344,7 +346,13 @@ const JobSeek: React.FC = () => {
         }
       );
       console.log("Form submitted successfully", payload);
+      //TODO: make succes message
     } catch (err) {
+      // validationErrors.push(err);
+      validationErrors.push(err.response.data.message);
+      setErrors(validationErrors);
+      // console.log(validationErrors);
+
       console.error("Error submitting form:", err);
     }
   };
