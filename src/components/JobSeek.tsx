@@ -509,7 +509,8 @@ const JobSeek: React.FC = () => {
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Языки</span>
-                    <span className="search">Поиск...</span>
+                    <span className="skills-line"></span>
+                    {/* <span className="search">Поиск...</span> */}
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
@@ -540,7 +541,8 @@ const JobSeek: React.FC = () => {
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Технологии</span>
-                    <span className="search">Поиск</span>
+                    <span className="skills-line"></span>
+                    {/* <span className="search">Поиск</span> */}
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
@@ -571,7 +573,8 @@ const JobSeek: React.FC = () => {
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Фреймворки</span>
-                    <span className="search">Поиск</span>
+                    <span className="skills-line"></span>
+                    {/* <span className="search">Поиск</span> */}
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}

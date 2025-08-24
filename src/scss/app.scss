@@ -1740,6 +1740,11 @@ hr {
       max-height: 650px;
       overflow: auto;
 
+      .skills-line {
+        border-bottom: 1px solid black;
+        width: 20%;
+      }
+
       .skill-checked {
         position: absolute;
         /* left: -2px; */
