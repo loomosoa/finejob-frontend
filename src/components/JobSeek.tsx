@@ -101,6 +101,7 @@ const JobSeek: React.FC = () => {
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
   const [errors, setErrors] = React.useState<string[]>([]);
+  const [requestMessages, setRequestMessages] = React.useState<string[]>([]);
 
   // Selected languages (for toggling the skill-checked image)
   const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(
@@ -345,12 +346,16 @@ const JobSeek: React.FC = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      console.log("Form submitted successfully", payload);
-      //TODO: make succes message
+      let msg = "Form submitted successfully";
+      console.log(msg, payload);
+      const requestMsgArr: string[] = [];
+      requestMsgArr.push(msg);
+      setRequestMessages(requestMsgArr);
     } catch (err) {
       // validationErrors.push(err);
       validationErrors.push(err.response.data.message);
       setErrors(validationErrors);
+      setRequestMessages([]);
       // console.log(validationErrors);
 
       console.error("Error submitting form:", err);
@@ -700,6 +705,15 @@ const JobSeek: React.FC = () => {
                     <ul>
                       {errors.map((er, idx) => (
                         <li key={idx}>{er}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                {requestMessages.length > 0 && (
+                  <div className="form-msg">
+                    <ul>
+                      {requestMessages.map((msg, idx) => (
+                        <li key={idx}>{msg}</li>
                       ))}
                     </ul>
                   </div>
