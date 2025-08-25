@@ -1745,6 +1745,18 @@ hr {
         width: 20%;
       }
 
+      .skills-search {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid black;
+        outline: none;
+        padding-left: 10px;
+
+        &::placeholder {
+          text-align: center;
+        }
+      }
+
       .skill-checked {
         position: absolute;
         /* left: -2px; */

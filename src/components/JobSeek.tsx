@@ -105,6 +105,56 @@ const JobSeek: React.FC = () => {
   const [errors, setErrors] = React.useState<string[]>([]);
   const [requestMessages, setRequestMessages] = React.useState<string[]>([]);
 
+  /*
+    Skills local search start
+  */
+
+  // Добавить состояние для строки поиска
+  const [searchQuery, setSearchQuery] = React.useState<string>("");
+
+  // Обработчик изменения поля поиска
+  const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value);
+  };
+
+  // Фильтрация языков на основе введенного запроса
+  const filteredLangs = langs.filter((lang: string) =>
+    lang.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  // Добавить состояние для строки поиска
+  const [techSearchQuery, setTechSearchQuery] = React.useState<string>("");
+
+  // Обработчик изменения поля поиска
+  const handleTechSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTechSearchQuery(e.target.value);
+  };
+
+  // Фильтрация языков на основе введенного запроса
+  const filteredTechs = techs.filter((tech: string) =>
+    tech.toLowerCase().includes(techSearchQuery.toLowerCase())
+  );
+
+  // Добавить состояние для строки поиска
+  const [frameworksSearchQuery, setFrameworksSearchQuery] =
+    React.useState<string>("");
+
+  // Обработчик изменения поля поиска
+  const handleFrameworksSearchInput = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setFrameworksSearchQuery(e.target.value);
+  };
+
+  // Фильтрация языков на основе введенного запроса
+  const filteredFrameworks = frameworks.filter((framework: string) =>
+    framework.toLowerCase().includes(frameworksSearchQuery.toLowerCase())
+  );
+
+  /*
+    Skills local search end
+  */
+
   // Selected languages (for toggling the skill-checked image)
   const [selectedLangs, setSelectedLangs] = React.useState<Set<string>>(
     new Set()
@@ -509,96 +559,114 @@ const JobSeek: React.FC = () => {
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Языки</span>
-                    <span className="skills-line"></span>
-                    {/* <span className="search">Поиск...</span> */}
+                    <input
+                      className="skills-search"
+                      type="text"
+                      placeholder="...Поиск"
+                      value={searchQuery}
+                      onChange={handleSearchInput}
+                    />
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
                     {error && <p>{error}</p>}
-                    {langs &&
-                      langs.map((lang: string) => (
-                        <div className="item" key={lang}>
-                          <div
-                            className="item-clickable"
-                            onClick={() => toggleLang(lang)}
-                          >
-                            <div className="checkbox">
-                              {selectedLangs.has(lang) && (
-                                <img
-                                  src={skillCheckedImg}
-                                  className="skill-checked"
-                                />
-                              )}
-                              <img src={selectImg} className="skill-select" />
+                    {filteredLangs.length > 0
+                      ? filteredLangs.map((lang: string) => (
+                          <div className="item" key={lang}>
+                            <div
+                              className="item-clickable"
+                              onClick={() => toggleLang(lang)}
+                            >
+                              <div className="checkbox">
+                                {selectedLangs.has(lang) && (
+                                  <img
+                                    src={skillCheckedImg}
+                                    className="skill-checked"
+                                  />
+                                )}
+                                <img src={selectImg} className="skill-select" />
+                              </div>
+                              <div className="element">{lang}</div>
                             </div>
-                            <div className="element">{lang}</div>
                           </div>
-                        </div>
-                      ))}
+                        ))
+                      : !loading && <p>Языки не найдены</p>}
                   </div>
                 </div>
 
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Технологии</span>
-                    <span className="skills-line"></span>
-                    {/* <span className="search">Поиск</span> */}
+                    <input
+                      className="skills-search"
+                      type="text"
+                      placeholder="...Поиск"
+                      value={techSearchQuery}
+                      onChange={handleTechSearchInput}
+                    />
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
                     {error && <p>{error}</p>}
-                    {techs &&
-                      techs.map((tech: string) => (
-                        <div className="item" key={tech}>
-                          <div
-                            className="item-clickable"
-                            onClick={() => toggleTech(tech)}
-                          >
-                            <div className="checkbox">
-                              {selectedTechs.has(tech) && (
-                                <img
-                                  src={skillCheckedImg}
-                                  className="skill-checked"
-                                />
-                              )}
-                              <img src={selectImg} className="skill-select" />
+                    {filteredTechs.length > 0
+                      ? filteredTechs.map((tech: string) => (
+                          <div className="item" key={tech}>
+                            <div
+                              className="item-clickable"
+                              onClick={() => toggleTech(tech)}
+                            >
+                              <div className="checkbox">
+                                {selectedTechs.has(tech) && (
+                                  <img
+                                    src={skillCheckedImg}
+                                    className="skill-checked"
+                                  />
+                                )}
+                                <img src={selectImg} className="skill-select" />
+                              </div>
+                              <div className="element">{tech}</div>
                             </div>
-                            <div className="element">{tech}</div>
                           </div>
-                        </div>
-                      ))}
+                        ))
+                      : !loading && <p>Технологии не найдены</p>}
                   </div>
                 </div>
 
                 <div className="skills-container collapsible">
                   <div className="title">
                     <span className="skills-type">Фреймворки</span>
-                    <span className="skills-line"></span>
-                    {/* <span className="search">Поиск</span> */}
+                    <input
+                      className="skills-search"
+                      type="text"
+                      placeholder="...Поиск"
+                      value={frameworksSearchQuery}
+                      onChange={handleFrameworksSearchInput}
+                    />
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
                     {error && <p>{error}</p>}
-                    {frameworks &&
-                      frameworks.map((framework: string) => (
-                        <div className="item" key={framework}>
-                          <div
-                            className="item-clickable"
-                            onClick={() => toggleFramework(framework)}
-                          >
-                            <div className="checkbox">
-                              {selectedFrameworks.has(framework) && (
-                                <img
-                                  src={skillCheckedImg}
-                                  className="skill-checked"
-                                />
-                              )}
-                              <img src={selectImg} className="skill-select" />
+                    {filteredFrameworks.length > 0
+                      ? filteredFrameworks.map((framework: string) => (
+                          <div className="item" key={framework}>
+                            <div
+                              className="item-clickable"
+                              onClick={() => toggleFramework(framework)}
+                            >
+                              <div className="checkbox">
+                                {selectedFrameworks.has(framework) && (
+                                  <img
+                                    src={skillCheckedImg}
+                                    className="skill-checked"
+                                  />
+                                )}
+                                <img src={selectImg} className="skill-select" />
+                              </div>
+                              <div className="element">{framework}</div>
                             </div>
-                            <div className="element">{framework}</div>
                           </div>
-                        </div>
-                      ))}
+                        ))
+                      : !loading && <p>Фреймворки не найдены</p>}
                   </div>
                 </div>
                 <div className="vac-res-payment-container">
