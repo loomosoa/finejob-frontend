@@ -1731,6 +1731,23 @@ hr {
       margin-top: 130px;
     }
 
+    .title {
+      margin: 18px 0;
+      display: flex;
+    }
+
+    .skills-search {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid black;
+      outline: none;
+      padding-left: 10px;
+
+      &::placeholder {
+        text-align: center;
+      }
+    }
+
     .skills-container {
       width: 70%;
       display: flex;
@@ -1738,24 +1755,29 @@ hr {
       align-self: center;
       margin: 40px 0 45px;
       max-height: 650px;
-      overflow: auto;
+      // overflow: auto;
 
       .skills-line {
         border-bottom: 1px solid black;
         width: 20%;
       }
 
-      .skills-search {
-        background: transparent;
-        border: none;
-        border-bottom: 1px solid black;
-        outline: none;
-        padding-left: 10px;
+      // .title {
+      //   margin: 18px 0;
+      //   display: flex;
+      // }
 
-        &::placeholder {
-          text-align: center;
-        }
-      }
+      // .skills-search {
+      //   background: transparent;
+      //   border: none;
+      //   border-bottom: 1px solid black;
+      //   outline: none;
+      //   padding-left: 10px;
+
+      //   &::placeholder {
+      //     text-align: center;
+      //   }
+      // }
 
       .skill-checked {
         position: absolute;
@@ -1768,11 +1790,6 @@ hr {
       .skill-select {
         position: relative;
         left: 2px;
-      }
-
-      .title {
-        margin: 18px 0;
-        display: flex;
       }
 
       .skills-type {
@@ -1796,6 +1813,7 @@ hr {
         // grid-template-rows: repeat(1, 1fr);
         gap: 4px;
         column-gap: 20px;
+        overflow: auto;
       }
 
       .item {
