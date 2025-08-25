@@ -363,6 +363,7 @@ const JobSeek: React.FC = () => {
 
     if (validationErrors.length > 0) {
       setErrors(validationErrors);
+      setRequestMessages([]);
       return;
     } else {
       setErrors([]);
@@ -403,6 +404,27 @@ const JobSeek: React.FC = () => {
       const requestMsgArr: string[] = [];
       requestMsgArr.push(msg);
       setRequestMessages(requestMsgArr);
+      // Reset form fields and UI state after successful submit
+      form.reset();
+      setSelectedLangs(new Set());
+      setSelectedTechs(new Set());
+      setSelectedFrameworks(new Set());
+      setSearchQuery("");
+      setTechSearchQuery("");
+      setFrameworksSearchQuery("");
+      // Reset dropdown redux values to initial defaults
+      dispatch(setPaymentPeriod("month"));
+      dispatch(setPaymentType("net"));
+      dispatch(setPaymentCurrency("USD"));
+      // Reset the vacancy/resume selector to placeholder
+      vacResRef.current = "vacancy|resume";
+      // Close any open dropdowns
+      setVacResDropdown(false);
+      setPaymentPeriodsDropdown(false);
+      setPaymentTypesDropdown(false);
+      setPaymentCurrenciesDropdown(false);
+      // Clear any previous errors
+      setErrors([]);
     } catch (err) {
       // validationErrors.push(err);
       validationErrors.push(err.response.data.message);
