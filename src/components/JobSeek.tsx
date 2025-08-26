@@ -99,6 +99,7 @@ const JobSeek: React.FC = () => {
   const [langs, setLangs] = React.useState<any[]>([]);
   const [techs, setTechs] = React.useState<any[]>([]);
   const [frameworks, setFrameworks] = React.useState<any[]>([]);
+  const [otherSkills, setOtherSkills] = React.useState<any[]>([]);
 
   const [loading, setLoading] = React.useState(true);
   const [error, setError] = React.useState<string | null>(null);
@@ -106,17 +107,19 @@ const JobSeek: React.FC = () => {
   const [requestMessages, setRequestMessages] = React.useState<string[]>([]);
 
   /*
+    #########################
+    #########################
     Skills local search start
+    #########################
+    #########################
   */
 
   // Добавить состояние для строки поиска
   const [searchQuery, setSearchQuery] = React.useState<string>("");
-
   // Обработчик изменения поля поиска
   const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
-
   // Фильтрация языков на основе введенного запроса
   const filteredLangs = langs.filter((lang: string) =>
     lang.toLowerCase().includes(searchQuery.toLowerCase())
@@ -124,12 +127,10 @@ const JobSeek: React.FC = () => {
 
   // Добавить состояние для строки поиска
   const [techSearchQuery, setTechSearchQuery] = React.useState<string>("");
-
   // Обработчик изменения поля поиска
   const handleTechSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTechSearchQuery(e.target.value);
   };
-
   // Фильтрация языков на основе введенного запроса
   const filteredTechs = techs.filter((tech: string) =>
     tech.toLowerCase().includes(techSearchQuery.toLowerCase())
@@ -138,17 +139,26 @@ const JobSeek: React.FC = () => {
   // Добавить состояние для строки поиска
   const [frameworksSearchQuery, setFrameworksSearchQuery] =
     React.useState<string>("");
-
   // Обработчик изменения поля поиска
   const handleFrameworksSearchInput = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFrameworksSearchQuery(e.target.value);
   };
-
   // Фильтрация языков на основе введенного запроса
   const filteredFrameworks = frameworks.filter((framework: string) =>
     framework.toLowerCase().includes(frameworksSearchQuery.toLowerCase())
+  );
+
+  const [otherSkillsSearchQuery, setOtherSkillsSearchQuery] =
+    React.useState<string>("");
+  const handleOtherSkillsSearchInput = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    setOtherSkillsSearchQuery(e.target.value);
+  };
+  const filteredOtherSkills = otherSkills.filter((otherSkill: string) =>
+    otherSkill.toLowerCase().includes(otherSkillsSearchQuery.toLowerCase())
   );
 
   /*
@@ -165,6 +175,10 @@ const JobSeek: React.FC = () => {
   );
   // Selected frameworks
   const [selectedFrameworks, setSelectedFrameworks] = React.useState<
+    Set<string>
+  >(new Set());
+  // Selected other skills
+  const [selectedOtherSkills, setSelectedOtherSkills] = React.useState<
     Set<string>
   >(new Set());
 
@@ -204,14 +218,26 @@ const JobSeek: React.FC = () => {
     });
   };
 
+  const toggleOtherSkills = (otherSkill: string) => {
+    setSelectedOtherSkills((prev) => {
+      const next = new Set(prev);
+      if (next.has(otherSkill)) {
+        next.delete(otherSkill);
+      } else {
+        next.add(otherSkill);
+      }
+      return next;
+    });
+  };
+
   React.useEffect(() => {
     const getSkills = async () => {
       try {
         const { data } = await axios.get(
           "http://finejob-api.local/api/v1/skills"
         );
-        const languagesObject = data.data?.[0]?.languages;
 
+        const languagesObject = data.data?.[0]?.languages;
         if (typeof languagesObject === "object" && languagesObject !== null) {
           const flattenedLanguages = Object.values(languagesObject).flat();
           setLangs(flattenedLanguages);
@@ -236,7 +262,6 @@ const JobSeek: React.FC = () => {
         }
 
         const techsObject = data.data?.[1]?.technologies;
-
         if (typeof techsObject === "object" && techsObject !== null) {
           const flattenedTechs = Object.values(techsObject).flat();
           setTechs(flattenedTechs);
@@ -244,6 +269,21 @@ const JobSeek: React.FC = () => {
           console.error(
             "API response for techs is not an object:",
             techsObject
+          );
+          setError("Ошибка формата данных от сервера.");
+        }
+
+        const otherSkillsObject = data.data?.[3]?.other_skills;
+        if (
+          typeof otherSkillsObject === "object" &&
+          otherSkillsObject !== null
+        ) {
+          const flattenedOtherSkills = Object.values(otherSkillsObject).flat();
+          setOtherSkills(flattenedOtherSkills);
+        } else {
+          console.error(
+            "API response for other skills is not an object:",
+            otherSkillsObject
           );
           setError("Ошибка формата данных от сервера.");
         }
@@ -383,6 +423,7 @@ const JobSeek: React.FC = () => {
       selectedLangs: Array.from(selectedLangs),
       selectedTech: Array.from(selectedTechs),
       selectedFrameworks: Array.from(selectedFrameworks),
+      selectedOtherSkills: Array.from(selectedOtherSkills),
       paymentFrom: paymentFrom,
       paymentTo: paymentTo,
       paymentPeriod,
@@ -409,6 +450,7 @@ const JobSeek: React.FC = () => {
       setSelectedLangs(new Set());
       setSelectedTechs(new Set());
       setSelectedFrameworks(new Set());
+      setSelectedOtherSkills(new Set());
       setSearchQuery("");
       setTechSearchQuery("");
       setFrameworksSearchQuery("");
@@ -689,6 +731,43 @@ const JobSeek: React.FC = () => {
                           </div>
                         ))
                       : !loading && <p>Фреймворки не найдены</p>}
+                  </div>
+                </div>
+                <div className="skills-container collapsible">
+                  <div className="title">
+                    <span className="skills-type">Другие навыки</span>
+                    <input
+                      className="skills-search"
+                      type="text"
+                      placeholder="...Поиск"
+                      value={otherSkillsSearchQuery}
+                      onChange={handleOtherSkillsSearchInput}
+                    />
+                  </div>
+                  <div className="skills-grid">
+                    {loading && <p>Загрузка...</p>}
+                    {error && <p>{error}</p>}
+                    {filteredOtherSkills.length > 0
+                      ? filteredOtherSkills.map((otherSkill: string) => (
+                          <div className="item" key={otherSkill}>
+                            <div
+                              className="item-clickable"
+                              onClick={() => toggleOtherSkills(otherSkill)}
+                            >
+                              <div className="checkbox">
+                                {selectedOtherSkills.has(otherSkill) && (
+                                  <img
+                                    src={skillCheckedImg}
+                                    className="skill-checked"
+                                  />
+                                )}
+                                <img src={selectImg} className="skill-select" />
+                              </div>
+                              <div className="element">{otherSkill}</div>
+                            </div>
+                          </div>
+                        ))
+                      : !loading && <p>Другие навыки не найдены</p>}
                   </div>
                 </div>
                 <div className="vac-res-payment-container">
