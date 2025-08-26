@@ -1843,6 +1843,7 @@ hr {
         background: #fff;
         font-weight: 500;
         font-size: 18px;
+        text-transform: capitalize;
         cursor: pointer;
         @include noselect();
       }
