@@ -50,5 +50,17 @@
   "Add e-mail for responses": "Добавить e-mail для откликов",
   "Create": "Создать",
   "Title": "Заголовок",
-  "Description": "Описание"
+  "Description": "Описание",
+  "characters": "символов",
+  "Skills": "Навыки",
+  "Grade": "Грейд",
+  "Languages": "Языки",
+  "Technologies": "Технологии",
+  "Frameworks": "Фреймворки",
+  "Other skills": "Другие навыки",
+  "Loading": "Загрузка",
+  "Search...": "Поиск...",
+  "Payment": "Оплата",
+  "From": "От",
+  "To": "До"
 }

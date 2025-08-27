@@ -810,7 +810,7 @@ const JobSeek: React.FC = () => {
                       pattern="^[1-9]\\d*$"
                       onInput={handleNumericInput}
                     />
-                    <span className="title-from-to title-to">{t("From")}</span>
+                    <span className="title-from-to title-to">{t("To")}</span>
                     <input
                       name="payment-to"
                       className="input-from-to"
