@@ -554,7 +554,7 @@ const JobSeek: React.FC = () => {
               <div className="dash-frame-inner">
                 <div className="dash-field">
                   <div className="title-wrapper">
-                    <div className="title">Создать</div>
+                    <div className="title">{t("Create")}</div>
                   </div>
                   <div
                     id="selectVacRes"
@@ -576,16 +576,16 @@ const JobSeek: React.FC = () => {
                 </div>
                 <div className="dash-field">
                   <div className="title-wrapper">
-                    <div className="title">Заголовок</div>
+                    <div className="title">{t("Title")}</div>
                   </div>
                   <div className="field-wrapper">
                     <input className="field" name="title" maxLength={140} />
-                    <div className="under-label">140 символов</div>
+                    <div className="under-label">140 {t("characters")}</div>
                   </div>
                 </div>
                 <div id="vas-res-description" className="dash-field">
                   <div className="title-wrapper">
-                    <div className="title">Описание</div>
+                    <div className="title">{t("Description")}</div>
                   </div>
                   <div className="field-wrapper">
                     <textarea
@@ -593,17 +593,17 @@ const JobSeek: React.FC = () => {
                       name="description"
                       maxLength={280}
                     />
-                    <div className="under-label">280 символов</div>
+                    <div className="under-label">280 {t("characters")}</div>
                   </div>
                 </div>
                 <div id="vac-res-skills" className="dash-field">
                   <div className="title-wrapper">
-                    <div className="title">Навыки</div>
+                    <div className="title">{t("Skills")}</div>
                   </div>
                 </div>
                 <div className="dash-field">
                   <div className="title-wrapper">
-                    <div className="grade-title title">Грейд</div>
+                    <div className="grade-title title">{t("Grade")}</div>
                   </div>
                   <div className="field-wrapper checkbox">
                     <div className="checkbox-wrapper">
@@ -651,17 +651,17 @@ const JobSeek: React.FC = () => {
                 <div className="info"></div>
                 <div className="skills-container collapsible">
                   <div className="title">
-                    <span className="skills-type">Языки</span>
+                    <span className="skills-type">{t("Languages")}</span>
                     <input
                       className="skills-search"
                       type="text"
-                      placeholder="...Поиск"
+                      placeholder={t("Search...")}
                       value={searchQuery}
                       onChange={handleSearchInput}
                     />
                   </div>
                   <div className="skills-grid">
-                    {loading && <p>Загрузка...</p>}
+                    {loading && <p>{t("Loading")}...</p>}
                     {error && <p>{t(error)}</p>}
                     {filteredLangs.length > 0
                       ? filteredLangs.map((lang: string) => (
@@ -683,23 +683,23 @@ const JobSeek: React.FC = () => {
                             </div>
                           </div>
                         ))
-                      : !loading && <p>Языки не найдены</p>}
+                      : !loading && <p>{t("Languages ​​are not found")}</p>}
                   </div>
                 </div>
 
                 <div className="skills-container collapsible">
                   <div className="title">
-                    <span className="skills-type">Технологии</span>
+                    <span className="skills-type">{t("Technologies")}</span>
                     <input
                       className="skills-search"
                       type="text"
-                      placeholder="...Поиск"
+                      placeholder={t("Search...")}
                       value={techSearchQuery}
                       onChange={handleTechSearchInput}
                     />
                   </div>
                   <div className="skills-grid">
-                    {loading && <p>Загрузка...</p>}
+                    {loading && <p>{t("Loading")}...</p>}
                     {error && <p>{t(error)}</p>}
                     {filteredTechs.length > 0
                       ? filteredTechs.map((tech: string) => (
@@ -721,23 +721,23 @@ const JobSeek: React.FC = () => {
                             </div>
                           </div>
                         ))
-                      : !loading && <p>Технологии не найдены</p>}
+                      : !loading && <p>{t("Technologies are not found")}</p>}
                   </div>
                 </div>
 
                 <div className="skills-container collapsible">
                   <div className="title">
-                    <span className="skills-type">Фреймворки</span>
+                    <span className="skills-type">{t("Frameworks")}</span>
                     <input
                       className="skills-search"
                       type="text"
-                      placeholder="...Поиск"
+                      placeholder={t("Search...")}
                       value={frameworksSearchQuery}
                       onChange={handleFrameworksSearchInput}
                     />
                   </div>
                   <div className="skills-grid">
-                    {loading && <p>Загрузка...</p>}
+                    {loading && <p>{t("Loading")}...</p>}
                     {error && <p>{t(error)}</p>}
                     {filteredFrameworks.length > 0
                       ? filteredFrameworks.map((framework: string) => (
@@ -759,22 +759,22 @@ const JobSeek: React.FC = () => {
                             </div>
                           </div>
                         ))
-                      : !loading && <p>Фреймворки не найдены</p>}
+                      : !loading && <p>{t("Frameworks are not found")}</p>}
                   </div>
                 </div>
                 <div className="skills-container collapsible">
                   <div className="title">
-                    <span className="skills-type">Другие навыки</span>
+                    <span className="skills-type">{t("Other skills")}</span>
                     <input
                       className="skills-search"
                       type="text"
-                      placeholder="...Поиск"
+                      placeholder={t("Search...")}
                       value={otherSkillsSearchQuery}
                       onChange={handleOtherSkillsSearchInput}
                     />
                   </div>
                   <div className="skills-grid">
-                    {loading && <p>Загрузка...</p>}
+                    {loading && <p>{t("Loading")}...</p>}
                     {error && <p>{t(error)}</p>}
                     {filteredOtherSkills.length > 0
                       ? filteredOtherSkills.map((otherSkill: string) => (
@@ -796,13 +796,13 @@ const JobSeek: React.FC = () => {
                             </div>
                           </div>
                         ))
-                      : !loading && <p>Другие навыки не найдены</p>}
+                      : !loading && <p>{t("Other skills are not found")}</p>}
                   </div>
                 </div>
                 <div className="vac-res-payment-container">
                   <div className="pc-first-block">
-                    <span className="payment-title">Оплата</span>
-                    <span className="title-from-to">От</span>
+                    <span className="payment-title">{t("Payment")}</span>
+                    <span className="title-from-to">{t("From")}</span>
                     <input
                       name="payment-from"
                       className="input-from-to"
@@ -810,7 +810,7 @@ const JobSeek: React.FC = () => {
                       pattern="^[1-9]\\d*$"
                       onInput={handleNumericInput}
                     />
-                    <span className="title-from-to title-to">До</span>
+                    <span className="title-from-to title-to">{t("From")}</span>
                     <input
                       name="payment-to"
                       className="input-from-to"

@@ -47,5 +47,8 @@
   "Specify correct e-mail": "Укажите корректный e-mail",
   "Form submitted successfully": "Форма успешно сохранена",
   "e-mail for responses": "e-mail для откликов",
-  "Add e-mail for responses": "Добавить e-mail для откликов"
+  "Add e-mail for responses": "Добавить e-mail для откликов",
+  "Create": "Создать",
+  "Title": "Заголовок",
+  "Description": "Описание"
 }
