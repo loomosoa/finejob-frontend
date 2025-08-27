@@ -1451,7 +1451,7 @@ hr {
     }
 
     .title-from-to {
-      margin-bottom: 10px;
+      margin: 10px;
     }
   }
 
@@ -1874,7 +1874,7 @@ hr {
       }
     }
 
-    @media (max-width: 360px) {
+    @media (max-width: 720px) {
       .dash-field .field {
         width: 300px;
       }
@@ -2065,7 +2065,7 @@ hr {
     }
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 720px) {
     &-inner {
       width: 345px;
 
@@ -2094,13 +2094,19 @@ hr {
   }
 }
 
+@media (max-width: 870px) {
+  .dash-frame {
+    width: 715px;
+  }
+}
+
 @media (max-width: 720px) {
   .dash-frame {
     width: 620px;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 720px) {
   .dash-frame {
     width: 350px;
   }
