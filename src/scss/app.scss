@@ -1302,7 +1302,7 @@ hr {
   max-width: 1000px;
   width: 90%;
   align-self: center;
-  height: 250px;
+  min-height: 250px;
   background: #e9be79;
   margin: 30px 0 140px;
   border-radius: 20px;
@@ -1316,6 +1316,7 @@ hr {
 
     display: flex;
     justify-content: center;
+    margin: 0 20px;
   }
 
   .title-from-to {
@@ -1374,6 +1375,57 @@ hr {
   }
 }
 
+.pc-second-block {
+  margin: 0;
+}
+
+@media (max-width: 1015px) {
+  .vac-res-payment-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pc-first-block {
+    display: flex;
+    align-items: center;
+    width: 47%;
+    justify-content: center;
+    margin: 0 20px;
+  }
+
+  .pc-second-block {
+    display: flex;
+    align-items: center;
+    width: 47%;
+    margin: 40px 0 0 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .pc-first-block {
+    flex-direction: column;
+  }
+
+  .pc-second-block {
+    flex-direction: column;
+    margin: 40px 0;
+  }
+
+  .vac-res-payment-container {
+    .payment-title {
+      margin: 40px 0;
+    }
+
+    .title-from-to {
+      margin-bottom: 10px;
+    }
+  }
+
+  .payment-selection {
+    margin: 10px 0;
+  }
+}
+
 .payment-submit-container {
   display: flex;
   align-self: center;
@@ -1422,6 +1474,16 @@ hr {
       font-weight: 700;
       text-align: center;
       font-family: "Montserrat", sans-serif;
+    }
+  }
+
+  @media (max-width: 1015px) {
+    .submit-btn {
+      width: 200px;
+    }
+
+    .email {
+      width: 300px;
     }
   }
 }
@@ -1725,9 +1787,18 @@ hr {
       }
     }
 
+    #vas-res-description {
+      margin-top: 110px;
+    }
+
+    #vac-res-skills {
+      margin-top: 130px;
+    }
     @media (max-width: 1015px) {
       .dash-field {
         flex-direction: column;
+        height: auto;
+        margin: 0;
 
         .title-wrapper {
           position: relative;
@@ -1737,15 +1808,35 @@ hr {
         .title {
           position: relative;
         }
+
+        .field-wrapper {
+          margin: 0;
+        }
+      }
+
+      #vas-res-description {
+        margin-top: 0;
+      }
+
+      #vac-res-skills {
+        margin-top: 0;
       }
     }
 
-    #vas-res-description {
-      margin-top: 110px;
-    }
+    @media (max-width: 360px) {
+      .dash-field .field {
+        width: 300px;
+      }
 
-    #vac-res-skills {
-      margin-top: 130px;
+      .field-wrapper input.field {
+        width: 300px;
+        padding: 0;
+      }
+
+      .field-wrapper textarea.field {
+        width: 300px;
+        padding: 0;
+      }
     }
 
     .title {
@@ -1845,12 +1936,25 @@ hr {
         }
       }
 
+      @media (max-width: 720px) {
+        .skills-grid {
+          grid-template-columns: repeat(1, 1fr);
+        }
+      }
+
       .item {
         margin: 16px 0 0 0;
         display: flex;
         flex-direction: row;
 
         align-items: center;
+      }
+
+      @media (max-width: 720px) {
+        .item {
+          display: flex;
+          justify-content: center;
+        }
       }
 
       .checkbox {
@@ -1898,8 +2002,25 @@ hr {
 
   @media (max-width: 1015px) {
     &-inner {
-      width: 85%;
+      width: 700px;
+      // width: 85%;
       margin: 50px auto;
+    }
+  }
+
+  @media (max-width: 720px) {
+    &-inner {
+      width: 550px;
+    }
+  }
+
+  @media (max-width: 360px) {
+    &-inner {
+      width: 345px;
+
+      .title {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -1919,5 +2040,17 @@ hr {
 @media (max-width: 1015px) {
   .dash-frame {
     width: 835px;
+  }
+}
+
+@media (max-width: 720px) {
+  .dash-frame {
+    width: 620px;
+  }
+}
+
+@media (max-width: 360px) {
+  .dash-frame {
+    width: 350px;
   }
 }

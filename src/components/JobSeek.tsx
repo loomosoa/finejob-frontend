@@ -771,95 +771,100 @@ const JobSeek: React.FC = () => {
                   </div>
                 </div>
                 <div className="vac-res-payment-container">
-                  <span className="payment-title">Оплата</span>
-                  <span className="title-from-to">От</span>
-                  <input
-                    name="payment-from"
-                    className="input-from-to"
-                    inputMode="numeric"
-                    pattern="^[1-9]\\d*$"
-                    onInput={handleNumericInput}
-                  />
-                  <span className="title-from-to title-to">До</span>
-                  <input
-                    name="payment-to"
-                    className="input-from-to"
-                    inputMode="numeric"
-                    pattern="^[1-9]\\d*$"
-                    onInput={handleNumericInput}
-                  />
-                  {/* <img src={paymentTypeArrow} className="payment-type-arrow" /> */}
-                  <div
-                    ref={paymentPeriodsRef}
-                    onClick={() => togglePaymentPeriodsDropdown()}
-                    className="first-ps payment-selection"
-                  >
-                    {t(paymentPeriod)}
-                    <img
-                      src={paymentSelectionArrow}
-                      className="payment-selection-arrow"
+                  <div className="pc-first-block">
+                    <span className="payment-title">Оплата</span>
+                    <span className="title-from-to">От</span>
+                    <input
+                      name="payment-from"
+                      className="input-from-to"
+                      inputMode="numeric"
+                      pattern="^[1-9]\\d*$"
+                      onInput={handleNumericInput}
                     />
-                    {isPaymentPeriodsDropdownOpen && (
-                      <div className="payment-area-dropdown payment-selection">
-                        {paymentPeriods.map((period) => (
-                          <li
-                            key={period}
-                            onClick={() => selectPaymentPeriodDropdown(period)}
-                          >
-                            {t(period)}
-                          </li>
-                        ))}
-                      </div>
-                    )}
+                    <span className="title-from-to title-to">До</span>
+                    <input
+                      name="payment-to"
+                      className="input-from-to"
+                      inputMode="numeric"
+                      pattern="^[1-9]\\d*$"
+                      onInput={handleNumericInput}
+                    />
                   </div>
+                  <div className="pc-second-block">
+                    <div
+                      ref={paymentPeriodsRef}
+                      onClick={() => togglePaymentPeriodsDropdown()}
+                      className="first-ps payment-selection"
+                    >
+                      {t(paymentPeriod)}
+                      <img
+                        src={paymentSelectionArrow}
+                        className="payment-selection-arrow"
+                      />
+                      {isPaymentPeriodsDropdownOpen && (
+                        <div className="payment-area-dropdown payment-selection">
+                          {paymentPeriods.map((period) => (
+                            <li
+                              key={period}
+                              onClick={() =>
+                                selectPaymentPeriodDropdown(period)
+                              }
+                            >
+                              {t(period)}
+                            </li>
+                          ))}
+                        </div>
+                      )}
+                    </div>
 
-                  <div
-                    ref={paymentTypesRef}
-                    onClick={() => togglePaymentTypesDropdown()}
-                    className="payment-selection"
-                  >
-                    {t(paymentType)}
-                    <img
-                      src={paymentSelectionArrow}
-                      className="payment-selection-arrow"
-                    />
-                    {isPaymentTypesDropdownOpen && (
-                      <div className="payment-area-dropdown payment-selection">
-                        {paymentTypes.map((type) => (
-                          <li
-                            key={type}
-                            onClick={() => selectPaymentTypeDropdown(type)}
-                          >
-                            {t(type)}
-                          </li>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <div
-                    ref={paymentCurrenciesRef}
-                    onClick={() => togglePaymentCurrenciesDropdown()}
-                    className="payment-selection"
-                  >
-                    {t(paymentCurrency)}
-                    <img
-                      src={paymentSelectionArrow}
-                      className="payment-selection-arrow"
-                    />
-                    {isPaymentCurrenciesDropdownOpen && (
-                      <div className="payment-area-dropdown payment-selection">
-                        {paymentCurrencies.map((currency) => (
-                          <li
-                            key={currency}
-                            onClick={() =>
-                              selectPaymentCurrencyDropdown(currency)
-                            }
-                          >
-                            {t(currency)}
-                          </li>
-                        ))}
-                      </div>
-                    )}
+                    <div
+                      ref={paymentTypesRef}
+                      onClick={() => togglePaymentTypesDropdown()}
+                      className="payment-selection"
+                    >
+                      {t(paymentType)}
+                      <img
+                        src={paymentSelectionArrow}
+                        className="payment-selection-arrow"
+                      />
+                      {isPaymentTypesDropdownOpen && (
+                        <div className="payment-area-dropdown payment-selection">
+                          {paymentTypes.map((type) => (
+                            <li
+                              key={type}
+                              onClick={() => selectPaymentTypeDropdown(type)}
+                            >
+                              {t(type)}
+                            </li>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div
+                      ref={paymentCurrenciesRef}
+                      onClick={() => togglePaymentCurrenciesDropdown()}
+                      className="payment-selection"
+                    >
+                      {t(paymentCurrency)}
+                      <img
+                        src={paymentSelectionArrow}
+                        className="payment-selection-arrow"
+                      />
+                      {isPaymentCurrenciesDropdownOpen && (
+                        <div className="payment-area-dropdown payment-selection">
+                          {paymentCurrencies.map((currency) => (
+                            <li
+                              key={currency}
+                              onClick={() =>
+                                selectPaymentCurrencyDropdown(currency)
+                              }
+                            >
+                              {t(currency)}
+                            </li>
+                          ))}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
                 <div className="payment-submit-container">
