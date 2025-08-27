@@ -515,7 +515,7 @@ const JobSeek: React.FC = () => {
   const [submitPlaceholderText, setSubmitPlaceholderText] = React.useState("");
 
   const getPlaceholder = (width: number) => {
-    if (width < 768) {
+    if (width < 1015) {
       return "e-mail для откликов";
       // } else if (width < 1024) {
       //   return "Search for products or articles (Tablet)";
