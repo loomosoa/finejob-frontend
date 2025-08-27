@@ -1315,6 +1315,21 @@ hr {
   margin: 30px 0 140px;
   border-radius: 20px;
   align-items: center;
+  justify-content: center;
+
+  .pc-first-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+  }
+
+  .pc-second-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 47%;
+  }
 
   .payment-title {
     font-size: 24px;
@@ -1387,6 +1402,17 @@ hr {
   margin: 0;
 }
 
+@media (max-width: 1315px) {
+  .vac-res-payment-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pc-first-block {
+    margin-bottom: 20px;
+  }
+}
+
 @media (max-width: 1015px) {
   .vac-res-payment-container {
     flex-direction: column;
@@ -1404,12 +1430,12 @@ hr {
   .pc-second-block {
     display: flex;
     align-items: center;
-    width: 47%;
+    width: 70%;
     margin: 40px 0 0 0;
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 870px) {
   .pc-first-block {
     flex-direction: column;
   }
@@ -1496,7 +1522,7 @@ hr {
     }
   }
 
-  @media (max-width: 360px) {
+  @media (max-width: 720px) {
     .submit-btn {
       width: 310px;
     }
@@ -1507,7 +1533,7 @@ hr {
   }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 720px) {
   .payment-submit-container {
     flex-direction: column;
   }
