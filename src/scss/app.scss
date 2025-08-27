@@ -1194,6 +1194,7 @@ hr {
 
           .subscribe-btn {
             width: 180px;
+            height: 49px;
             background: #000;
             border: none;
             box-shadow: 3px 1px 4px 0 #bb00facc;
@@ -1216,6 +1217,13 @@ hr {
               box-shadow: 1px 0px 4px 0 #bb00facc;
               transition: box-shadow 0.1s ease-in-out;
             }
+          }
+        }
+
+        @media (max-width: 450px) {
+          .input-container {
+            flex-direction: column;
+            align-items: center;
           }
         }
 
@@ -1451,6 +1459,7 @@ hr {
 
   .email {
     width: 500px;
+    height: 60px;
     border: none;
     background: #d9ff00;
     color: #adcc01;
@@ -1485,6 +1494,22 @@ hr {
     .email {
       width: 300px;
     }
+  }
+
+  @media (max-width: 360px) {
+    .submit-btn {
+      width: 310px;
+    }
+
+    .email {
+      width: 230px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .payment-submit-container {
+    flex-direction: column;
   }
 }
 

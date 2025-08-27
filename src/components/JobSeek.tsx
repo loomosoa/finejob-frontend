@@ -512,6 +512,35 @@ const JobSeek: React.FC = () => {
     };
   }, []);
 
+  const [submitPlaceholderText, setSubmitPlaceholderText] = React.useState("");
+
+  const getPlaceholder = (width: number) => {
+    if (width < 768) {
+      return "e-mail для откликов";
+      // } else if (width < 1024) {
+      //   return "Search for products or articles (Tablet)";
+    } else {
+      return "Добавить e-mail для откликов";
+    }
+  };
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setSubmitPlaceholderText(getPlaceholder(window.innerWidth));
+    };
+
+    // Set initial placeholder on component mount
+    handleResize();
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on component unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
     <>
       <div className="jobseek-main">
@@ -876,7 +905,7 @@ const JobSeek: React.FC = () => {
                     name="email"
                     type="email"
                     required
-                    placeholder="Добавить e-mail для откликов"
+                    placeholder={submitPlaceholderText}
                   />
                 </div>
                 {errors.length > 0 && (
