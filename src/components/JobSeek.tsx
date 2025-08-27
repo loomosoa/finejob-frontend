@@ -332,9 +332,7 @@ const JobSeek: React.FC = () => {
 
     // Validate 'Создать' (vacancy or resume) selection
     if (vacResRef.current !== "vacancy" && vacResRef.current !== "resume") {
-      validationErrors.push(
-        "Выберите значение в поле 'Создать' (Вакансию или Резюме)."
-      );
+      validationErrors.push("Select the value in the 'Create' field");
     }
 
     const title = ((fd.get("title") as string) || "").trim();
@@ -348,56 +346,60 @@ const JobSeek: React.FC = () => {
 
     // Title/Description emptiness
     if (!title) {
-      validationErrors.push("Заполните поле 'Заголовок'.");
+      validationErrors.push("Fill out the field 'headline'");
     }
     if (!description) {
-      validationErrors.push("Заполните поле 'Описание'.");
+      validationErrors.push("Fill the field 'Description'");
     }
 
     // Title and Description length
     if (title.length > 140) {
-      validationErrors.push("Заголовок должен быть не длиннее 140 символов.");
+      validationErrors.push(
+        "The title should be no longer than 140 characters"
+      );
     }
     if (description.length > 280) {
-      validationErrors.push("Описание должно быть не длиннее 280 символов.");
+      validationErrors.push(
+        "The description should be no longer than 280 characters"
+      );
     }
 
     // Grade: at least one
     if (!junior && !middle && !senior) {
-      validationErrors.push("Выберите как минимум один грейд.");
+      validationErrors.push("Select at least one grade");
     }
 
     // Skills: at least one in each group
     if (selectedLangs.size === 0) {
-      validationErrors.push("Выберите как минимум один язык.");
+      validationErrors.push("Select at least one language");
     }
     if (selectedTechs.size === 0) {
-      validationErrors.push("Выберите как минимум одну технологию.");
+      validationErrors.push("Select at least one technology");
     }
     if (selectedFrameworks.size === 0) {
-      validationErrors.push("Выберите как минимум один фреймворк.");
+      validationErrors.push("Select at least one framework");
     }
 
     // Payment From/To: only positive integers if provided
     const posIntRe = /^[1-9]\d*$/;
     if (paymentFrom && !posIntRe.test(paymentFrom)) {
       validationErrors.push(
-        "Поле 'Оплата От' должно содержать только положительные целые числа."
+        "Field 'payment from' should contain only positive integers"
       );
     }
     if (paymentTo && !posIntRe.test(paymentTo)) {
       validationErrors.push(
-        "Поле 'Оплата До' должно содержать только положительные целые числа."
+        "Field 'payment to' should contain only positive integers"
       );
     }
 
     // Email: required and must be valid
     if (!email) {
-      validationErrors.push("Укажите e-mail.");
+      validationErrors.push("Specify e-mail");
     } else {
       const emailRe = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRe.test(email)) {
-        validationErrors.push("Укажите корректный e-mail.");
+        validationErrors.push("Specify correct e-mail");
       }
     }
 
@@ -516,11 +518,9 @@ const JobSeek: React.FC = () => {
 
   const getPlaceholder = (width: number) => {
     if (width < 1015) {
-      return "e-mail для откликов";
-      // } else if (width < 1024) {
-      //   return "Search for products or articles (Tablet)";
+      return "e-mail for responses";
     } else {
-      return "Добавить e-mail для откликов";
+      return "Add e-mail for responses";
     }
   };
 
@@ -905,7 +905,7 @@ const JobSeek: React.FC = () => {
                     name="email"
                     type="email"
                     required
-                    placeholder={submitPlaceholderText}
+                    placeholder={t(submitPlaceholderText)}
                   />
                 </div>
                 {errors.length > 0 && (

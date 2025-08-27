@@ -31,5 +31,21 @@
   "gross": "гросс",
   "net": "на руки",
   "Server format error": "Ошибка формата данных от сервера",
-  "It was not possible to load skills": "Не удалось загрузить навыки. Пожалуйста, попробуйте позже"
+  "It was not possible to load skills": "Не удалось загрузить навыки. Пожалуйста, попробуйте позже",
+  "Select the value in the 'Create' field": "Выберите значение в поле 'Создать' (Вакансию или Резюме)",
+  "Fill out the field 'headline'": "Заполните поле 'Заголовок'",
+  "Fill the field 'Description'": "Заполните поле 'Описание'",
+  "The title should be no longer than 140 characters": "Заголовок должен быть не длиннее 140 символов",
+  "The description should be no longer than 280 characters": "Описание должно быть не длиннее 280 символов",
+  "Select at least one grade": "Выберите как минимум один грейд",
+  "Select at least one language": "Выберите как минимум один язык",
+  "Select at least one technology": "Выберите как минимум одну технологию",
+  "Select at least one framework": "Выберите как минимум один фреймворк",
+  "Field 'payment from' should contain only positive integers": "Поле 'Оплата От' должно содержать только положительные целые числа",
+  "Field 'payment to' should contain only positive integers": "Поле 'Оплата До' должно содержать только положительные целые числа",
+  "Specify e-mail": "Укажите e-mail",
+  "Specify correct e-mail": "Укажите корректный e-mail",
+  "Form submitted successfully": "Форма успешно сохранена",
+  "e-mail for responses": "e-mail для откликов",
+  "Add e-mail for responses": "Добавить e-mail для откликов"
 }

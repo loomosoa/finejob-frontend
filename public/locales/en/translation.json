@@ -31,5 +31,21 @@
   "gross": "gross",
   "net": "net",
   "Server format error": "Server format error",
-  "It was not possible to load skills": "It was not possible to load skills. Please try later"
+  "It was not possible to load skills": "It was not possible to load skills. Please try later",
+  "Select the value in the 'Create' field": "Select the value in the 'Create' field (Vacancy or Resume)",
+  "Fill out the field 'headline'": "Fill out the field 'headline'",
+  "Fill the field 'Description'": "Fill the field 'Description'",
+  "The title should be no longer than 140 characters": "The title should be no longer than 140 characters",
+  "The description should be no longer than 280 characters": "The description should be no longer than 280 characters",
+  "Select at least one grade": "Select at least one grade",
+  "Select at least one language": "Choose at least one language",
+  "Select at least one technology": "Select at least one technology",
+  "Select at least one framework": "Select at least one framework",
+  "Field 'payment from' should contain only positive integers": "Field 'payment from' should contain only positive integers",
+  "Field 'payment to' should contain only positive integers": "Field 'payment to' should contain only positive integers",
+  "Specify e-mail": "Specify e-mail",
+  "Specify correct e-mail": "Specify correct e-mail",
+  "Form submitted successfully": "Form submitted successfully",
+  "e-mail for responses": "e-mail for responses",
+  "Add e-mail for responses": "Add e-mail for responses"
 }
