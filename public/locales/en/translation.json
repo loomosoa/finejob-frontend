@@ -29,5 +29,7 @@
   "year": "annual",
   "hour": "hourly",
   "gross": "gross",
-  "net": "net"
+  "net": "net",
+  "Server format error": "Server format error",
+  "It was not possible to load skills": "It was not possible to load skills. Please try later"
 }

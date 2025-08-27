@@ -246,7 +246,7 @@ const JobSeek: React.FC = () => {
             "API response for languages is not an object:",
             languagesObject
           );
-          setError("Ошибка формата данных от сервера.");
+          setError("Server format error");
         }
 
         const frameworksObject = data.data?.[2]?.frameworks;
@@ -258,7 +258,7 @@ const JobSeek: React.FC = () => {
             "API response for frameworksObject is not an object:",
             frameworksObject
           );
-          setError("Ошибка формата данных от сервера.");
+          setError("Server format error");
         }
 
         const techsObject = data.data?.[1]?.technologies;
@@ -270,7 +270,7 @@ const JobSeek: React.FC = () => {
             "API response for techs is not an object:",
             techsObject
           );
-          setError("Ошибка формата данных от сервера.");
+          setError("Server format error");
         }
 
         const otherSkillsObject = data.data?.[3]?.other_skills;
@@ -285,11 +285,11 @@ const JobSeek: React.FC = () => {
             "API response for other skills is not an object:",
             otherSkillsObject
           );
-          setError("Ошибка формата данных от сервера.");
+          setError("Server format error");
         }
       } catch (err) {
         console.error("Error fetching skills:", err);
-        setError("Не удалось загрузить навыки. Пожалуйста, попробуйте позже.");
+        setError("It was not possible to load skills");
       } finally {
         setLoading(false);
       }
@@ -662,7 +662,7 @@ const JobSeek: React.FC = () => {
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
-                    {error && <p>{error}</p>}
+                    {error && <p>{t(error)}</p>}
                     {filteredLangs.length > 0
                       ? filteredLangs.map((lang: string) => (
                           <div className="item" key={lang}>
@@ -700,7 +700,7 @@ const JobSeek: React.FC = () => {
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
-                    {error && <p>{error}</p>}
+                    {error && <p>{t(error)}</p>}
                     {filteredTechs.length > 0
                       ? filteredTechs.map((tech: string) => (
                           <div className="item" key={tech}>
@@ -738,7 +738,7 @@ const JobSeek: React.FC = () => {
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
-                    {error && <p>{error}</p>}
+                    {error && <p>{t(error)}</p>}
                     {filteredFrameworks.length > 0
                       ? filteredFrameworks.map((framework: string) => (
                           <div className="item" key={framework}>
@@ -775,7 +775,7 @@ const JobSeek: React.FC = () => {
                   </div>
                   <div className="skills-grid">
                     {loading && <p>Загрузка...</p>}
-                    {error && <p>{error}</p>}
+                    {error && <p>{t(error)}</p>}
                     {filteredOtherSkills.length > 0
                       ? filteredOtherSkills.map((otherSkill: string) => (
                           <div className="item" key={otherSkill}>
@@ -913,7 +913,7 @@ const JobSeek: React.FC = () => {
                     <img src={redX} className="message-icon" />
                     <ul>
                       {errors.map((er, idx) => (
-                        <li key={idx}>{er}</li>
+                        <li key={idx}>{t(er)}</li>
                       ))}
                     </ul>
                   </div>
@@ -923,7 +923,7 @@ const JobSeek: React.FC = () => {
                     <img src={greenCheckmark} className="message-icon" />
                     <ul>
                       {requestMessages.map((msg, idx) => (
-                        <li key={idx}>{msg}</li>
+                        <li key={idx}>{t(msg)}</li>
                       ))}
                     </ul>
                   </div>
