@@ -29,6 +29,7 @@ const JobSeek: React.FC = () => {
 
   const vacResItems = ["vacancy", "resume"];
   const vacResRef = React.useRef<string>("vacancy|resume");
+  const vacResDivRef = React.useRef<HTMLDivElement>(null);
 
   const [isVacResDropdownOpen, setVacResDropdown] =
     React.useState<boolean>(false);
@@ -125,27 +126,25 @@ const JobSeek: React.FC = () => {
     lang.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Добавить состояние для строки поиска
   const [techSearchQuery, setTechSearchQuery] = React.useState<string>("");
-  // Обработчик изменения поля поиска
+
   const handleTechSearchInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTechSearchQuery(e.target.value);
   };
-  // Фильтрация языков на основе введенного запроса
+
   const filteredTechs = techs.filter((tech: string) =>
     tech.toLowerCase().includes(techSearchQuery.toLowerCase())
   );
 
-  // Добавить состояние для строки поиска
   const [frameworksSearchQuery, setFrameworksSearchQuery] =
     React.useState<string>("");
-  // Обработчик изменения поля поиска
+
   const handleFrameworksSearchInput = (
     e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFrameworksSearchQuery(e.target.value);
   };
-  // Фильтрация языков на основе введенного запроса
+
   const filteredFrameworks = frameworks.filter((framework: string) =>
     framework.toLowerCase().includes(frameworksSearchQuery.toLowerCase())
   );
@@ -312,6 +311,23 @@ const JobSeek: React.FC = () => {
 
       if (current && !path.includes(current)) {
         setPaymentPeriodsDropdown(false);
+      }
+    };
+
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.body.removeEventListener("click", handleClickOutside);
+    };
+  }, []);
+
+  React.useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const current = vacResDivRef.current;
+      const path = e.composedPath();
+
+      if (current && !path.includes(current)) {
+        setVacResDropdown(false);
       }
     };
 
@@ -557,6 +573,7 @@ const JobSeek: React.FC = () => {
                     <div className="title">{t("Create")}</div>
                   </div>
                   <div
+                    ref={vacResDivRef}
                     id="selectVacRes"
                     onClick={() => toggleVacResDropdown()}
                     className="field"
