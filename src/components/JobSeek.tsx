@@ -442,7 +442,7 @@ const JobSeek: React.FC = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      let msg = "Form submitted successfully";
+      let msg = vacResRef.current + " submitted successfully";
       console.log(msg, payload);
       const requestMsgArr: string[] = [];
       requestMsgArr.push(msg);
