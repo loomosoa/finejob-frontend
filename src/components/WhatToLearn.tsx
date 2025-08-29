@@ -30,6 +30,7 @@ import xCom from "../assets/imgs/xcom.png";
 import telegramImg from "../assets/imgs/telegram.png";
 import greenCheckmark from "../assets/imgs/green-checkmark.svg";
 import redX from "../assets/imgs/red-x.svg";
+import adsBanner from "../assets/imgs/ads_banner.png";
 
 import { useTranslation } from "react-i18next";
 
@@ -418,7 +419,9 @@ const WhatToLearn: React.FC = () => {
             </div>
           </div> */}
           <div className="footer">
-            <div className="banner">ads banner</div>
+            <div className="banner">
+              <img src={adsBanner} />
+            </div>
             <div className="subscription">
               <img
                 className="be-in-touch"

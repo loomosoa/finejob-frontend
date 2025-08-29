@@ -440,8 +440,6 @@ const JobSeek: React.FC = () => {
         middle: (fd.get("middle") as string) || "",
         senior: (fd.get("senior") as string) || "",
       },
-      // middle: ,
-      // senior: (fd.get("senior") as string) || "",
       selectedLangs: Array.from(selectedLangs),
       selectedTech: Array.from(selectedTechs),
       selectedFrameworks: Array.from(selectedFrameworks),
