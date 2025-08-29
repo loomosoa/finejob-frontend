@@ -1,5 +1,7 @@
 import React from "react";
 
+import { Helmet } from "react-helmet";
+
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -196,7 +198,7 @@ const WhatToLearn: React.FC = () => {
         setSkillRevenue(data.revenue.amount);
       };
 
-      getSkillsRevenue();
+      // getSkillsRevenue();
     }
 
     setIsMounted(true);
@@ -209,6 +211,13 @@ const WhatToLearn: React.FC = () => {
 
   return (
     <>
+      {/* <Helmet>
+        <script
+          type="text/javascript"
+          src="//web.webformscr.com/apps/fc3/build/default-handler.js?1751877883512"
+        ></script>
+      </Helmet> */}
+
       <div className="second-wrapper">
         <div className="second-container">
           {/* <div className="row-1">
