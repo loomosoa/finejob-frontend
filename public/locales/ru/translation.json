@@ -64,5 +64,6 @@
   "Payment": "Оплата",
   "From": "От",
   "To": "До",
-  "Subscription successful": "Подписка прошла успешно!"
+  "Subscription successful": "Подписка прошла успешно!",
+  "Type": "Тип"
 }

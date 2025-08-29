@@ -431,6 +431,10 @@ const JobSeek: React.FC = () => {
       vacancyOrResume: vacResRef.current,
       title: title,
       description: description,
+      type: {
+        fulltime: (fd.get("fulltime") as string) || "",
+        parttime: (fd.get("parttime") as string) || "",
+      },
       grade: {
         junior: (fd.get("junior") as string) || "",
         middle: (fd.get("middle") as string) || "",
@@ -613,26 +617,50 @@ const JobSeek: React.FC = () => {
                     <div className="under-label">280 {t("characters")}</div>
                   </div>
                 </div>
-                <div id="vac-res-skills" className="dash-field">
-                  <div className="title-wrapper">
-                    <div className="title">{t("Skills")}</div>
+                <div className="dash-field" id="type-of-employment-field">
+                  <div id="type_of_employment" className="title-wrapper">
+                    <div className="title">{t("Type")}</div>
+                  </div>
+                  <div className="field-wrapper checkbox">
+                    <div className="checkbox-wrapper">
+                      <div className="checkbox-item">
+                        <label className="container">
+                          <span className="checkbox-first-letter"></span>
+                          Full-Time
+                          <input
+                            type="checkbox"
+                            name="fulltime"
+                            value="fulltime"
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
+                      <span>|</span>
+                      <div className="checkbox-item">
+                        <label className="container">
+                          <span className="checkbox-first-letter"></span>
+                          Part-Time
+                          <input
+                            type="checkbox"
+                            name="parttime"
+                            value="parttime"
+                          />
+                          <span className="checkmark"></span>
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <div className="dash-field">
                   <div className="title-wrapper">
-                    <div className="grade-title title">{t("Grade")}</div>
+                    <div className="title">{t("Grade")}</div>
                   </div>
                   <div className="field-wrapper checkbox">
                     <div className="checkbox-wrapper">
                       <div className="checkbox-item">
                         <label className="container">
                           <span className="checkbox-first-letter">J</span>unior
-                          <input
-                            type="checkbox"
-                            // id="junior"
-                            name="junior"
-                            value="junior"
-                          />
+                          <input type="checkbox" name="junior" value="junior" />
                           <span className="checkmark"></span>
                         </label>
                       </div>
@@ -640,12 +668,7 @@ const JobSeek: React.FC = () => {
                       <div className="checkbox-item">
                         <label className="container">
                           <span className="checkbox-first-letter">M</span>iddle
-                          <input
-                            type="checkbox"
-                            // id="junior"
-                            name="middle"
-                            value="middle"
-                          />
+                          <input type="checkbox" name="middle" value="middle" />
                           <span className="checkmark"></span>
                         </label>
                       </div>
@@ -653,16 +676,17 @@ const JobSeek: React.FC = () => {
                       <div className="checkbox-item">
                         <label className="container">
                           <span className="checkbox-first-letter">S</span>enior
-                          <input
-                            type="checkbox"
-                            // id="junior"
-                            name="senior"
-                            value="senior"
-                          />
+                          <input type="checkbox" name="senior" value="senior" />
                           <span className="checkmark"></span>
                         </label>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div id="vac-res-skills" className="dash-field">
+                  <div className="title-wrapper">
+                    <div className="title">{t("Skills")}</div>
                   </div>
                 </div>
                 <div className="info"></div>
@@ -816,6 +840,7 @@ const JobSeek: React.FC = () => {
                       : !loading && <p>{t("Other skills are not found")}</p>}
                   </div>
                 </div>
+
                 <div className="vac-res-payment-container">
                   <div className="pc-first-block">
                     <span className="payment-title">{t("Payment")}</span>
