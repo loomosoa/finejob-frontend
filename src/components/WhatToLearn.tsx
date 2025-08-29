@@ -28,6 +28,8 @@ import beInTouchRU from "../assets/imgs/be_in_touch_ru.png";
 import beInTouchEN from "../assets/imgs/be_in_touch_en.png";
 import xCom from "../assets/imgs/xcom.png";
 import telegramImg from "../assets/imgs/telegram.png";
+import greenCheckmark from "../assets/imgs/green-checkmark.svg";
+import redX from "../assets/imgs/red-x.svg";
 
 import { useTranslation } from "react-i18next";
 
@@ -210,8 +212,8 @@ const WhatToLearn: React.FC = () => {
   const formatter = new Intl.NumberFormat("en-US");
 
   const [email, setEmail] = React.useState("");
-  const [error, setError] = React.useState("");
-  const [success, setSuccess] = React.useState("");
+  const [subscriptionError, setSubscriptionError] = React.useState("");
+  const [subscriptionSuccess, setSubscriptionSuccess] = React.useState("");
 
   const getSendPulsApiToken = async () => {
     const requestBody = {
@@ -258,25 +260,21 @@ const WhatToLearn: React.FC = () => {
 
       console.log("response data: ", data);
 
-      if (response.ok && data.result) {
-        setSuccess("Подписка успешна! Проверьте email для подтверждения.");
+      if (data.result === true) {
+        setSubscriptionSuccess("Subscription successful");
         setEmail("");
-        setError("");
+        setSubscriptionError("");
       } else {
-        setError(
-          "Ошибка 1: " + (data.message || "Не удалось отправить данные.")
+        setSubscriptionError(
+          // "Ошибка: " + (data.message || "Failed to send data")
+          "Error: failed to send data"
         );
-        setSuccess("");
+        setSubscriptionSuccess("");
       }
     } catch (err) {
-      setError("Произошла ошибка: " + err.message);
-      setSuccess("");
-      // console.error("Ошибка 2:", err);
-      console.error("Network error details:", {
-        message: err.message,
-        response: err.response ? err.response.data : null,
-        status: err.response ? err.response.status : null,
-      });
+      setSubscriptionError("Error: " + err.message);
+      setSubscriptionSuccess("");
+      console.error("Error:", err);
     }
   };
 
@@ -440,16 +438,23 @@ const WhatToLearn: React.FC = () => {
                       required
                       autoComplete="on"
                     />
-                    {/* <input
-                    type="text"
-                    placeholder="email"
-                    name="email"                  
-                  /> */}
                   </div>
                   <button type="submit" className="subscribe-btn">
                     {t("subscribe")}
                   </button>
                 </div>
+                {subscriptionSuccess && (
+                  <div className="form-success subscription-message">
+                    <img src={greenCheckmark} className="message-icon" />
+                    <span>{t(subscriptionSuccess)}</span>
+                  </div>
+                )}
+                {subscriptionError && (
+                  <div className="form-error subscription-message">
+                    <img src={redX} className="message-icon" />
+                    <span>{t(subscriptionError)}</span>
+                  </div>
+                )}
               </form>
             </div>
             <div className="social-nets">
