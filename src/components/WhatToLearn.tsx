@@ -209,6 +209,77 @@ const WhatToLearn: React.FC = () => {
 
   const formatter = new Intl.NumberFormat("en-US");
 
+  const [email, setEmail] = React.useState("");
+  const [error, setError] = React.useState("");
+  const [success, setSuccess] = React.useState("");
+
+  const getSendPulsApiToken = async () => {
+    const requestBody = {
+      "grant_type": "client_credentials",
+      "client_id": "887f44ca4497b506b8cf6dcfa956c4b0",
+      "client_secret": "f6f5969f0986e946347533f7a72bf1a1",
+    };
+
+    let response = "";
+    try {
+      response = await axios.post("/oauth/access_token", requestBody);
+    } catch (err) {
+      console.error("Network error details:", err);
+    }
+
+    return response.data.access_token;
+  };
+
+  const handleEmailSubscriptionSubmit = async (
+    e: React.FormEvent<HTMLFormElement>
+  ) => {
+    e.preventDefault(); // Предотвращаем перезагрузку страницы
+    try {
+      const bearerToken = await getSendPulsApiToken();
+
+      const requestBody = {
+        emails: [email], // Можно добавить другие поля, например, name
+      };
+
+      const customHeaders = {
+        "Authorization": "Bearer " + bearerToken,
+        "Content-Type": "application/json", // Often set automatically for JSON bodies
+      };
+
+      const response = await axios.post(
+        "/addressbooks/379657/emails",
+        requestBody,
+        {
+          headers: customHeaders,
+        }
+      );
+
+      const data = await response.data;
+
+      console.log("response data: ", data);
+
+      if (response.ok && data.result) {
+        setSuccess("Подписка успешна! Проверьте email для подтверждения.");
+        setEmail("");
+        setError("");
+      } else {
+        setError(
+          "Ошибка 1: " + (data.message || "Не удалось отправить данные.")
+        );
+        setSuccess("");
+      }
+    } catch (err) {
+      setError("Произошла ошибка: " + err.message);
+      setSuccess("");
+      // console.error("Ошибка 2:", err);
+      console.error("Network error details:", {
+        message: err.message,
+        response: err.response ? err.response.data : null,
+        status: err.response ? err.response.status : null,
+      });
+    }
+  };
+
   return (
     <>
       {/* <Helmet>
@@ -356,17 +427,30 @@ const WhatToLearn: React.FC = () => {
                 src={i18n.language === "ru" ? beInTouchRU : beInTouchEN}
               />
               {/* <!-- <span>Оставаться в курсе</span> --> */}
-              <div className="input-container">
-                <div className="back-frame">
-                  <input
+              <form onSubmit={handleEmailSubscriptionSubmit}>
+                <div className="input-container">
+                  <div className="back-frame">
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="email"
+                      required
+                      autoComplete="on"
+                    />
+                    {/* <input
                     type="text"
                     placeholder="email"
-                    name="email"
-                    // autoComplete="off"
-                  />
+                    name="email"                  
+                  /> */}
+                  </div>
+                  <button type="submit" className="subscribe-btn">
+                    {t("subscribe")}
+                  </button>
                 </div>
-                <button className="subscribe-btn">{t("subscribe")}</button>
-              </div>
+              </form>
             </div>
             <div className="social-nets">
               <img src={xCom} />
