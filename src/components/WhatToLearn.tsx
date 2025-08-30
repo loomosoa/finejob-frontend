@@ -461,8 +461,12 @@ const WhatToLearn: React.FC = () => {
               </form>
             </div>
             <div className="social-nets">
-              <img src={xCom} />
-              <img src={telegramImg} />
+              <a href="https://x.com/finejobfun">
+                <img src={xCom} />
+              </a>
+              <a href="https://t.me/finejobfun">
+                <img src={telegramImg} />
+              </a>
             </div>
             <div className="bottom-txt">Robust Technologies © 2025</div>
           </div>

@@ -1106,7 +1106,7 @@ hr {
         align-items: center;
         width: 692px;
         height: 144px;
-        background: white;
+        background: transparent;
 
         border-radius: 5px;
 
@@ -1118,9 +1118,24 @@ hr {
         font-weight: 700;
         font-size: 18px;
 
+        img {
+          width: 100%;
+          margin-bottom: 100px;
+          border-radius: 10px;
+        }
+
+        @media (max-width: 1600px) {
+          margin: 220px 0 145px;
+        }
+
         @media (max-width: 720px) {
           max-width: 692px;
           width: 75%;
+          margin: 180px 0 55px;
+        }
+
+        @media (max-width: 450px) {
+          margin: 110px 0 0;
         }
       }
 
