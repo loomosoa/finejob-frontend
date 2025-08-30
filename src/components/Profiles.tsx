@@ -171,29 +171,28 @@ const Profiles: React.FC = () => {
             </div>
             <hr />
             <p className="header-txt-1">
-              Благодаря ИИ мир программирования бесповоротно{" "}
-              <span className="changes">меняется</span>. И мало кто может
-              предсказать, каким именно будет программирование завтра
+              {t("ht-b1")}
+              <span className="changes">{t("ht-b2")}</span>
+              {t("ht-b3")}
               <br />
               <br />
-              Поэтому нужно смотреть на вакансии в разных частях мира, чтобы
-              понимать, что является востребованным{" "}
-              <span className="market">рынком</span> сегодня
+              {t("ht-b4")}
+              <span className="market">{t("ht-b5")}</span>
+              {t("ht-b6")}
               <br />
-              <br />– держать руку на пульсе рынка и на основе данных вакансий{" "}
-              <span className="plan-career">планировать свою карьеру</span>{" "}
-              разработчика
+              <br />
+              {t("ht-b7")}
+              <span className="plan-career">{t("ht-b8")}</span>
+              {t("ht-b9")}
             </p>
             <div className="header-txt-cont">
               <p className="header-txt-2">
-                Помня, что есть работы, на которых можно работать в
-                удовольствие,{" "}
-                <span className="just-for-fun">just for fun.</span> Даже тогда,
-                когда ради денег уже можно будет не работать
+                {t("ht-b10")}
+                <span className="just-for-fun">{t("ht-b11")}</span>{" "}
+                {t("ht-b12")}
                 <br />
                 <br />
-                Оставаясь в курсе изменений востребованных навыков, чтобы
-                становится всё более профессиональным программистом
+                {t("ht-b13")}
               </p>
             </div>
           </div>
@@ -319,10 +318,9 @@ const Profiles: React.FC = () => {
                   <div className="payment-card">
                     <div className="header">
                       <div className="intro-text">
-                        На основе тысяч вакансий построена{" "}
-                        <span className="analytics">аналитика</span>, которая
-                        помогает лучше понять рынок, развивать навыки и
-                        увеличить доход
+                        {t("ht-b14")}
+                        <span className="analytics">{t("ht-b15")}</span>
+                        {t("ht-b16")}
                       </div>
                       <img className="rocket" src={rocket} />
                     </div>
