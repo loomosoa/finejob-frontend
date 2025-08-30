@@ -170,9 +170,26 @@ const Profiles: React.FC = () => {
               </div>
             </div>
             <hr />
-            <p className="header-txt-1">{t("txt-1")}</p>
+            <p className="header-txt-1">
+              Мир программирования бесповоротно{" "}
+              <span className="changes">меняется</span>. Актуальное сегодня -
+              завтра может стать <span className="useless">ненужным</span>. И
+              поэтому так важно оставаться в курсе текущих трендов IT-индустрии
+              и всегда знать, какие <span className="skills">навыки</span>{" "}
+              актуальны прямо сейчас
+              <br />
+              <br />
+              Очень важно держать свою руку на пульсе невидимой руки рынка,
+              чтобы понимать, какие навыки необходимо приобретать и усиливать,
+              чтобы становиться и оставаться востребованным специалистом,
+              развивая свою карьеру разработчика
+            </p>
             <div className="header-txt-cont">
-              <p className="header-txt-2">{t("txt-2")}</p>
+              <p className="header-txt-2">
+                Будь в курсе динамики актуальных навыков программиста и
+                усиливай, развивай свои возможности, становясь всё более
+                профессиональным специалистом
+              </p>
             </div>
           </div>
           <div className="dash-container">
@@ -296,7 +313,11 @@ const Profiles: React.FC = () => {
 
                   <div className="payment-card">
                     <div className="header">
-                      <div className="intro-text">{t("txt-3")}</div>
+                      <div className="intro-text">
+                        На основе тысяч вакансий построена аналитика, которая
+                        поможет лучше понять рынок, развить навыки и увеличить
+                        доход
+                      </div>
                       <img className="rocket" src={rocket} />
                     </div>
                     <div className="card">
