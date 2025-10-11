@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/finejob-frontend/static/css/main.5af54cae.css",
-    "main.js": "/finejob-frontend/static/js/main.28cccaec.js",
+    "main.js": "/finejob-frontend/static/js/main.be410878.js",
     "static/media/mp9_vert.png": "/finejob-frontend/static/media/mp9_vert.468395fbb2a299d658c3.png",
     "static/media/ads_banner.png": "/finejob-frontend/static/media/ads_banner.b8be52502c117be9a60f.png",
     "static/media/mp9.jpg": "/finejob-frontend/static/media/mp9.7dd68c6c97203d79c147.jpg",
@@ -22,10 +22,10 @@
     "static/media/frameworks-sq.svg": "/finejob-frontend/static/media/frameworks-sq.fb3ab11a71074f7ec48bedf36241951e.svg",
     "static/media/select_img.svg": "/finejob-frontend/static/media/select_img.e0d61341dc39d8d02159ee2c6e6790f7.svg",
     "main.5af54cae.css.map": "/finejob-frontend/static/css/main.5af54cae.css.map",
-    "main.28cccaec.js.map": "/finejob-frontend/static/js/main.28cccaec.js.map"
+    "main.be410878.js.map": "/finejob-frontend/static/js/main.be410878.js.map"
   },
   "entrypoints": [
     "static/css/main.5af54cae.css",
-    "static/js/main.28cccaec.js"
+    "static/js/main.be410878.js"
   ]
 }
