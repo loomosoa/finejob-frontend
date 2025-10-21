@@ -225,7 +225,10 @@ const WhatToLearn: React.FC = () => {
 
     let response = "";
     try {
-      response = await axios.post("/oauth/access_token", requestBody);
+      response = await axios.post(
+        "https://api.sendpulse.com/oauth/access_token",
+        requestBody
+      );
     } catch (err) {
       console.error("Network error details:", err);
     }
@@ -250,7 +253,7 @@ const WhatToLearn: React.FC = () => {
       };
 
       const response = await axios.post(
-        "/addressbooks/379657/emails",
+        "https://api.sendpulse.com/addressbooks/379657/emails",
         requestBody,
         {
           headers: customHeaders,

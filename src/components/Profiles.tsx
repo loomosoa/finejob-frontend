@@ -92,9 +92,12 @@ const Profiles: React.FC = () => {
 
   React.useEffect(() => {
     const getProfiles = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+
       const { data } = await axios.get(
         // `https://5d9704ac1962357f.mokky.dev/profiles?page=${currentPage}&limit=1&sortBy=${sort.type}`
-        `http://finejob-api.local/api/v1/profiles?page=${currentPage}&limit=1&sortBy=${sort.type}`
+        apiUrl +
+          `/api/v1/profiles?page=${currentPage}&limit=1&sortBy=${sort.type}`
       );
 
       setProfile(data.data[0]);

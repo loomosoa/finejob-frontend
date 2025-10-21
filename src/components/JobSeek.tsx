@@ -232,9 +232,9 @@ const JobSeek: React.FC = () => {
   React.useEffect(() => {
     const getSkills = async () => {
       try {
-        const { data } = await axios.get(
-          "http://finejob-api.local/api/v1/skills"
-        );
+        const apiUrl = process.env.REACT_APP_API_URL;
+
+        const { data } = await axios.get(apiUrl + "/api/v1/skills");
 
         const languagesObject = data.data?.[0]?.languages;
         if (typeof languagesObject === "object" && languagesObject !== null) {
@@ -453,13 +453,11 @@ const JobSeek: React.FC = () => {
     };
 
     try {
-      await axios.post(
-        "http://finejob-api.local/api/v1/vac-res-data",
-        payload,
-        {
-          headers: { "Content-Type": "application/json" },
-        }
-      );
+      const apiUrl = process.env.REACT_APP_API_URL;
+
+      await axios.post(apiUrl + "/api/v1/vac-res-data", payload, {
+        headers: { "Content-Type": "application/json" },
+      });
       let msg = vacResRef.current + " submitted successfully";
       console.log(msg, payload);
       const requestMsgArr: string[] = [];
